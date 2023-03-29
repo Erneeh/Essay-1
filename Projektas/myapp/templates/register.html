@@ -1,3 +1,6 @@
+{% extends "header.html" %}
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,34 +8,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registracija - Essay.lt</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body>
-    <h1>Register page</h1>
-    <div class="form">
-
+    <div class="authcontainer">
+        <div class="authuppercontainer">
+            <h1>Register page</h1>
+        </div>
+    <div class="authlowercontainer">
+    <fieldset>
     <form action="" method="POST">
         {% csrf_token %}
         <label for="fname">First Name:</label>
-        <input type="text" placeholder="Enter your first name" name="fname"><br>
+        <input type="text" placeholder="Enter your first name" name="fname" id="fname" class="inline"><br>
 
-        <label for="fname">First Last Name:</label>
-        <input type="text" placeholder="Enter your last name" name="lname"><br>
+        <label for="lname">Last Name:</label>
+        <input type="text" placeholder="Enter your last name" name="lname" id="lname" class="inline"><br>
 
-        <label for="fname">Username:</label>
-        <input type="text" placeholder="Enter your Username" name="uname"><br>
+        <label for="uname">Username:</label>
+        <input type="text" placeholder="Enter your Username" name="uname" id="uname" class="inline"><br>
 
-        <label for="fname">Email:</label>
-        <input type="text" placeholder="Enter your email" name="email"><br>
+        <label for="email">Email:</label>
+        <input type="text" placeholder="Enter your email" name="email" id="email" class="inline"><br>
 
-        <label for="fname">Password:</label>
-        <input type="text" placeholder="Enter possword" name="pass"><br>
+        <label for="pass1">Password:</label>
+        <input type="text" placeholder="Enter possword" name="pass1" id="pass1" class="inline"><br>
 
-        <label for="fname">Repeat pass:</label>
-        <input type="text" placeholder="Repeat possword" name="pass2"><br>
-
-        <button type="submit">Submit</button>
+        <label for="pass2">Repeat pass:</label>
+        <input type="text" placeholder="Repeat possword" name="pass2" id="pass2" class="inline"><br>
+        </fieldset>
+        <button type="submit">Registruotis</button>
     </form>
 </div>
+</div>
+
 </body>
 </html>
+
+{% endblock %}
 
