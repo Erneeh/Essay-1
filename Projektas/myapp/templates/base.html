@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-   <head>
-      <meta charset="utf-8">
-      <title>Essay.lt</title>
-       {% load static %}
-      <link rel="stylesheet" href="{% static 'css/testas.css' %}">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-   <body>
-      <nav>
-         <div class="logo">
-            Essay.lt
-         </div>
-         <input type="checkbox" id="click">
-         <label for="click" class="menu-btn">
-         <i class="fas fa-bars"></i>
-         </label>
-         <ul>
-            <li><a class="active" href="{% url 'index' %}">Pagrindinis</a></li>
-            <li><a href="#">Apie</a></li>
-            <li><a href="{% url 'services' %}">Paslaugos</a></li>
-            <li><a href="#">Atsiliepimai</a></li>
-            <li><a href="#">Susisiekti</a></li>
-            <li><a href="{% url 'login' %}">Prisijungti</a></li>
-            <li><a href="{% url 'register' %}">Registruotis</a></li>
-         </ul>
-      </nav>
+<head>
+    <meta charset="utf-8">
+    <title>Essay.lt</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/testas.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<nav>
+    <div class="logo">
+        Essay.lt
+    </div>
+    <input type="checkbox" id="click">
+    <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+    </label>
+    <ul>
+        <li><a class="active" href="{% url 'index' %}">Pagrindinis</a></li>
+        <li><a href="#">Apie</a></li>
+        <li><a href="{% url 'services' %}">Paslaugos</a></li>
+        <li><a href="#">Atsiliepimai</a></li>
+        <li><a href="#">Susisiekti</a></li>
+        {% if user.is_authenticated %}
 
-   </body>
+        <li><a href="#">{{ user.get_username }}</a></li>
+        <li><a href="{% url 'logout' %}">Atsijungti</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Prisijungti</a></li>
+        <li><a href="{% url 'register' %}">Registruotis</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+</body>
 </html>
 {% block content %}
 {% endblock %}
