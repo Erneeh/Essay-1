@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="Startas">
+    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="Login/Register">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +73,13 @@
       <option name="presentableId" value="LOCAL−00002" />
       <updated>1679994805158</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL−00003" summary="Login/Register">
+      <created>1680109411910</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1680109411910</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -93,6 +96,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Start" />
     <MESSAGE value="Startas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Startas" />
+    <MESSAGE value="Login/Register" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login/Register" />
   </component>
 </project>
