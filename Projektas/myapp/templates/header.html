@@ -2,7 +2,6 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>Essay.lt</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/testas.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
@@ -11,7 +10,7 @@
 <body>
 <nav>
     <div class="logo">
-        Essay.lt
+        <a href="{% url 'index' %}">Essay.lt</a>
     </div>
     <input type="checkbox" id="click">
     <label for="click" class="menu-btn">
