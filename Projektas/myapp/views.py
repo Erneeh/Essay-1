@@ -14,32 +14,31 @@ def services(request):
 
 
 def register(request):
+    uname = request.POST.get('uname')
+    nickname = User.objects.filter(username=uname).exists()
     if request.method == 'POST':
-        fname = request.POST.get('fname')
-        lname = request.POST.get('lname')
         uname = request.POST.get('uname')
         email = request.POST.get('email')
         password = request.POST.get('pass')
         password2 = request.POST.get('pass2')
+        nickname = User.objects.filter(username=uname).exists()
 
         if password == password2:
             if User.objects.filter(username=uname).exists():
-                return HttpResponse('Error, vartotojo vardas uzimtas')
+                messages.error(request, f"Vartotojo vardas {uname} uzimtas")
+                return redirect("register")
             else:
                 if User.objects.filter(email=email).exists():
-                    return HttpResponse('Error, el. pastas uzimtas')
+                    messages.error(request, f"Error, El.paštas {email} uzimtas")
+                    return redirect("register")
                 else:
                     new_user = User.objects.create_user(uname, email, password)
-                    new_user.first_name = fname
-                    new_user.last_name = lname
-
                     new_user.save()
-                    messages.info(request, f"Vartotojas {uname} sukurtas")
                     return redirect('login')
         else:
             messages.error(request, "Slaptazodziai nesutampa")
             return redirect("register")
-    return render(request, "register.html", {})
+    return render(request, "register.html", {"nickname": nickname})
 
 
 def loginas(request):
@@ -52,7 +51,8 @@ def loginas(request):
             login(request, user)
             return redirect('index')
         else:
-            return HttpResponse('Error, user does not exist')
+            messages.error(request, "Useris neegzistuoja arba ivedete neteisingus duomenis")
+            return redirect('login')
 
     return render(request, "login.html", {})
 

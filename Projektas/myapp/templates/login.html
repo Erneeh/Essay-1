@@ -2,7 +2,7 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,50 +12,62 @@
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-  </head>
-  <body>
-    <div class="form-body">
-      <div class="row">
+</head>
+<body>
+<div class="form-body">
+    <div class="row">
         <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-          <div class="form-holder">
-            <div class="form-content">
-              <div class="form-items">
-                <h3>Prisijungimas</h3>
-                <br>
-                <form action="" method="POST" class="requires-validation">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="uname" class="form-label">Slapyvardis:</label>
-                    <input type="text" placeholder="Įveskite slapyvardį" name="uname" id="uname" class="form-control" required>
-                    <div class="valid-feedback">Username field is valid!</div>
-                    <div class="invalid-feedback">Username field cannot be blank!</div>
-                  </div>
-                  <br>
-                  <div class="mb-3">
-                    <label for="pass" class="form-label">Slaptažodis:</label>
-                    <input type="password" placeholder="Įveskite slaptažodį" name="pass" id="pass" class="form-control" required>
-                    <div class="valid-feedback">Password field is valid!</div>
-                    <div class="invalid-feedback">Password field cannot be blank!</div>
-                  </div>
-                  <br>
-                  <div class="form-button mt-3">
-                    <button id="submit" class="btn btn-success btn-lg w-100" type="submit">Prisijungti</button>
-                  </div>
-                  <div class="form-button mt-3">
-                    <a href="" class="btn btn-outline-success btn-lg w-100">Pamiršote slaptažodį?</a>
-                  </div>
-                  <div class="form-button mt-3">
-                    <a class="btn btn-outline-success float-start btn-lg w-100" href="{% url 'register' %}">Neturite paskyros?</a>
-                  </div>
-                  <br>
-                  <br>
-                </form>
-              </div>
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Prisijungimas</h3>
+                        <br>
+                        <form action="" method="POST" class="requires-validation">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="uname" class="form-label">Slapyvardis:</label>
+                                <input type="text" placeholder="Įveskite slapyvardį" name="uname" id="uname"
+                                       class="form-control" required>
+                                <div class="valid-feedback">Username field is valid!</div>
+                                <div class="invalid-feedback">Username field cannot be blank!</div>
+                            </div>
+                            <br>
+                            <div class="mb-3">
+                                <label for="pass" class="form-label">Slaptažodis:</label>
+                                <input type="password" placeholder="Įveskite slaptažodį" name="pass" id="pass"
+                                       class="form-control" required>
+                                <div class="valid-feedback">Password field is valid!</div>
+                                <div class="invalid-feedback">Password field cannot be blank!</div>
+                            </div>
+
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+
+                            <div class="form-button mt-3">
+                                <button id="submit" class="btn btn-success btn-lg w-100" type="submit">Prisijungti
+                                </button>
+                            </div>
+                            <div class="form-button mt-3">
+                                <a href="" class="btn btn-outline-success btn-lg w-100">Pamiršote slaptažodį?</a>
+                            </div>
+                            <div class="form-button mt-3">
+                                <a class="btn btn-outline-success float-start btn-lg w-100" href="{% url 'register' %}">Neturite
+                                    paskyros?</a>
+                            </div>
+                            <br>
+                            <br>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </body>
+</div>
+</body>
 </html>
 {% endblock %}

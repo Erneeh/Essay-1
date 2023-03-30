@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="Register patvarkytas, bet reikia dar tvarkyt">
-      <change afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/services.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projektas/requirements.txt" afterDir="false" />
+    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/Projektas/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/Projektas/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/Projektas/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/Projektas/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/static/css/stilius.css" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/stilius.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/static/css/testas.css" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/testas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/boxes.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,14 +34,14 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/DjangoPrrojektukas&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/User/Desktop/Django_mokymai"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Desktop\DjangoPrrojektukas\Projektas\myapp" />
@@ -97,7 +86,13 @@
       <option name="presentableId" value="LOCAL−00004" />
       <updated>1680110670273</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL−00005" summary="Update">
+      <created>1680207127800</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1680207127800</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -116,6 +111,7 @@
     <MESSAGE value="Startas" />
     <MESSAGE value="Login/Register" />
     <MESSAGE value="Register patvarkytas, bet reikia dar tvarkyt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Register patvarkytas, bet reikia dar tvarkyt" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
 </project>
