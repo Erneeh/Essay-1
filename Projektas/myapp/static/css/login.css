@@ -41,7 +41,7 @@ html, body {
 
 .form-content .form-items {
     margin-bottom: 10rem;
-    border: 3px solid green;
+    border: 3px solid #29fd53;
     padding: 40px;
     display: inline-block;
     width: 100%;
