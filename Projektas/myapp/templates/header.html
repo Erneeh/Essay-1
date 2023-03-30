@@ -1,3 +1,9 @@
+{% url 'index' as index %}
+{% url 'services' as services %}
+{% url 'login' as login %}
+{% url 'register' as register %}
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -18,14 +24,14 @@
         <i class="fas fa-bars"></i>
     </label>
     <ul>
-        <li><a class="active" href="{% url 'index' %}">Pagrindinis</a></li>
-        <li><a href="{% url 'services' %}">Paslaugos</a></li>
+        <li><a class="{% if request.path == index %} active {% endif %}" href="{% url 'index' %}">Pagrindinis</a></li>
+        <li><a class="{% if request.path == services %} active {% endif %}" href="{% url 'services' %}">Paslaugos</a></li>
         <li><a href="#">Kontaktai</a></li>
         {% if user.is_authenticated %}
         <li><a href="#">{{ user.get_username }}</a></li>
         <li><a href="{% url 'logout' %}">Atsijungti</a></li>
         {% else %}
-        <li><a href="{% url 'login' %}">Prisijungti</a></li>
+        <li><a class="{% if request.path == login or request.path == register %} active {% endif %}" href="{% url 'login' %}">Prisijungti</a></li>
         {% endif %}
     </ul>
 </nav>
