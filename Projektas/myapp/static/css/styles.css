@@ -143,4 +143,5 @@ header{
     }
     .navbar a:hover{
         color: var(--text-color);
-
+    }
+}

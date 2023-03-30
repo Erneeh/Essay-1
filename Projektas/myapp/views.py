@@ -10,7 +10,7 @@ def index(request):
 
 
 def services(request):
-    return render(request, "boxes.html", {})
+    return render(request, "services.html", {})
 
 
 def register(request):
