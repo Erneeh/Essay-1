@@ -6,37 +6,39 @@
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/testas.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-<nav>
-    <div class="logo">
-        <a href="{% url 'index' %}">Essay.lt</a>
-    </div>
-    <input type="checkbox" id="click">
-    <label for="click" class="menu-btn">
-        <i class="fas fa-bars"></i>
-    </label>
-    <ul>
-        <li><a class="{% if request.path == index %} active {% endif %}" href="{% url 'index' %}">Pagrindinis</a></li>
-        <li><a class="{% if request.path == services %} active {% endif %}" href="{% url 'services' %}">Paslaugos</a></li>
-        <li><a href="#">Kontaktai</a></li>
-        {% if user.is_authenticated %}
-        <li><a href="#">{{ user.get_username }}</a></li>
-        <li><a href="{% url 'logout' %}">Atsijungti</a></li>
-        {% else %}
-        <li><a class="{% if request.path == login or request.path == register %} active {% endif %}" href="{% url 'login' %}">Prisijungti</a></li>
-        {% endif %}
-    </ul>
-</nav>
-
-</body>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/testas.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+    </head>
+    <body>
+        <nav>
+            <div class="logo">
+                <a href="{% url 'index' %}">Essay.lt</a>
+            </div>
+            <input type="checkbox" id="click">
+            <label for="click" class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <ul>
+                <li><a class="{% if request.path == index %} active {% endif %}" href="{% url 'index' %}">Pagrindinis</a></li>
+                <li><a class="{% if request.path == services %} active {% endif %}" href="{% url 'services' %}">Paslaugos</a></li>
+                <li><a href="#">Kontaktai</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="#">{{ user.get_username }}</a></li>
+                <li><a href="{% url 'logout' %}">Atsijungti</a></li>
+                {% else %}
+                <li><a class="{% if request.path == login or request.path == register %} active {% endif %}" href="{% url 'login' %}">Prisijungti</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </body>
 </html>
 {% block content %}
 {% endblock %}

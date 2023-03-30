@@ -1,63 +1,67 @@
 {% extends "header.html" %}
 {% block content %}
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Paslaugos - Essay.lt</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/stilius.css' %}">
-</head>
-<body class="kunas">
-<div class="wrapper">
-    <div class="box-area">
-        <div class="icon-area">
-            <i class="lni lni-text-align-left"></i>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Paslaugos - Essay.lt</title>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/stilius.css' %}">
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+    </head>
+    <body>
+        <div class="kunas">
+            <div class="wrapper">
+                <div class="box-area">
+                    <div class="icon-area">
+                        <i class="lni lni-text-align-left"></i>
+                    </div>
+                    <h6>Rašiniai</h6>
+                    <p>Rašinių rašymas visomis temomis, rašinių klaidų taisymas</p>
+                </div>
+                <div class="box-area custom">
+                    <div class="icon-area">
+                        <i class="lni lni-list"></i>
+                    </div>
+                    <h6>Testai</h6>
+                    <p>Testų sprendimas įvairiomis temomis, klausimai-atsakymai</p>
+                </div>
+                <div class="box-area">
+                    <div class="icon-area">
+                        <i class="lni lni-postcard"></i>
+                    </div>
+                    <h6>Perfrazuok</h6>
+                    <p>Išvenk kitų žmonių darbo</p>
+                </div>
+                <div class="box-area">
+                    <div class="icon-area">
+                        <i class="lni lni-postcard"></i>
+                    </div>
+                    <h6>Paklausk</h6>
+                    <p>Paklausk, bet kokio klausimo ir gauk atsakymą</p>
+                </div>
+                <div class="box-area">
+                    <div class="icon-area">
+                        <i class="lni lni-postcard"></i>
+                    </div>
+                    <h6>Motyvacinis laiškas</h6>
+                    <p>Ieškok naujų galimybių</p>
+                </div>
+                <div class="box-area">
+                    <div class="icon-area">
+                        <i class="lni lni-postcard"></i>
+                    </div>
+                    <h6>CV</h6>
+                    <p>CV formavimas, gyvenimo aprašymo parašymas</p>
+                </div>
+            </div>
         </div>
-        <h6>Rašiniai</h6>
-        <p>Rašinių rašymas visomis temomis, rašinių klaidų taisymas</p>
-    </div>
-    <div class="box-area custom">
-        <div class="icon-area">
-            <i class="lni lni-list"></i>
-        </div>
-        <h6>Testai</h6>
-        <p>Testų sprendimas įvairiomis temomism klausimai-atsakymai</p>
-    </div>
-    <div class="box-area">
-        <div class="icon-area">
-            <i class="lni lni-postcard"></i>
-        </div>
-        <h6>CV</h6>
-        <p>CV formavimas, gyvenimo aprašymo parašymas</p>
-    </div>
-    <div class="box-area">
-        <div class="icon-area">
-            <i class="lni lni-postcard"></i>
-        </div>
-        <h6>CV</h6>
-        <p>CV formavimas, gyvenimo aprašymo parašymas</p>
-    </div>
-        <div class="box-area">
-        <div class="icon-area">
-            <i class="lni lni-postcard"></i>
-        </div>
-        <h6>CV</h6>
-        <p>CV formavimas, gyvenimo aprašymo parašymas</p>
-    </div>
-        <div class="box-area">
-        <div class="icon-area">
-            <i class="lni lni-postcard"></i>
-        </div>
-        <h6>CV</h6>
-        <p>CV formavimas, gyvenimo aprašymo parašymas</p>
-    </div>
-</div>
-</body>
+    </body>
 </html>
 
 {% endblock %}
