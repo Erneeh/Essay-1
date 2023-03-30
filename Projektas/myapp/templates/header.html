@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/testas.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
@@ -18,17 +19,13 @@
     </label>
     <ul>
         <li><a class="active" href="{% url 'index' %}">Pagrindinis</a></li>
-        <li><a href="#">Apie</a></li>
         <li><a href="{% url 'services' %}">Paslaugos</a></li>
-        <li><a href="#">Atsiliepimai</a></li>
-        <li><a href="#">Susisiekti</a></li>
+        <li><a href="#">Kontaktai</a></li>
         {% if user.is_authenticated %}
-
         <li><a href="#">{{ user.get_username }}</a></li>
         <li><a href="{% url 'logout' %}">Atsijungti</a></li>
         {% else %}
         <li><a href="{% url 'login' %}">Prisijungti</a></li>
-        <li><a href="{% url 'register' %}">Registruotis</a></li>
         {% endif %}
     </ul>
 </nav>

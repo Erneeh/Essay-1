@@ -1,6 +1,5 @@
 {% extends "header.html" %}
 {% block content %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,34 +9,49 @@
     <title>Prisijungimas - Essay.lt</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
-
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 </head>
 <body>
+    <div class="form-body">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Prisijungimas</h3>
+                        <br>
+                        <form action="" method="POST" class="requires-validation">
+                            {% csrf_token %}
+                            <div class="col-md-12">
+                                <label for="uname">Slapyvardis:</label>
+                                <input type="text" placeholder="Įveskite slapyvardį" name="uname" id="uname" class="form-control" required>
+                                <div class="valid-feedback">Username field is valid!</div>
+                                <div class="invalid-feedback">Username field cannot be blank!</div>
+                                </div>
+                                <br>
+                                <div class="col-md-12">
+                                    <label for="pass">Slaptažodis:</label>
+                                    <input type="password" placeholder="Įveskite slaptažodį" name="pass" id="pass" class="form-control" required>
+                                    <div class="valid-feedback">Password field is valid!</div>
+                                    <div class="invalid-feedback">Password field cannot be blank!</div>
+                                </div>
 
-    <div class="wrapper">
-        <div class="form-box login">
-            <h2>Login page</h2>
-            <form action="" method="POST">
-                   {% csrf_token %}
-                   <div class="form-input">
-                 <label for="uname">Username:</label>
-                 <input type="text" placeholder="Enter username" name="uname" id="uname" class="inline"><br>
+                                <div class="form-button mt-3">
+                                    <button id="submit" class="btn btn-success w-100" type="submit">Prisijungti</button>
+                                </div>
+
+                                <div class="form-button mt-3">
+                                    <a href="" class="btn btn-success float-center">Pamiršote slaptažodį?</a>
+                                    <a class="btn btn-success float-end" href="{% url 'register' %}">Neturite paskyros?</a>
+                                </div>
+
+                        </form>
+                    </div>
                 </div>
-                <div class="form-input">
-                 <label for="pass">Password:</label>
-                 <input type="text" placeholder="Enter password" name="pass" id="pass" class="inline">
-                </div>
-                <div class="remember-forgot">
-                    <label><input type="checkbox">Remember me</label>
-                    <a href="">Forgot Password?</a>
-                </div>
-                <button type="submit">Prisijungti</button>
-                <div class="login-register">
-                    <p>Don't have an account?<a href="" class="register-link">Register</a></p>
+            </div>
         </div>
-    </form>
-</div>
-</div>
+    </div>
 </body>
 </html>
 
