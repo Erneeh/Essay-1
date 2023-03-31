@@ -7,6 +7,8 @@
   background: #1b1b1b;
 }
 
+
+
 nav{
   display: flex;
   height: 120px;
@@ -69,7 +71,7 @@ input[type="checkbox"]{
     content: "\f00d";
   }
   nav ul{
-    
+    position: fixed;
     top: 80px;
     left: -100%;
     background: #1b1b1b;
@@ -78,8 +80,9 @@ input[type="checkbox"]{
     text-align: center;
     display: block;
     transition: all 0.3s ease;
+    z-index: 999;
   }
-  #click:checked ~ ul{
+  #click:checked ~ ul {
     left: 0;
   }
   nav ul li{
