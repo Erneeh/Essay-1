@@ -23,7 +23,7 @@ nav{
 nav .logo a, nav .logo a:visited {
   text-decoration: none;
   color: #ffffff;
-  font-size: 35px;
+  font-size: 2.6rem;
   font-weight: 600;
 }
 nav ul{
@@ -37,7 +37,7 @@ nav ul li{
 nav ul li a{
   color: #f2f2f2;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 1.4rem;
   font-weight: 500;
   padding: 8px 15px;
   border-radius: 5px;
