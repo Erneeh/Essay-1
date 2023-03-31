@@ -70,7 +70,7 @@ html, body {
     font-size: 1.5rem;
 }
 
-.form-content input[type=text], .form-content input[type=password], .form-content input[type=email], .form-content select {
+.form-content input[type=text], .form-content input[type=password], .form-content input[type=email], .form-content select, .form-content textarea {
     width: 100%;
     padding: 3%;
     text-align: left;
@@ -106,25 +106,3 @@ html, body {
      box-shadow: none;
 }
 
-.form-content textarea {
-    position: static !important;
-    width: 100%;
-    padding: 3%;
-    border-radius: 6px;
-    text-align: left;
-    background-color: #fff;
-    border: 0;
-    font-size: 15px;
-    font-weight: 300;
-    color: #8D8D8D;
-    outline: none;
-    resize: none;
-    height: 120px;
-    transition: none;
-    margin-bottom: 4%;
-}
-
-.form-content textarea:hover, .form-content textarea:focus {
-    border: 0;
-    background-color: #ebeff8;
-    color: #8D8D}
