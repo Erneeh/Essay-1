@@ -1,15 +1,26 @@
-<h1>Paklausk bet ko</h1>
-
-<h3>Ivesk klausima</h3>
-
+{% extends "header.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paklausk - Essay.lt</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
 <form method="POST">
     {% csrf_token %}
     <input type="text" class="form-control" name="user_input">
     <button type="submit" class="btn btn-primary mt-3">Submit</button>
-
 </form>
 {% if response %}
 <div>
     {{ response|safe }}
 </div>
 {% endif %}
+</body>
+</html>
+{% endblock %}

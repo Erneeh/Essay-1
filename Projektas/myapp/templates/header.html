@@ -2,6 +2,7 @@
 {% url 'services' as services %}
 {% url 'login' as login %}
 {% url 'register' as register %}
+{% url 'contacts' as contacts %}
 
 
 <!DOCTYPE html>
@@ -32,7 +33,9 @@
             </li>
             <li><a class="{% if request.path == services %} active {% endif %}"
                    href="{% url 'services' %}">Paslaugos</a></li>
-            <li><a href="#">Kontaktai</a></li>
+            <li><a class="{% if request.path == contacts %} active {% endif %}"
+                   href="{% url 'contacts' %}">Kontaktai</a></li>
+
             {% if user.is_authenticated %}
             <li><a href="#">{{ user.get_username }}</a></li>
             <li><a href="{% url 'logout' %}">Atsijungti</a></li>

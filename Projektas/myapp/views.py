@@ -14,6 +14,10 @@ def services(request):
     return render(request, "services.html", {})
 
 
+def contacts(request):
+    return render(request, "contacts.html", {})
+
+
 def register(request):
     uname = request.POST.get('uname')
     nickname = User.objects.filter(username=uname).exists()
