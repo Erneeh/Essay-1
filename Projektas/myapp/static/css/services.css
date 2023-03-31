@@ -10,17 +10,15 @@
   color: white;
 }
 
-body {
-	margin: auto;
-}
+
 
 .kunas {
 	align-items: center;
 	justify-content: center;
+	min-height: 100vh;
 	font-family: poppins;
 	text-align: center;
 	color: white;
-	height: 200vh;
 }
 
 .wrapper {
@@ -64,4 +62,9 @@ body {
 }
 .box-area:hover p {
 	color: #29fd53;
+}
+
+.wrapper a, .wrapper a:hover {
+	text-decoration: none;
+	color: white;
 }
