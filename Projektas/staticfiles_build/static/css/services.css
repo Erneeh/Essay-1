@@ -1,0 +1,70 @@
+.zodis{
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: -1;
+  width: 100%;
+  padding: 0 30px;
+  color: white;
+}
+
+
+
+.kunas {
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	font-family: poppins;
+	text-align: center;
+	color: white;
+}
+
+.wrapper {
+	padding: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.box-area {
+	width: 350px;
+	margin: 25px;
+	padding: 40px;
+	background-color: #1b1b1b;
+	transition: all 0.6s ease-in-out;
+}
+.box-area .icon-area {
+	width: 100%;
+	margin-bottom: 40px;
+}
+.icon-area i {
+	font-size: 70px;
+	color: white;
+}
+.box-area h6 {
+	margin-bottom: 10px;
+	color: white;
+	font-size: 50px;
+	font-family: bebas neue;
+}
+.box-area:hover {
+	background-color: #1b1b1b;
+	box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.3);
+}
+.box-area:hover i {
+	color: #29fd53;
+	background-color: #1b1b1b;
+}
+.box-area:hover h6 {
+	color: #29fd53;
+}
+.box-area:hover p {
+	color: #29fd53;
+}
+
+.wrapper a, .wrapper a:hover {
+	text-decoration: none;
+	color: white;
+}
