@@ -10,7 +10,9 @@
   color: white;
 }
 
-
+body {
+	overflow: hidden;
+}
 
 .kunas {
 	align-items: center;
