@@ -71,17 +71,21 @@ api_key = os.getenv("OPENAI_KEY", None)
 def paklausk(request):
     chatbot_response = None
     if request.method == "POST":
+        kontentas = "You are Lithuanian writer, try to provide information as accurately as possible in Lithuania language"
+
         openai.api_key = api_key
         user_input = request.POST.get("user_input")
 
         response = openai.ChatCompletion.create(
             model='gpt-3.5-turbo',
             messages=[
+                {"role": "system",
+                 "content": kontentas},
                 {"role": "user", "content": user_input}
             ],
 
-            temperature=0
+            temperature=1
         )
-
         chatbot_response = response['choices'][0]['message']['content']
+
     return render(request, "paklausk.html", {"response": chatbot_response})

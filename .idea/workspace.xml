@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="Front-end changes">
+    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="Openai integration">
       <change afterPath="$PROJECT_DIR$/Projektas/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/paklausk.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/services.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/static/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +105,13 @@
       <option name="presentableId" value="LOCAL−00007" />
       <updated>1680280567511</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL−00008" summary="Openai integration">
+      <created>1680300040979</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1680300040979</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -127,6 +133,7 @@
     <MESSAGE value="Update" />
     <MESSAGE value="Register Error alerts" />
     <MESSAGE value="Front-end changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Front-end changes" />
+    <MESSAGE value="Openai integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Openai integration" />
   </component>
 </project>
