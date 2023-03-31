@@ -25,18 +25,18 @@ def register(request):
 
         if password == password2:
             if User.objects.filter(username=uname).exists():
-                messages.error(request, f"Vartotojo vardas {uname} uzimtas")
+                messages.error(request, f"Slapyvardis '{uname}' užimtas!")
                 return redirect("register")
             else:
                 if User.objects.filter(email=email).exists():
-                    messages.error(request, f"Error, El.paštas {email} uzimtas")
+                    messages.error(request, f"El.paštas '{email}' užimtas!")
                     return redirect("register")
                 else:
                     new_user = User.objects.create_user(uname, email, password)
                     new_user.save()
                     return redirect('login')
         else:
-            messages.error(request, "Slaptazodziai nesutampa")
+            messages.error(request, "Slaptažodžiai nesutampa!")
             return redirect("register")
     return render(request, "register.html", {"nickname": nickname})
 
@@ -51,7 +51,7 @@ def loginas(request):
             login(request, user)
             return redirect('index')
         else:
-            messages.error(request, "Useris neegzistuoja arba ivedete neteisingus duomenis")
+            messages.error(request, "Vartotojas neegzistuoja arba neteisingi duomenys!")
             return redirect('login')
 
     return render(request, "login.html", {})

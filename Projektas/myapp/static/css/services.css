@@ -10,6 +10,8 @@
   color: white;
 }
 
+
+
 .kunas {
 	align-items: center;
 	justify-content: center;
@@ -60,4 +62,9 @@
 }
 .box-area:hover p {
 	color: #29fd53;
+}
+
+.wrapper a, .wrapper a:hover {
+	text-decoration: none;
+	color: white;
 }

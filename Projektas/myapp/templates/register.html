@@ -59,15 +59,17 @@
                                 <div class="invalid-feedback">Repeat password field cannot be blank!</div>
                             </div>
                         </div>
+
                         <br>
+
                         {% if messages %}
                         {% for message in messages %}
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert alert-danger fw-bold" role="alert">
                             {{ message }}
                         </div>
                         {% endfor %}
                         {% endif %}
-                        
+
                         <div class="form-button mt-3">
                             <button id="submit" class="btn btn-success w-100 btn-lg" type="submit">Registruotis</button>
                         </div>
