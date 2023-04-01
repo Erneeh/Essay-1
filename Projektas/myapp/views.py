@@ -73,7 +73,7 @@ api_key = os.getenv("OPENAI_KEY", None)
 def paklausk(request):
     chatbot_response = None
     if request.method == "POST":
-        kontentas = "You are Lithuanian writer, try to provide information as accurately as possible in Lithuania language"
+        kontentas = "You are Lithuanian writer, try to provide information as accurately as possible in Lithuania language, you dont answer other questions that are not related to anything else but writing essays/letters/poems etc.. if someone asks you if you can do math or physics or any other subject, you reply with a straight no!"
 
         openai.api_key = api_key
         user_input = request.POST.get("user_input")
