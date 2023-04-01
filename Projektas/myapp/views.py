@@ -126,25 +126,28 @@ def rasiniai(request):
 def motyvacinis(request):
     chatbot_response = None
     if request.method == "POST":
-        openai.api_key = api_key
-        user_input = "Parašyk darbo laišką darbdaviui, " + "turiu " + request.POST.get("user_input") + request.POST.get(
-            "user_input2") + "srityje, " "pretenduoju į " + request.POST.get("user_input3") + "poziciją"
-        kontentas = "You are Lithuanian cover letter writer, you can only build cover letter for job application" \
-                    "try to provide information as accurately as possible in Lithuania language," \
-                    "you dont answer other questions that are not related to cover letter " \
-                    "if someone asks you if you can do math or physics, essays, sonnets or " \
-                    "any other subject that is not cover letter, you reply with a straight no!"
+        if request.POST.get("user_input") and request.POST.get("user_input2") and request.POST.get("user_input3"):
+            openai.api_key = api_key
+            user_input = "Parašyk darbo laišką darbdaviui, " + "turiu " + request.POST.get("user_input") + request.POST.get(
+                "user_input2") + "srityje, " "pretenduoju į " + request.POST.get("user_input3") + "poziciją"
+            kontentas = "You are Lithuanian cover letter writer, you can only build cover letter for job application" \
+                        "try to provide information as accurately as possible in Lithuania language," \
+                        "you dont answer other questions that are not related to cover letter " \
+                        "if someone asks you if you can do math or physics, essays, sonnets or " \
+                        "any other subject that is not cover letter, you reply with a straight no!"
 
-        response = openai.ChatCompletion.create(
-            model='gpt-3.5-turbo',
-            messages=[
-                {"role": "system",
-                 "content": kontentas},
-                {"role": "user", "content": user_input}
-            ],
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                    {"role": "system",
+                     "content": kontentas},
+                    {"role": "user", "content": user_input}
+                ],
 
-            temperature=0.4
-        )
-        chatbot_response = response['choices'][0]['message']['content']
+                temperature=0.4
+            )
+            chatbot_response = response['choices'][0]['message']['content']
+        else:
+            chatbot_response = "Prasau uzpildyti visus langelius"
 
     return render(request, "motyvacinis.html", {"response": chatbot_response})
