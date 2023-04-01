@@ -75,7 +75,8 @@ api_key = os.getenv("OPENAI_KEY", None)
 def paklausk(request):
     chatbot_response = None
     if request.method == "POST":
-        kontentas = "You are Lithuanian writer, try to provide information as accurately" \
+        kontentas = "You are Lithuanian named 'Essay.lt žinių meistras," \
+                    " try to provide information as accurately" \
                     " as possible in Lithuania language"
 
         openai.api_key = api_key
@@ -89,7 +90,7 @@ def paklausk(request):
                 {"role": "user", "content": user_input}
             ],
 
-            temperature=1
+            temperature=0.7
         )
         chatbot_response = response['choices'][0]['message']['content']
 
@@ -101,12 +102,11 @@ def rasiniai(request):
     if request.method == "POST":
         openai.api_key = api_key
         user_input = request.POST.get("user_input")
-        kontentas = "You are Lithuanian writer," \
-                    " try to provide information as accurately as possible in Lithuania language," \
-                    " you dont answer other questions that are not related to anything " \
-                    "else but writing essays/letters/poems etc.. " \
-                    "if someone asks you if you can do math or physics or any other subject, " \
-                    "you reply with a straight no!"
+        kontentas = "You are Lithuanian writer named 'Essay.lt rašytojas' " \
+                    "try to provide information as accurately as possible in Lithuania language," \
+                    " you dont answer other questions that are not related to anything else but writing " \
+                    "essays/letters/poems etc.. if someone asks you if you can do math or physics or " \
+                    "any other subject not related to literature and writing, you reply with a straight no!"
 
         response = openai.ChatCompletion.create(
             model='gpt-3.5-turbo',
@@ -116,8 +116,35 @@ def rasiniai(request):
                 {"role": "user", "content": user_input}
             ],
 
-            temperature=1
+            temperature=0.3
         )
         chatbot_response = response['choices'][0]['message']['content']
 
     return render(request, "rasiniai.html", {"response": chatbot_response})
+
+
+def motyvacinis(request):
+    chatbot_response = None
+    if request.method == "POST":
+        openai.api_key = api_key
+        user_input = "Parašyk darbo laišką darbdaviui, " + "turiu " + request.POST.get("user_input") + request.POST.get(
+            "user_input2") + "srityje, " "pretenduoju į " + request.POST.get("user_input3") + "poziciją"
+        kontentas = "You are Lithuanian cover letter writer, you can only build cover letter for job application" \
+                    "try to provide information as accurately as possible in Lithuania language," \
+                    "you dont answer other questions that are not related to cover letter " \
+                    "if someone asks you if you can do math or physics, essays, sonnets or " \
+                    "any other subject that is not cover letter, you reply with a straight no!"
+
+        response = openai.ChatCompletion.create(
+            model='gpt-3.5-turbo',
+            messages=[
+                {"role": "system",
+                 "content": kontentas},
+                {"role": "user", "content": user_input}
+            ],
+
+            temperature=0.4
+        )
+        chatbot_response = response['choices'][0]['message']['content']
+
+    return render(request, "motyvacinis.html", {"response": chatbot_response})
