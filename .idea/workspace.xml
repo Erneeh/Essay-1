@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="Rasiniai service">
+    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="cover letter(needs reply fix)">
       <change afterPath="$PROJECT_DIR$/Projektas/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/motyvacinis.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/services.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/motyvacinis.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/motyvacinis.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,7 +127,13 @@
       <option name="presentableId" value="LOCAL−00011" />
       <updated>1680356258725</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL−00012" summary="cover letter(needs reply fix)">
+      <created>1680367499309</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1680367499309</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -168,6 +171,7 @@
     <MESSAGE value="Openai fix" />
     <MESSAGE value="Password reset console" />
     <MESSAGE value="Rasiniai service" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rasiniai service" />
+    <MESSAGE value="cover letter(needs reply fix)" />
+    <option name="LAST_COMMIT_MESSAGE" value="cover letter(needs reply fix)" />
   </component>
 </project>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbotas - Essay.lt</title>
+    <title>Chatbot - Essay.lt</title>
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
@@ -14,8 +14,11 @@
 <h1>Motyvacinis</h1>
 <form method="POST">
     {% csrf_token %}
+    <p>Patirtis</p>
     <input type="text" class="form-control" name="user_input">
+    <p>Kokioje srityje</p>
     <input type="text" class="form-control" name="user_input2">
+    <p>Kokioje srityje pretenduojate</p>
     <input type="text" class="form-control" name="user_input3">
     <button type="submit" class="btn btn-primary mt-3">Submit</button>
 </form>
