@@ -43,7 +43,7 @@ html, body {
     transition: all 0.4s ease;
 }
 
-.form-content h3, .form-content h1 {
+.form-content h3 {
     color: #fff;
     text-align: center;
     font-size: 28px;

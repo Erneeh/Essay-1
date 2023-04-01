@@ -3,6 +3,9 @@
     min-height: 80vh;
 }
 
+.konteineris .eile {
+    height: 100%;
+}
 
 .input {
     background-color: grey;
