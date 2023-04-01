@@ -132,7 +132,7 @@ def motyvacinis(request):
                 "user_input2") + "srityje, " "pretenduoju į " + request.POST.get("user_input3") + "poziciją"
             kontentas = "You are Lithuanian cover letter writer, you can only build cover letter for job application" \
                         "try to provide information as accurately as possible in Lithuania language," \
-                        "you dont answer other questions that are not related to cover letter " \
+                        "you dont answer other questions that are not related to anything that is not cover letter " \
                         "if someone asks you if you can do math or physics, essays, sonnets or " \
                         "any other subject that is not cover letter, you reply with a straight no!"
 
