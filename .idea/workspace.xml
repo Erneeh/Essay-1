@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="Login/Register">
+    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="Openai fix">
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_complete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_confirm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_done.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_email.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/.env" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/Projektas/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/Projektas/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +86,43 @@
       <option name="presentableId" value="LOCAL−00003" />
       <updated>1680109411910</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL−00004" summary="Register patvarkytas, bet reikia dar tvarkyt">
+      <created>1680110670273</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1680110670273</updated>
+    </task>
+    <task id="LOCAL−00005" summary="Update">
+      <created>1680207127800</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1680207127800</updated>
+    </task>
+    <task id="LOCAL−00006" summary="Register Error alerts">
+      <created>1680210562095</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1680210562095</updated>
+    </task>
+    <task id="LOCAL−00007" summary="Front-end changes">
+      <created>1680280567511</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1680280567511</updated>
+    </task>
+    <task id="LOCAL−00008" summary="Openai integration">
+      <created>1680300040979</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1680300040979</updated>
+    </task>
+    <task id="LOCAL−00009" summary="Openai fix">
+      <created>1680302918414</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1680302918414</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -87,7 +130,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Erneeh-master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -97,6 +152,12 @@
     <MESSAGE value="Start" />
     <MESSAGE value="Startas" />
     <MESSAGE value="Login/Register" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login/Register" />
+    <MESSAGE value="Register patvarkytas, bet reikia dar tvarkyt" />
+    <MESSAGE value="Update" />
+    <MESSAGE value="Register Error alerts" />
+    <MESSAGE value="Front-end changes" />
+    <MESSAGE value="Openai integration" />
+    <MESSAGE value="Openai fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Openai fix" />
   </component>
 </project>
