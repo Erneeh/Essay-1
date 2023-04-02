@@ -128,11 +128,12 @@ def motyvacinis(request):
     if request.method == "POST":
         if request.POST.get("user_input") and request.POST.get("user_input2") and request.POST.get("user_input3"):
             openai.api_key = api_key
-            user_input = "Parašyk darbo laišką darbdaviui, " + "turiu " + request.POST.get("user_input") + request.POST.get(
+            user_input = "Parašyk darbo laišką darbdaviui, " + "turiu " + request.POST.get(
+                "user_input") + request.POST.get(
                 "user_input2") + "srityje, " "pretenduoju į " + request.POST.get("user_input3") + "poziciją"
             kontentas = "You are Lithuanian cover letter writer, you can only build cover letter for job application" \
                         "try to provide information as accurately as possible in Lithuania language," \
-                        "you dont answer other questions that are not related to cover letter " \
+                        "you dont answer other questions that are not related to anything that is not cover letter" \
                         "if someone asks you if you can do math or physics, essays, sonnets or " \
                         "any other subject that is not cover letter, you reply with a straight no!"
 
@@ -151,3 +152,38 @@ def motyvacinis(request):
             chatbot_response = "Prasau uzpildyti visus langelius"
 
     return render(request, "motyvacinis.html", {"response": chatbot_response})
+
+
+def testas(request):
+    chatbot_response = None
+    if request.method == "POST":
+        openai.api_key = api_key
+        answers = request.POST.get("user_inputA") + request.POST.get("user_inputB") + request.POST.get(
+            "user_inputC") + request.POST.get("user_inputD") + request.POST.get("user_inputE") + request.POST.get(
+            "user_inputF")
+        user_input = f"The subject is {request.POST.get('dalykas')} the question is " \
+                     f"{request.POST.get('user_input')}, posibble answers is {answers}"
+
+        kontentas = "You are Lithuanian knowlage master, you can only answer a right answer by given possible answers" \
+                    "try to provide information as accurately as possible in Lithuania language," \
+                    "you dont answer other questions that are not related to anything that is not selected subject" \
+                    "if someone asks you if you can write essays, sonnets or " \
+                    "any other poetry, you reply with a straight no, and " \
+                    "if you dont understand the questions say that you dont understand the question"
+
+        response = openai.ChatCompletion.create(
+            model='gpt-3.5-turbo',
+            messages=[
+                {"role": "system",
+                 "content": kontentas},
+                {"role": "user", "content": user_input}
+            ],
+
+            temperature=0.4
+        )
+        chatbot_response = response['choices'][0]['message']['content']
+    else:
+        chatbot_response = "Prasau uzpildyti visus langelius"
+
+    return render(request, "testas.html", {"response": chatbot_response})
+

@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="small changes">
+    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="language change in password reset">
       <change afterPath="$PROJECT_DIR$/Projektas/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/chatbot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/testas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_complete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_confirm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_email.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/services.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +148,13 @@
       <option name="presentableId" value="LOCAL−00014" />
       <updated>1680378291288</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL−00015" summary="language change in password reset">
+      <created>1680385030496</created>
+      <option name="number" value="LOCAL−00015" />
+      <option name="presentableId" value="LOCAL−00015" />
+      <updated>1680385030496</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -190,6 +195,7 @@
     <MESSAGE value="cover letter(needs reply fix)" />
     <MESSAGE value="cover letter(fixed required)" />
     <MESSAGE value="small changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="small changes" />
+    <MESSAGE value="language change in password reset" />
+    <option name="LAST_COMMIT_MESSAGE" value="language change in password reset" />
   </component>
 </project>
