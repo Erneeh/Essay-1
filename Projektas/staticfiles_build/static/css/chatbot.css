@@ -8,21 +8,30 @@
 
 html, body {
     height: 100%;
-    background-color: #152733;
+    max-height: 200%;
+    background-color: #1b1b1b;
     overflow-x: hidden;
+}
+body {
+    background-color: #1b1b1b;
+}
+.kunas {
+    height: fit-content;
+    min-height: 100%;
+    background-color: #1b1b1b;
 }
 
 .isorinis-konteineris {
-    height: 80vh;
+    height: fit-content;
     margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #152733;
 }
 
 .konteineris {
-    height: 75vh;
+    height: fit-content;
+    margin-bottom: 5rem;
     background-color: transparent;
 }
 
@@ -31,7 +40,10 @@ html, body {
 }
 
 .inner-konteineris {
-    height: 75vh;
+    height: fit-content;
+    background-color: transparent;
+}
+form {
     background-color: transparent;
 }
 
@@ -64,6 +76,35 @@ html, body {
     display: flex;
     background-color: transparent;
 }
+.input-container1-motyvacinis {
+    height: 15vh;
+    background-color: transparent;
+}
+
+.input-container1-label textarea {
+    background-color: white;
+    padding-left: 10px;
+    padding-top: 10px;
+    max-height: 10vh;
+    font-size: 1.2rem;
+}
+
+.input-container1-paklausk {
+    color: white;
+    background-color: transparent;
+}
+.input-container1-paklausk label h3, .input-container1-paklausk label {
+    background-color: transparent;
+}
+
+.input-container1-paklausk textarea {
+    background-color: white;
+    padding-left: 10px;
+    padding-top: 10px;
+    max-height: 10vh;
+    font-size: 1.2rem;
+}
+
 
 .input-container1-label {
     color: white;
@@ -84,13 +125,15 @@ html, body {
     height: 5vh;
     font-size: 1.5rem;
     width: 40%;
-    background-color: transparent;
+    background-color: white;
     
 }
 
 .input-container1-select select option {
     background-color: white;
 }
+
+.input
 
 .input-container2 {
     height: 35vh;
@@ -102,10 +145,11 @@ html, body {
 }
 .input-container2 textarea {
     height: 25vh;
-    color: white;
     font-size: 1.5rem;
     padding-left: 10px;
     padding-top: 10px;
+    background-color: white;
+    max-height: 35vh;
 }
 
 .button-container {
@@ -118,4 +162,12 @@ html, body {
 }
 .button-container button {
     height: 5vh;
+}
+
+.output-container {
+    background-color: white;
+    max-height: 65vh;
+    height: 10vh;
+    min-height: fit-content;
+    border: 2px solid black;
 }
