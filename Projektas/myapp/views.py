@@ -187,3 +187,59 @@ def testas(request):
 
     return render(request, "testas.html", {"response": chatbot_response})
 
+
+def perfrazuok(request):
+    chatbot_response = None
+    if request.method == "POST":
+        kontentas = "You are Lithuanian paraphraser named 'Essay.lt perfrazuotojas'," \
+                    "you can only to paraphrase a user entered text," \
+                    "paraphrase text only in Lithuania language," \
+                    "you dont answer other questions that are not related to anything that is not to paraphrase text" \
+                    "if someone asks you if you can do math or physics or " \
+                    "any other subject that is not related to literature and writing, you reply with a straight no!" \
+                    "you only can paraphrase the given text"
+
+        openai.api_key = api_key
+        user_input = request.POST.get("user_input")
+
+        response = openai.ChatCompletion.create(
+            model='gpt-3.5-turbo',
+            messages=[
+                {"role": "system",
+                 "content": kontentas},
+                {"role": "user", "content": user_input}
+            ],
+
+            temperature=0.7
+        )
+        chatbot_response = response['choices'][0]['message']['content']
+
+    return render(request, "perfrazuok.html", {"response": chatbot_response})
+
+
+def cv(request):
+    chatbot_response = None
+    if request.method == "POST":
+        kontentas = "You are Lithuanian cv writer named 'Essay.lt CV specialistas'," \
+                    "you can only write cv by given information a user a user has entered," \
+                    "write CV only in Lithuania language," \
+                    "you dont answer other questions that are not related to anything that is not related to CV" \
+                    "if someone asks you if you can do math or physics or " \
+                    "any other subject that is not related to CV writing, you reply with a straight no!"
+
+        openai.api_key = api_key
+        user_input = request.POST.get("user_input")
+
+        response = openai.ChatCompletion.create(
+            model='gpt-3.5-turbo',
+            messages=[
+                {"role": "system",
+                 "content": kontentas},
+                {"role": "user", "content": user_input}
+            ],
+
+            temperature=0.7
+        )
+        chatbot_response = response['choices'][0]['message']['content']
+
+    return render(request, "cv.html", {"response": chatbot_response})

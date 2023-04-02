@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="testai bot">
+    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="front update">
       <change afterPath="$PROJECT_DIR$/Projektas/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/cv.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/perfrazuok.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/myapp/static/css/chatbot.css" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/chatbot.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/motyvacinis.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/motyvacinis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/paklausk.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/paklausk.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/rasiniai.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/rasiniai.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/services.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +161,13 @@
       <option name="presentableId" value="LOCAL−00016" />
       <updated>1680442716441</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL−00017" summary="front update">
+      <created>1680443435208</created>
+      <option name="number" value="LOCAL−00017" />
+      <option name="presentableId" value="LOCAL−00017" />
+      <updated>1680443435208</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -203,6 +210,7 @@
     <MESSAGE value="small changes" />
     <MESSAGE value="language change in password reset" />
     <MESSAGE value="testai bot" />
-    <option name="LAST_COMMIT_MESSAGE" value="testai bot" />
+    <MESSAGE value="front update" />
+    <option name="LAST_COMMIT_MESSAGE" value="front update" />
   </component>
 </project>

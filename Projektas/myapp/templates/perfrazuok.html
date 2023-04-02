@@ -1,0 +1,65 @@
+{% extends "header.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot - Essay.lt</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+<div class="kunas">
+    <div class="container isorinis-konteineris bg-primary bg-gradient">
+        <div class="container konteineris">
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 isorinis-row-konteineris">
+                <div class="col container inner-konteineris">
+                    <div class="row row-konteineris">
+                        <div class="col-12 title-container">
+                            <h1>Paklausk!</h1>
+                        </div>
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row row-konteineris">
+                            <div class="col-12 row input-container1">
+                                <div class="col-12 input-container1-paklausk">
+                                    <label for="dalykas2" class="dalykas"><h3>Iveskite savo teksta</h3></label>
+                                    <textarea class="w-100" type="text" required name="user_input"
+                                              placeholder="Įrašykite"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-konteineris">
+                            <div class="col-12 button-container">
+                                <button type="submit" class="btn btn-success w-100 btn-lg ">Paklausti</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col container inner-konteineris">
+                    <div class="row row-konteineris">
+                        <div class="col-12 title-container">
+                            <h1>Atsakymas!</h1>
+                        </div>
+                    </div>
+                    <div class="row row-konteineris">
+                        <div class="col-12 output-container">
+                            {% if response %}
+                            {{ response|safe }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}
