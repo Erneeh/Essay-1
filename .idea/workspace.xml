@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="front update">
+    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="cv and perfrazuok pages">
       <change afterPath="$PROJECT_DIR$/Projektas/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/cv.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/perfrazuok.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/paskyra.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/static/css/chatbot.css" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/chatbot.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/services.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/views.py" afterDir="false" />
     </list>
@@ -37,14 +36,14 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/DjangoPrrojektukas&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/User/Desktop/Django_mokymai"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Desktop\DjangoPrrojektukas\Projektas\myapp" />
@@ -167,7 +166,13 @@
       <option name="presentableId" value="LOCAL−00017" />
       <updated>1680443435208</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL−00018" summary="cv and perfrazuok pages">
+      <created>1680447682010</created>
+      <option name="number" value="LOCAL−00018" />
+      <option name="presentableId" value="LOCAL−00018" />
+      <updated>1680447682010</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,6 +216,7 @@
     <MESSAGE value="language change in password reset" />
     <MESSAGE value="testai bot" />
     <MESSAGE value="front update" />
-    <option name="LAST_COMMIT_MESSAGE" value="front update" />
+    <MESSAGE value="cv and perfrazuok pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="cv and perfrazuok pages" />
   </component>
 </project>
