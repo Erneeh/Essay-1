@@ -8,15 +8,21 @@
 
 html, body {
     height: 100%;
-    background-color: #152733;
+    max-height: 200%;
+    background-color: #1b1b1b;
     overflow-x: hidden;
 }
+body {
+    background-color: #1b1b1b;
+}
 .kunas {
-    height: 100%;
+    height: fit-content;
+    min-height: 100%;
+    background-color: #1b1b1b;
 }
 
 .isorinis-konteineris {
-    height: 80vh;
+    height: fit-content;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -24,7 +30,8 @@ html, body {
 }
 
 .konteineris {
-    height: 75vh;
+    height: fit-content;
+    margin-bottom: 5rem;
     background-color: transparent;
 }
 
@@ -33,7 +40,7 @@ html, body {
 }
 
 .inner-konteineris {
-    height: 75vh;
+    height: fit-content;
     background-color: transparent;
 }
 form {
@@ -94,7 +101,7 @@ form {
     background-color: white;
     padding-left: 10px;
     padding-top: 10px;
-    max-height: 20vh;
+    max-height: 10vh;
     font-size: 1.2rem;
 }
 
@@ -159,5 +166,7 @@ form {
 
 .output-container {
     background-color: white;
-    height: 65vh;
+    min-height: 20vh;
+    height: fit-content;
+    border: 2px solid black;
 }
