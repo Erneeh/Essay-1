@@ -166,7 +166,8 @@ form {
 
 .output-container {
     background-color: white;
-    min-height: 20vh;
-    height: fit-content;
+    max-height: 65vh;
+    height: 10vh;
+    min-height: fit-content;
     border: 2px solid black;
 }
