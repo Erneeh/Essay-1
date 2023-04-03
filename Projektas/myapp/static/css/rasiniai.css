@@ -6,12 +6,24 @@ main {
     
 }
 
+
+
 .konteineris {
     background-color: #1b1b1b;
 }
 .deze-forma {
     border-radius: 10px;
-    background: linear-gradient(149deg,#04832a,#29fd53,#04832a);
+    background: linear-gradient(45deg,#888888a8,#e0e0e0,#8d8d8da8);
+    animation: animate 15s infinite alternate;
+    background-size: 200%;
+}
+@keyframes animate {
+    0%{
+        background-position: left;
+    }
+    100%{
+        background-position: right;
+    }
 }
 .deze-headeris {
     margin: 0;
@@ -60,18 +72,21 @@ main {
 
 .deze-inputas, .deze-outputas {
     border-radius: 10px;
-    background: #293241f0;
+    background: #1b1b1b;
     margin: 10px;
 }
 
 .deze-inputas textarea, .deze-outputas textarea {
     border-radius: 10px;
-    border: 1px solid #29fd53;
+    border: 1px solid #8d8d8da8;
     padding-top: 8px;
     padding-left: 8px;
     color: white;
 }
-
+.deze-inputas textarea:focus, .deze-outputas textarea:focus {
+    transition: 0.5s;
+    border: 1px solid #29fd53;
+}
 
 .deze-inputas textarea {
     min-height: 10vh;
