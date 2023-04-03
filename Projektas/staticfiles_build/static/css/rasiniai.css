@@ -90,19 +90,18 @@ main {
 }
 
 .deze-inputas textarea {
-    min-height: 10vh;
+    min-height: 4vh;
     max-height: 30vh;
 }
 
-.testas {
-    min-height: 2vh;
-}
+
 .deze-inputas select {
     border-radius: 10px;
     border: 1px solid #cec8c8a8;
     color: black;
     background-color: #e0e0e0;
     padding-left: 8px;
+    font-size: large;
 }
 .deze-inputas select option {
     border-radius: 10px;

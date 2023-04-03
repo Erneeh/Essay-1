@@ -31,7 +31,7 @@
                         <form method="POST">
                         {% csrf_token %}
                         <h3>Testų sprendimas</h3>
-                        <select class="w-100" id="dalykas" required>
+                        <select class="btn-sm" id="dalykas" required>
                             <option value="" disabled selected="selected">Pasirinkti dalyką</option>
                             <option value="Matematika">Matematika</option>
                             <option value="Fizika">Fizika</option>
@@ -47,17 +47,17 @@
                         <br>
                         <textarea class="w-100" type="text" required name="user_input"
                                           placeholder="Klausimas"></textarea>
-                                <textarea class="w-100 testas" type="text" required name="user_inputA"
+                                <textarea class="w-100" type="text" name="user_inputA"
                                           placeholder="A"></textarea>
-                                <textarea class="w-100 testas" type="text" required name="user_inputB"
+                                <textarea class="w-100" type="text" name="user_inputB"
                                           placeholder="B"></textarea>
-                                <textarea class="w-100 testas" type="text" required name="user_inputC"
+                                <textarea class="w-100" type="text" name="user_inputC"
                                           placeholder="C"></textarea>
-                                <textarea class="w-100 testas" type="text" name="user_inputD"
+                                <textarea class="w-100" type="text" name="user_inputD"
                                           placeholder="D"></textarea>
-                                <textarea class="w-100 testas" type="text" name="user_inputE"
+                                <textarea class="w-100" type="text" name="user_inputE"
                                           placeholder="E"></textarea>
-                                <textarea class="w-100 testas" type="text" name="user_inputF"
+                                <textarea class="w-100" type="text" name="user_inputF"
                                           placeholder="F"></textarea>
                         <button type="submit" class="btn w-100">Atlikta</button>
                         </form>

@@ -149,7 +149,7 @@ def motyvacinis(request):
             )
             chatbot_response = response['choices'][0]['message']['content']
         else:
-            chatbot_response = "Prasau uzpildyti visus langelius"
+            chatbot_response = "Prašau užpildyti visus langelius"
 
     return render(request, "motyvacinis.html", {"response": chatbot_response})
 
@@ -183,7 +183,7 @@ def testas(request):
         )
         chatbot_response = response['choices'][0]['message']['content']
     else:
-        chatbot_response = "Prasau uzpildyti visus langelius"
+        chatbot_response = "Prašau užpildyti visus langelius"
 
     return render(request, "testas.html", {"response": chatbot_response})
 
