@@ -11,7 +11,7 @@ main {
 }
 .deze-forma {
     border-radius: 10px;
-    background: linear-gradient(149deg,#3d5a80,#98c1d9,#3d5a80);
+    background: linear-gradient(149deg,#04832a,#29fd53,#04832a);
 }
 .deze-headeris {
     margin: 0;
@@ -23,7 +23,7 @@ main {
 .deze-headeris-background {
     border-radius: 10px;
     margin-bottom: 10px;
-    background: #293241f0;
+    background: #1b1b1b;
     margin-left: 10px;
 }
 .headerio-title, .headerio-title h1 {
@@ -40,9 +40,10 @@ main {
 
 .headerio-mygtukas-atgal button{
     border-radius: 10px;
-    border: 1px solid #3d5a80;
-    background-color: #28303f;
-    color: grey;
+    border: 1px solid #8d8d8da8;
+    background-color: #1b1b1b;
+    color: white;
+    cursor: pointer;
 }
 .headerio-mygtukas-atgal button:hover {
     color: #29fd53;
@@ -78,9 +79,10 @@ main {
 }
 .deze-inputas button {
     border-radius: 10px;
-    border: 1px solid #3d5a80;
-    background-color: #28303f;
-    color: grey;
+    border: 1px solid #8d8d8da8;
+    background-color: #1b1b1b;
+    color: white;
+    cursor: pointer;
 }
 
 .deze-inputas button:hover {
