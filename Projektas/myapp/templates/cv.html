@@ -7,59 +7,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot - Essay.lt</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rasiniai.css' %}">
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 </head>
 <body>
-<div class="kunas">
-    <div class="container isorinis-konteineris bg-primary bg-gradient">
-        <div class="container konteineris">
-            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 isorinis-row-konteineris">
-                <div class="col container inner-konteineris">
-                    <div class="row row-konteineris">
-                        <div class="col-12 title-container">
-                            <h1>Paklausk!</h1>
+    <main>
+        <div class="container-fluid konteineris">
+            <div class="container deze-forma p-4">
+                <div class="row deze-headeris-background">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 deze-headeris p-3">
+                        <div class="col-9 col-lg-10 col-md-10 col-sm-9 headerio-title p-3">
+                            <h1 class="w-100">Essay.lt - CV Kūrėjas</h1>
+                        </div>
+                        <div class="col-3 col-lg-2 col-md-2 col-sm-3 headerio-mygtukas-atgal p-3">
+                            <a href="{% url 'services' %}"><button class="p-3">Atgal</button></a>
                         </div>
                     </div>
-                    <form method="POST">
-                        {% csrf_token %}
-                        <div class="row row-konteineris">
-                            <div class="col-12 row input-container1">
-                                <div class="col-12 input-container1-paklausk">
-                                    <label for="dalykas2" class="dalykas"><h3>Trumpai papasakokite apie save</h3></label>
-                                    <textarea class="w-100" type="text" required name="user_input"
-                                              placeholder="Įrašykite"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-konteineris">
-                            <div class="col-12 button-container">
-                                <button type="submit" class="btn btn-success w-100 btn-lg ">Paklausti</button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
-                <div class="col container inner-konteineris">
-                    <div class="row row-konteineris">
-                        <div class="col-12 title-container">
-                            <h1>Atsakymas!</h1>
-                        </div>
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 deze-input-output p-2 justify-content-evenly ">
+                    <div class="col col-lg-5 deze-inputas p-3">
+                        <form method="POST">
+                        {% csrf_token %}
+                        <h3>Trumpai apibūdinkite save</h3>
+                        <textarea class="w-100" placeholder="Įrašykite savo norima tekstą" required name="user_input" type="text"></textarea>
+                        <button type="submit" class="btn w-100">Atlikta</button>
+                        </form>
                     </div>
-                    <div class="row row-konteineris">
-                        <div class="col-12 output-container">
-                            {% if response %}
-                            {{ response|safe }}
-                            {% endif %}
-                        </div>
+                    <div class="col col-lg-5 deze-outputas  p-3">
+                        <h3>Jūsų atsakymas!</h3>
+                        <hr>
+                        <div class="outputas">
+                        {% if response %}
+                        {{ response|safe }}
+                        {% endif %}</div>
                     </div>
-
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </main>
 </body>
 </html>
 {% endblock %}
