@@ -19,6 +19,7 @@ body {
     height: fit-content;
     min-height: 100%;
     background-color: #1b1b1b;
+    padding-top: 15vh;
 }
 
 .isorinis-konteineris {
@@ -27,11 +28,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 
 .konteineris {
     height: fit-content;
-    margin-bottom: 5rem;
     background-color: transparent;
 }
 
@@ -126,7 +127,7 @@ form {
     font-size: 1.5rem;
     width: 40%;
     background-color: white;
-    
+
 }
 
 .input-container1-select select option {
@@ -166,8 +167,7 @@ form {
 
 .output-container {
     background-color: white;
-    max-height: 65vh;
-    height: 10vh;
-    min-height: fit-content;
+    height: fit-content;
+    min-height: 35vh;
     border: 2px solid black;
 }

@@ -1,0 +1,110 @@
+* {
+    box-sizing: border-box;
+}
+
+main {
+    
+}
+
+.konteineris {
+    background-color: #1b1b1b;
+}
+.deze-forma {
+    border-radius: 10px;
+    background: linear-gradient(149deg,#3d5a80,#98c1d9,#3d5a80);
+}
+.deze-headeris {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+.deze-headeris-background {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background: #293241f0;
+    margin-left: 10px;
+}
+.headerio-title, .headerio-title h1 {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+.headerio-mygtukas-atgal {
+    align-items: start;
+    background-color: transparent;
+}
+
+.headerio-mygtukas-atgal button{
+    border-radius: 10px;
+    border: 1px solid #3d5a80;
+    background-color: #28303f;
+    color: grey;
+}
+.headerio-mygtukas-atgal button:hover {
+    color: #29fd53;
+    transition: 0.5s;
+    border: 1px solid #29fd53;
+}
+.headerio-title h1 {
+    color: white;
+}
+
+.deze-input-output {
+    background-color: transparent;
+}
+
+.deze-inputas, .deze-outputas {
+    border-radius: 10px;
+    background: #293241f0;
+    margin: 10px;
+}
+
+.deze-inputas textarea, .deze-outputas textarea {
+    border-radius: 10px;
+    border: 1px solid #29fd53;
+    padding-top: 8px;
+    padding-left: 8px;
+    color: white;
+}
+
+
+.deze-inputas textarea {
+    
+}
+.deze-inputas button {
+    border-radius: 10px;
+    border: 1px solid #3d5a80;
+    background-color: #28303f;
+    color: grey;
+}
+
+.deze-inputas button:hover {
+    color: #29fd53;
+    transition: 0.5s;
+    border: 1px solid #29fd53;
+}
+
+
+.deze-inputas h3 {
+    background-color: transparent;
+    color: white;
+}
+.deze-outputas h3 {
+    background-color: transparent;
+    color: white;
+    text-align: center;
+}
+.deze-outputas hr {
+  margin: 2em;
+  font-size: 24%;
+  color: black;
+  height: 2px;
+}
+
+form {
+    background-color: transparent;
+}

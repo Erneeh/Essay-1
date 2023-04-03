@@ -1,88 +1,88 @@
 {% extends "header.html" %}
 {% block content %}
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Paslaugos - Essay.lt</title>
-        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-        <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'css/services.css' %}">
-        {% load bootstrap5 %}
-        {% bootstrap_css %}
-        {% bootstrap_javascript %}
-    </head>
-    <body>
-        <div class="kunas">
-            <div class="wrapper">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Paslaugos - Essay.lt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/services.css' %}">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+<div class="kunas">
+    <div class="wrapper">
 
-                <a href="{% url 'rasiniai' %}">
-                    <div class="box-area">
-                        <div class="icon-area">
-                            <i class="bi bi-journal-text"></i>
-                        </div>
-                        <h6>Rašiniai</h6>
-                        <p>Rašinių rašymas visomis temomis, rašinių klaidų taisymas</p>
-                    </div>
-                </a>
-
-                <a href="/">
-                    <div class="box-area custom">
-                        <div class="icon-area">
-                            <i class="bi bi-check-square"></i>
-                        </div>
-                        <h6>Testai</h6>
-                        <p>Testų sprendimas įvairiomis temomis, klausimai-atsakymai</p>
-                    </div>
-                </a>
-                    
-                <a href="/">
-                    <div class="box-area">
-                        <div class="icon-area">
-                            <i class="bi bi-text-paragraph"></i>
-                        </div>
-                        <h6>Perfrazuok</h6>
-                        <p>Patikrink plagiato riziką</p>
-                    </div>
-                </a>
-
-                <a href="{% url 'paklausk' %}">
-                    <div class="box-area">
-                        <div class="icon-area">
-                            <i class="bi bi-patch-question"></i>
-                        </div>
-                        <h6>Paklausk</h6>
-                        <p>Paklausk, bet kokio klausimo ir gauk atsakymą</p>
-                    </div>
-                </a>
-
-                <a href="{% url 'motyvacinis' %}">
-                    <div class="box-area">
-                        <div class="icon-area">
-                            <i class="bi bi-envelope-check"></i>
-                        </div>
-                        <h6>Motyvacinis laiškas</h6>
-                        <p>Ieškok naujų karjeros galimybių!</p>
-                    </div>
-                </a>
-
-                <a href="/">
-                    <div class="box-area">
-                        <div class="icon-area">
-                            <i class="bi bi-file-earmark-person"></i>
-                        </div>
-                        <h6>CV</h6>
-                        <p>CV formavimas, gyvenimo aprašymo parašymas</p>
-                    </div>
-                </a>
-
-
+        <a href="{% url 'rasiniai' %}">
+            <div class="box-area">
+                <div class="icon-area">
+                    <i class="bi bi-journal-text"></i>
+                </div>
+                <h6>Rašiniai</h6>
+                <p>Rašinių rašymas visomis temomis, rašinių klaidų taisymas</p>
             </div>
-        </div>
-    </body>
+        </a>
+
+        <a href="{% url 'testas' %}">
+            <div class="box-area custom">
+                <div class="icon-area">
+                    <i class="bi bi-check-square"></i>
+                </div>
+                <h6>Testai</h6>
+                <p>Testų sprendimas įvairiomis temomis, klausimai-atsakymai</p>
+            </div>
+        </a>
+
+        <a href="{% url 'perfrazuok' %}">
+            <div class="box-area">
+                <div class="icon-area">
+                    <i class="bi bi-text-paragraph"></i>
+                </div>
+                <h6>Perfrazuok</h6>
+                <p>Patikrink plagiato riziką</p>
+            </div>
+        </a>
+
+        <a href="{% url 'paklausk' %}">
+            <div class="box-area">
+                <div class="icon-area">
+                    <i class="bi bi-patch-question"></i>
+                </div>
+                <h6>Paklausk</h6>
+                <p>Paklausk, bet kokio klausimo ir gauk atsakymą</p>
+            </div>
+        </a>
+
+        <a href="{% url 'motyvacinis' %}">
+            <div class="box-area">
+                <div class="icon-area">
+                    <i class="bi bi-envelope-check"></i>
+                </div>
+                <h6>Motyvacinis laiškas</h6>
+                <p>Ieškok naujų karjeros galimybių!</p>
+            </div>
+        </a>
+
+        <a href="{% url 'cv' %}">
+            <div class="box-area">
+                <div class="icon-area">
+                    <i class="bi bi-file-earmark-person"></i>
+                </div>
+                <h6>CV</h6>
+                <p>CV formavimas, gyvenimo aprašymo parašymas</p>
+            </div>
+        </a>
+
+
+    </div>
+</div>
+</body>
 </html>
 
 {% endblock %}
