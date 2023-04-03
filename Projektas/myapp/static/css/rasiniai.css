@@ -106,6 +106,15 @@ main {
   height: 2px;
 }
 
+.outputas {
+    color: white;
+    background-color: transparent;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 form {
     background-color: transparent;
 }

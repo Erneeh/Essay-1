@@ -1,6 +1,5 @@
 {% extends "header.html" %}
 {% block content %}
-{% url 'services' as services %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,14 +31,14 @@
                         <form method="POST">
                         {% csrf_token %}
                         <h3>Įrašykite savo rašinio temą</h3>
-                        <textarea class="w-100" placeholder="Įrašykite rašinio temą ir kuo daugiau informacijos..." required></textarea>
+                        <textarea class="w-100" placeholder="Įrašykite rašinio temą ir kuo daugiau informacijos..." required name="user_input" type="text"></textarea>
                         <button type="submit" class="btn w-100">Atlikta</button>
                         </form>
                     </div>
                     <div class="col col-lg-5 deze-outputas  p-3">
                         <h3>Jūsų atsakymas!</h3>
                         <hr>
-                        <div>
+                        <div class="outputas">
                         {% if response %}
                         {{ response|safe }}
                         {% endif %}</div>

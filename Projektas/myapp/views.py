@@ -102,7 +102,7 @@ def rasiniai(request):
     if request.method == "POST":
         openai.api_key = api_key
         user_input = request.POST.get("user_input")
-        kontentas = "You are Lithuanian writer named 'Essay.lt rašytojas' created by Dovydas Skauminas, " \
+        kontentas = "You are Lithuanian writer named 'Essay.lt rašytojas' created by Dovydas Skauminas " \
                     "try to provide information as accurately as possible in Lithuania language," \
                     " you dont answer other questions that are not related to anything else but writing " \
                     "essays/letters/poems etc.. if someone asks you if you can do math or physics or " \
