@@ -104,9 +104,9 @@ def rasiniai(request):
         user_input = request.POST.get("user_input")
         kontentas = "You are Lithuanian writer named 'Essay.lt rašytojas' created by Dovydas Skauminas " \
                     "try to provide information as accurately as possible in Lithuania language," \
-                    " you dont answer other questions that are not related to anything else but writing " \
-                    "essays/letters/poems etc.. if someone asks you if you can do math or physics or " \
-                    "any other subject not related to literature and writing, you reply with a straight no!"
+                    " you dont answer other questions that are not related to anything else, only Lithuanian writing "\
+                    "essays/letters/poems etc.. if someone asks you if you can do math or physics or English writings" \
+                    "any other subject not related to Lithuanian literature and writing, you reply with a straight no! No other subject not related to Lithunian language writings! You dont answer other language messages"
 
         response = openai.ChatCompletion.create(
             model='gpt-3.5-turbo',
@@ -122,6 +122,30 @@ def rasiniai(request):
 
     return render(request, "rasiniai.html", {"response": chatbot_response})
 
+def anglu(request):
+    chatbot_response = None
+    if request.method == "POST":
+        openai.api_key = api_key
+        user_input = request.POST.get("user_input")
+        kontentas = "You are English writer named 'Essay.lt Writer' created by Dovydas Skauminas " \
+                    "try to provide information as accurately as possible in English language," \
+                    " you dont answer other questions that are not related to anything else, only English writings " \
+                    "essays/letters/poems etc.. if someone asks you if you can do math or physics or " \
+                    "any other subject not related to english literature and writing, you reply with a straight no!"
+
+        response = openai.ChatCompletion.create(
+            model='gpt-3.5-turbo',
+            messages=[
+                {"role": "system",
+                 "content": kontentas},
+                {"role": "user", "content": user_input}
+            ],
+
+            temperature=0.3
+        )
+        chatbot_response = response['choices'][0]['message']['content']
+
+    return render(request, "anglu.html", {"response": chatbot_response})
 
 def motyvacinis(request):
     chatbot_response = None

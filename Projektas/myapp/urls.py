@@ -20,6 +20,7 @@ urlpatterns = [
                   path('perfrazuok/', views.perfrazuok, name='perfrazuok'),
                   path('cv/', views.cv, name='cv'),
                   path('testas/', views.testas, name='testas'),
+                  path('anglu/', views.anglu, name='anglu'),
                   path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
                   path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
                   path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(),
