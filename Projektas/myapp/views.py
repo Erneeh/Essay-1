@@ -15,10 +15,7 @@ def services(request):
 
 
 def contacts(request):
-    if request.user.is_authenticated:
-        return render(request, "contacts.html", {})
-    else:
-        return loginas(request)
+    return render(request, "contacts.html", {})
 
 
 def register(request):
