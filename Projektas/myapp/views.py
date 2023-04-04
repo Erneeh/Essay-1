@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import openai, os
 from dotenv import load_dotenv
-from .models import PayHistory, Membership, UserMembership, Subscription
+from .models import  Membership, UserMembership
 
 
 def index(request):
