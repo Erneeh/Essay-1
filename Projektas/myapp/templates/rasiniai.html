@@ -30,8 +30,10 @@
                     <div class="col col-lg-5 deze-inputas p-3">
                         <form method="POST">
                         {% csrf_token %}
-                        <h3>Įrašykite savo rašinio temą</h3>
+                        <h3>Įrašykite savo rašinio temą:</h3>
+                        <br>
                         <textarea class="w-100" placeholder="Įrašykite rašinio temą ir kuo daugiau informacijos..." required name="user_input" type="text"></textarea>
+                        <br><br>
                         <button type="submit" class="btn w-100">Atlikta</button>
                         </form>
                     </div>
