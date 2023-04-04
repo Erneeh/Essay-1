@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import openai, os
 from dotenv import load_dotenv
+from .models import PayHistory, Membership, UserMembership, Subscription
 
 
 def index(request):
@@ -38,6 +39,8 @@ def register(request):
                     return redirect("register")
                 else:
                     new_user = User.objects.create_user(uname, email, password)
+                    get_membership = Membership.objects.get(membership_type="Free")
+                    UserMembership.objects.create(user=new_user, membership=get_membership)
                     new_user.save()
                     return redirect('login')
         else:

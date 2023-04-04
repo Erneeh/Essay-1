@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="login required services">
+    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="pataisiau del contacts">
       <change afterPath="$PROJECT_DIR$/Projektas/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/paskyra.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/paskyra.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,14 +36,14 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/Django_mokymai&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/User/Desktop/Django_mokymai"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Desktop\DjangoPrrojektukas\Projektas\myapp" />
@@ -186,7 +190,13 @@
       <option name="presentableId" value="LOCAL−00021" />
       <updated>1680546725103</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL−00022" summary="pataisiau del contacts">
+      <created>1680546896666</created>
+      <option name="number" value="LOCAL−00022" />
+      <option name="presentableId" value="LOCAL−00022" />
+      <updated>1680546896666</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -234,6 +244,7 @@
     <MESSAGE value="user page start" />
     <MESSAGE value="update" />
     <MESSAGE value="login required services" />
-    <option name="LAST_COMMIT_MESSAGE" value="login required services" />
+    <MESSAGE value="pataisiau del contacts" />
+    <option name="LAST_COMMIT_MESSAGE" value="pataisiau del contacts" />
   </component>
 </project>
