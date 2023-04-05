@@ -4,7 +4,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import openai, os
 from dotenv import load_dotenv
-from .models import  Membership, UserMembership
+from .models import Membership, UserMembership, Subscription
+from datetime import timedelta
+from datetime import datetime as dt
 
 
 def index(request):
@@ -42,6 +44,7 @@ def register(request):
                     get_membership = Membership.objects.get(membership_type="Free")
                     UserMembership.objects.create(user=new_user, membership=get_membership)
                     new_user.save()
+
                     return redirect('login')
         else:
             messages.error(request, "Slaptažodžiai nesutampa!")
@@ -264,37 +267,55 @@ def perfrazuok(request):
 
 def cv(request):
     if request.user.is_authenticated:
-        chatbot_response = None
-        if request.method == "POST":
-            kontentas = "You are Lithuanian cv writer named 'Essay.lt CV specialistas'," \
-                        "you can only write cv by given information a user a user has entered," \
-                        "write CV only in Lithuania language," \
-                        "you dont answer other questions that are not related to anything that is not related to CV" \
-                        "if someone asks you if you can do math or physics or " \
-                        "any other subject that is not related to CV writing, you reply with a straight no!"
+        try:
+            user_membership = UserMembership.objects.get(user=request.user)
+            chatbot_response = None
+            if request.method == "POST":
+                kontentas = "You are Lithuanian cv writer named 'Essay.lt CV specialistas'," \
+                            "you can only write cv by given information a user a user has entered," \
+                            "write CV only in Lithuania language," \
+                            "you dont answer other questions that are not related to anything that is not related to CV" \
+                            "if someone asks you if you can do math or physics or " \
+                            "any other subject that is not related to CV writing, you reply with a straight no!"
 
-            openai.api_key = api_key
-            user_input = request.POST.get("user_input")
+                openai.api_key = api_key
+                user_input = request.POST.get("user_input")
 
-            response = openai.ChatCompletion.create(
-                model='gpt-3.5-turbo',
-                messages=[
-                    {"role": "system",
-                     "content": kontentas},
-                    {"role": "user", "content": user_input}
-                ],
+                response = openai.ChatCompletion.create(
+                    model='gpt-3.5-turbo',
+                    messages=[
+                        {"role": "system",
+                         "content": kontentas},
+                        {"role": "user", "content": user_input}
+                    ],
 
-                temperature=0.7
-            )
-            chatbot_response = response['choices'][0]['message']['content']
+                    temperature=0.7
+                )
 
-        return render(request, "cv.html", {"response": chatbot_response})
+                chatbot_response = response['choices'][0]['message']['content']
+
+            return render(request, "cv.html", {"response": chatbot_response})
+        except UserMembership.DoesNotExist:
+            return redirect('planai')
     else:
         return loginas(request)
 
 
 def paskyra(request):
     if request.user.is_authenticated:
-        return render(request, "paskyra.html", {})
+        try:
+            user_membership = UserMembership.objects.get(user=request.user)
+        except UserMembership.DoesNotExist:
+            return redirect('planai')
+        subscriptionas = Subscription.objects.filter(user_membership=user_membership).exists()
+        if subscriptionas == False:
+            return redirect('planai')
+        else:
+            subscriptions = Subscription.objects.get(user_membership=user_membership)
+            return render(request, "paskyra.html", {'sub': subscriptions})
     else:
         return loginas(request)
+
+
+def subscription(request):
+    return render(request, "planai.html")

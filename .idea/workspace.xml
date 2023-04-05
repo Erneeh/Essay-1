@@ -1,22 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="Subscription backend">
-      <change afterPath="$PROJECT_DIR$/Projektas/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/forma.css" afterDir="false" />
+    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="Front end fixas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/.env" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/static/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/static/css/rasiniai.css" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/rasiniai.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/bandymas.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/contacts.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/contacts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_complete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_confirm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/paskyra.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/paskyra.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/planai.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/planai.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +202,13 @@
       <option name="presentableId" value="LOCAL−00023" />
       <updated>1680634338574</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL−00024" summary="Front end fixas">
+      <created>1680717610346</created>
+      <option name="number" value="LOCAL−00024" />
+      <option name="presentableId" value="LOCAL−00024" />
+      <updated>1680717610346</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -260,6 +258,7 @@
     <MESSAGE value="login required services" />
     <MESSAGE value="pataisiau del contacts" />
     <MESSAGE value="Subscription backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Subscription backend" />
+    <MESSAGE value="Front end fixas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Front end fixas" />
   </component>
 </project>
