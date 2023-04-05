@@ -2,71 +2,73 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prisijungimas - Essay.lt</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/forma.css' %}">
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-  </head>
-  <body>
-    <div class="form-body">
-      <div class="row">
-        <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-          <div class="form-holder">
-            <div class="form-content">
-              <div class="form-items">
-                <h3>Prisijungimas</h3>
-                <br>
-                <form action="" method="POST" class="requires-validation">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="uname" class="form-label">Vardas:</label>
-                    <input type="text" placeholder="Įveskite slapyvardį" name="uname" id="uname" class="form-control" required>
-                    <div class="valid-feedback">Username field is valid!</div>
-                    <div class="invalid-feedback">Username field cannot be blank!</div>
-                  </div>
-                  <br>
-                  <div class="mb-3">
-                    <label for="pass" class="form-label">Slaptažodis:</label>
-                    <input type="password" placeholder="Įveskite slaptažodį" name="pass" id="pass" class="form-control" required
-                    minlength="8">
-                    <div class="valid-feedback">Password field is valid!</div>
-                    <div class="invalid-feedback">Password field cannot be blank!</div>
-                  </div>
+</head>
+<body>
+<main>
+    <form action="" method="POST" class="requires-validation">
+        {% csrf_token %}
+        <div class="container-fluid konteineris">
+            <div class="container deze-forma">
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 deze-text-login justify-content-evenly">
 
-                  {% if messages %}
-                  {% for message in messages %}
-                  <div class="alert alert-danger fw-bold" role="alert">
-                  {{ message }}
-                  </div>
-                  {% endfor %}
-                  {% endif %}
+                    <div class="col-lg-7 login-container">
+                        <div class="row login-row">
+                            <div class="col-lg-12 login-header">
+                                <h1>Prisijunkite!</h1>
+                                <br>
+                            </div>
+                            <div class="col-lg-12 login-form">
+                                <div class="row">
+                                    <input type="text" placeholder="Įveskite slapyvardį" name="uname" id="uname"
+                                           class="form-control" required>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <input type="password" placeholder="Įveskite slaptažodį" name="pass" id="pass"
+                                           class="form-control" required minlength="8">
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-4 linkas1">
+                                        <a class="" href="{% url 'register' %}">Registruotis</a>
+                                    </div>
+                                    <div class="col-6 linkas2">
+                                        <a href="{% url 'password_reset' %}" class="">Pamiršote slaptažodį?</a>
+                                    </div>
+                                </div>
+                                {% if messages %}
+                                {% for message in messages %}
+                                <div class="alert alert-danger fw-bold" role="alert">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="row login-buttons">
+                                <div class="row login-buttons-primary">
+                                    <button id="submit" class="btn " type="submit">Prisijungti</button>
+                                </div>
 
-
-                  <div class="form-button mt-3">
-                    <button id="submit" class="btn btn-success btn-lg w-100" type="submit">Prisijungti</button>
-                  </div>
-                  <div class="form-button mt-3">
-                    <a href="{% url 'password_reset' %}" class="btn btn-outline-success btn-lg w-100">Pamiršote slaptažodį?</a>
-                  </div>
-                  <div class="form-button mt-3">
-                    <a class="btn btn-outline-success float-start btn-lg w-100" href="{% url 'register' %}">Neturite paskyros?</a>
-                  </div>
-                  <br>
-                  <br>
-                </form>
-              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </body>
+
+    </form>
+</main>
+</body>
 </html>
 
 {% endblock %}
