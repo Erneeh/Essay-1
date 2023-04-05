@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import openai, os
 from dotenv import load_dotenv
+from .models import  Membership, UserMembership
 
 
 def index(request):
@@ -38,6 +39,8 @@ def register(request):
                     return redirect("register")
                 else:
                     new_user = User.objects.create_user(uname, email, password)
+                    get_membership = Membership.objects.get(membership_type="Free")
+                    UserMembership.objects.create(user=new_user, membership=get_membership)
                     new_user.save()
                     return redirect('login')
         else:
@@ -73,93 +76,142 @@ api_key = os.getenv("OPENAI_KEY", None)
 
 
 def paklausk(request):
-    chatbot_response = None
-    if request.method == "POST":
-        kontentas = "You are Lithuanian named 'Essay.lt žinių meistras," \
-                    " try to provide information as accurately" \
-                    " as possible in Lithuania language"
+    if request.user.is_authenticated:
+        chatbot_response = None
+        if request.method == "POST":
+            kontentas = "You are Lithuanian named 'Essay.lt žinių meistras," \
+                        " try to provide information as accurately" \
+                        " as possible in Lithuania language"
 
-        openai.api_key = api_key
-        user_input = request.POST.get("user_input")
+            openai.api_key = api_key
+            user_input = request.POST.get("user_input")
 
-        response = openai.ChatCompletion.create(
-            model='gpt-3.5-turbo',
-            messages=[
-                {"role": "system",
-                 "content": kontentas},
-                {"role": "user", "content": user_input}
-            ],
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                    {"role": "system",
+                     "content": kontentas},
+                    {"role": "user", "content": user_input}
+                ],
 
-            temperature=0.7
-        )
-        chatbot_response = response['choices'][0]['message']['content']
+                temperature=0.7
+            )
+            chatbot_response = response['choices'][0]['message']['content']
 
-    return render(request, "paklausk.html", {"response": chatbot_response})
+        return render(request, "paklausk.html", {"response": chatbot_response})
+    else:
+        return loginas(request)
 
 
 def rasiniai(request):
-    chatbot_response = None
-    if request.method == "POST":
-        openai.api_key = api_key
-        user_input = request.POST.get("user_input")
-        kontentas = "You are Lithuanian writer named 'Essay.lt rašytojas' created by Dovydas Skauminas " \
-                    "try to provide information as accurately as possible in Lithuania language," \
-                    " you dont answer other questions that are not related to anything else, only Lithuanian writing "\
-                    "essays/letters/poems etc.. if someone asks you if you can do math or physics or English writings" \
-                    "any other subject not related to Lithuanian literature and writing, you reply with a straight no! No other subject not related to Lithunian language writings! You dont answer other language messages"
+    if request.user.is_authenticated:
+        chatbot_response = None
+        if request.method == "POST":
+            openai.api_key = api_key
+            user_input = request.POST.get("user_input")
+            kontentas = "You are Lithuanian writer named 'Essay.lt rašytojas' created by Dovydas Skauminas " \
+                        "try to provide information as accurately as possible in Lithuania language," \
+                        " you dont answer other questions that are not related to anything else, only Lithuanian writing " \
+                        "essays/letters/poems etc.. if someone asks you if you can do math or physics or English writings" \
+                        "any other subject not related to Lithuanian literature and writing, you reply with a straight no! No other subject not related to Lithunian language writings! You dont answer other language messages"
 
-        response = openai.ChatCompletion.create(
-            model='gpt-3.5-turbo',
-            messages=[
-                {"role": "system",
-                 "content": kontentas},
-                {"role": "user", "content": user_input}
-            ],
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                    {"role": "system",
+                     "content": kontentas},
+                    {"role": "user", "content": user_input}
+                ],
 
-            temperature=0.3
-        )
-        chatbot_response = response['choices'][0]['message']['content']
+                temperature=0.3
+            )
+            chatbot_response = response['choices'][0]['message']['content']
 
-    return render(request, "rasiniai.html", {"response": chatbot_response})
+        return render(request, "rasiniai.html", {"response": chatbot_response})
+    else:
+        return loginas(request)
+
 
 def anglu(request):
-    chatbot_response = None
-    if request.method == "POST":
-        openai.api_key = api_key
-        user_input = request.POST.get("user_input")
-        kontentas = "You are English writer named 'Essay.lt Writer' created by Dovydas Skauminas " \
-                    "try to provide information as accurately as possible in English language," \
-                    " you dont answer other questions that are not related to anything else, only English writings " \
-                    "essays/letters/poems etc.. if someone asks you if you can do math or physics or " \
-                    "any other subject not related to english literature and writing, you reply with a straight no!"
+    if request.user.is_authenticated:
+        chatbot_response = None
+        if request.method == "POST":
+            openai.api_key = api_key
+            user_input = request.POST.get("user_input")
+            kontentas = "You are English writer named 'Essay.lt Writer' created by Dovydas Skauminas " \
+                        "try to provide information as accurately as possible in English language," \
+                        " you dont answer other questions that are not related to anything else, only English writings " \
+                        "essays/letters/poems etc.. if someone asks you if you can do math or physics or " \
+                        "any other subject not related to english literature and writing, you reply with a straight no!"
 
-        response = openai.ChatCompletion.create(
-            model='gpt-3.5-turbo',
-            messages=[
-                {"role": "system",
-                 "content": kontentas},
-                {"role": "user", "content": user_input}
-            ],
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                    {"role": "system",
+                     "content": kontentas},
+                    {"role": "user", "content": user_input}
+                ],
 
-            temperature=0.3
-        )
-        chatbot_response = response['choices'][0]['message']['content']
+                temperature=0.3
+            )
+            chatbot_response = response['choices'][0]['message']['content']
 
-    return render(request, "anglu.html", {"response": chatbot_response})
+        return render(request, "anglu.html", {"response": chatbot_response})
+    else:
+        return loginas(request)
+
 
 def motyvacinis(request):
-    chatbot_response = None
-    if request.method == "POST":
-        if request.POST.get("user_input") and request.POST.get("user_input2") and request.POST.get("user_input3"):
+    if request.user.is_authenticated:
+        chatbot_response = None
+        if request.method == "POST":
+            if request.POST.get("user_input") and request.POST.get("user_input2") and request.POST.get("user_input3"):
+                openai.api_key = api_key
+                user_input = "Parašyk darbo laišką darbdaviui, " + "turiu " + request.POST.get(
+                    "user_input") + request.POST.get(
+                    "user_input2") + "srityje, " "pretenduoju į " + request.POST.get("user_input3") + "poziciją"
+                kontentas = "You are Lithuanian cover letter writer, you can only build cover letter for job application" \
+                            "try to provide information as accurately as possible in Lithuania language," \
+                            "you dont answer other questions that are not related to anything that is not cover letter" \
+                            "if someone asks you if you can do math or physics, essays, sonnets or " \
+                            "any other subject that is not cover letter, you reply with a straight no!"
+
+                response = openai.ChatCompletion.create(
+                    model='gpt-3.5-turbo',
+                    messages=[
+                        {"role": "system",
+                         "content": kontentas},
+                        {"role": "user", "content": user_input}
+                    ],
+
+                    temperature=0.4
+                )
+                chatbot_response = response['choices'][0]['message']['content']
+            else:
+                chatbot_response = "Prašau užpildyti visus langelius"
+
+        return render(request, "motyvacinis.html", {"response": chatbot_response})
+    else:
+        return loginas(request)
+
+
+def testas(request):
+    if request.user.is_authenticated:
+        chatbot_response = None
+        if request.method == "POST":
             openai.api_key = api_key
-            user_input = "Parašyk darbo laišką darbdaviui, " + "turiu " + request.POST.get(
-                "user_input") + request.POST.get(
-                "user_input2") + "srityje, " "pretenduoju į " + request.POST.get("user_input3") + "poziciją"
-            kontentas = "You are Lithuanian cover letter writer, you can only build cover letter for job application" \
+            answers = request.POST.get("user_inputA") + request.POST.get("user_inputB") + request.POST.get(
+                "user_inputC") + request.POST.get("user_inputD") + request.POST.get("user_inputE") + request.POST.get(
+                "user_inputF")
+            user_input = f"The subject is {request.POST.get('dalykas')} the question is " \
+                         f"{request.POST.get('user_input')}, posibble answers is {answers}"
+
+            kontentas = "You are Lithuanian knowlage master, you can only answer a right answer by given possible answers" \
                         "try to provide information as accurately as possible in Lithuania language," \
-                        "you dont answer other questions that are not related to anything that is not cover letter" \
-                        "if someone asks you if you can do math or physics, essays, sonnets or " \
-                        "any other subject that is not cover letter, you reply with a straight no!"
+                        "you dont answer other questions that are not related to anything that is not selected subject" \
+                        "if someone asks you if you can write essays, sonnets or " \
+                        "any other poetry, you reply with a straight no, and " \
+                        "if you dont understand the questions say that you dont understand the question"
 
             response = openai.ChatCompletion.create(
                 model='gpt-3.5-turbo',
@@ -172,102 +224,77 @@ def motyvacinis(request):
                 temperature=0.4
             )
             chatbot_response = response['choices'][0]['message']['content']
-        else:
-            chatbot_response = "Prašau užpildyti visus langelius"
 
-    return render(request, "motyvacinis.html", {"response": chatbot_response})
-
-
-def testas(request):
-    chatbot_response = None
-    if request.method == "POST":
-        openai.api_key = api_key
-        answers = request.POST.get("user_inputA") + request.POST.get("user_inputB") + request.POST.get(
-            "user_inputC") + request.POST.get("user_inputD") + request.POST.get("user_inputE") + request.POST.get(
-            "user_inputF")
-        user_input = f"The subject is {request.POST.get('dalykas')} the question is " \
-                     f"{request.POST.get('user_input')}, posibble answers is {answers}"
-
-        kontentas = "You are Lithuanian knowlage master, you can only answer a right answer by given possible answers" \
-                    "try to provide information as accurately as possible in Lithuania language," \
-                    "you dont answer other questions that are not related to anything that is not selected subject" \
-                    "if someone asks you if you can write essays, sonnets or " \
-                    "any other poetry, you reply with a straight no, and " \
-                    "if you dont understand the questions say that you dont understand the question"
-
-        response = openai.ChatCompletion.create(
-            model='gpt-3.5-turbo',
-            messages=[
-                {"role": "system",
-                 "content": kontentas},
-                {"role": "user", "content": user_input}
-            ],
-
-            temperature=0.4
-        )
-        chatbot_response = response['choices'][0]['message']['content']
+        return render(request, "testas.html", {"response": chatbot_response})
     else:
-        chatbot_response = "Prašau užpildyti visus langelius"
-
-    return render(request, "testas.html", {"response": chatbot_response})
+        return loginas(request)
 
 
 def perfrazuok(request):
-    chatbot_response = None
-    if request.method == "POST":
-        kontentas = "You are Lithuanian paraphraser named 'Essay.lt perfrazuotojas'," \
-                    "you can only to paraphrase a user entered text," \
-                    "paraphrase text only in Lithuania language," \
-                    "you dont answer other questions that are not related to anything that is not to paraphrase text" \
-                    "if someone asks you if you can do math or physics or " \
-                    "any other subject that is not related to literature and writing, you reply with a straight no!" \
-                    "you only can paraphrase the given text"
+    if request.user.is_authenticated:
+        chatbot_response = None
+        if request.method == "POST":
+            kontentas = "You are Lithuanian paraphraser named 'Essay.lt perfrazuotojas'," \
+                        "you can only to paraphrase a user entered text," \
+                        "paraphrase text only in Lithuania language," \
+                        "you dont answer other questions that are not related to anything that is not to paraphrase text" \
+                        "if someone asks you if you can do math or physics or " \
+                        "any other subject that is not related to literature and writing, you reply with a straight no!" \
+                        "you only can paraphrase the given text"
 
-        openai.api_key = api_key
-        user_input = request.POST.get("user_input")
+            openai.api_key = api_key
+            user_input = request.POST.get("user_input")
 
-        response = openai.ChatCompletion.create(
-            model='gpt-3.5-turbo',
-            messages=[
-                {"role": "system",
-                 "content": kontentas},
-                {"role": "user", "content": user_input}
-            ],
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                    {"role": "system",
+                     "content": kontentas},
+                    {"role": "user", "content": user_input}
+                ],
 
-            temperature=0.7
-        )
-        chatbot_response = response['choices'][0]['message']['content']
+                temperature=0.7
+            )
+            chatbot_response = response['choices'][0]['message']['content']
 
-    return render(request, "perfrazuok.html", {"response": chatbot_response})
+        return render(request, "perfrazuok.html", {"response": chatbot_response})
+    else:
+        return loginas(request)
 
 
 def cv(request):
-    chatbot_response = None
-    if request.method == "POST":
-        kontentas = "You are Lithuanian cv writer named 'Essay.lt CV specialistas'," \
-                    "you can only write cv by given information a user a user has entered," \
-                    "write CV only in Lithuania language," \
-                    "you dont answer other questions that are not related to anything that is not related to CV" \
-                    "if someone asks you if you can do math or physics or " \
-                    "any other subject that is not related to CV writing, you reply with a straight no!"
+    if request.user.is_authenticated:
+        chatbot_response = None
+        if request.method == "POST":
+            kontentas = "You are Lithuanian cv writer named 'Essay.lt CV specialistas'," \
+                        "you can only write cv by given information a user a user has entered," \
+                        "write CV only in Lithuania language," \
+                        "you dont answer other questions that are not related to anything that is not related to CV" \
+                        "if someone asks you if you can do math or physics or " \
+                        "any other subject that is not related to CV writing, you reply with a straight no!"
 
-        openai.api_key = api_key
-        user_input = request.POST.get("user_input")
+            openai.api_key = api_key
+            user_input = request.POST.get("user_input")
 
-        response = openai.ChatCompletion.create(
-            model='gpt-3.5-turbo',
-            messages=[
-                {"role": "system",
-                 "content": kontentas},
-                {"role": "user", "content": user_input}
-            ],
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                    {"role": "system",
+                     "content": kontentas},
+                    {"role": "user", "content": user_input}
+                ],
 
-            temperature=0.7
-        )
-        chatbot_response = response['choices'][0]['message']['content']
+                temperature=0.7
+            )
+            chatbot_response = response['choices'][0]['message']['content']
 
-    return render(request, "cv.html", {"response": chatbot_response})
+        return render(request, "cv.html", {"response": chatbot_response})
+    else:
+        return loginas(request)
 
 
 def paskyra(request):
-    return render(request, "paskyra.html", {})
+    if request.user.is_authenticated:
+        return render(request, "paskyra.html", {})
+    else:
+        return loginas(request)
