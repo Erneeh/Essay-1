@@ -16,6 +16,7 @@ main {
     background: linear-gradient(45deg,#888888a8,#e0e0e0,#8d8d8da8);
     animation: animate 15s infinite alternate;
     background-size: 200%;
+    box-shadow: 30px 30px 30px rgba(0, 0, 0, 0.3);
 }
 @keyframes animate {
     0%{
@@ -37,6 +38,7 @@ main {
     margin-bottom: 10px;
     background: #1b1b1b;
     margin-left: 10px;
+    border: 3px solid #cec8c8a8;
 }
 .headerio-title, .headerio-title h1 {
     margin: 0;
@@ -74,11 +76,12 @@ main {
     border-radius: 10px;
     background: #1b1b1b;
     margin: 10px;
+    border: 3px solid #cec8c8a8;
 }
 
 .deze-inputas textarea, .deze-outputas textarea {
     border-radius: 10px;
-    border: 1px solid #cec8c8a8;
+    border: 2px solid #cec8c8a8;
     padding-top: 8px;
     padding-left: 8px;
     color: black;
