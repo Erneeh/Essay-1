@@ -1,12 +1,13 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import openai, os
 from dotenv import load_dotenv
-from .models import Membership, UserMembership, Subscription
-from datetime import timedelta
-from datetime import datetime as dt
+from django.shortcuts import render, redirect
+from .models import *
+import requests
+import json
+from django.http import HttpResponseRedirect
+from datetime import datetime, timedelta
 
 
 def index(request):
@@ -346,3 +347,99 @@ def paskyra(request):
 
 def subscription(request):
     return render(request, "planai.html")
+
+
+def end_sub(request):
+    return render(request, "sub.html")
+
+
+PAYSTACK_SECRET_KEY = os.getenv("PAYSTACK_SECRET_KEY", None)
+
+
+def subscribe(request):
+    plan = request.GET.get('sub_plan')
+    fetch_membership = Membership.objects.filter(membership_type=plan).exists()
+    if fetch_membership == False:
+        return redirect('subscribe')
+    membership = Membership.objects.get(membership_type=plan)
+    price = float(
+        membership.price) * 100
+    price = int(price)
+
+    def init_payment(request):
+        url = 'https://api.paystack.co/transaction/initialize'
+        headers = {
+            'Authorization': 'Bearer ' + PAYSTACK_SECRET_KEY,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        }
+        datum = {
+            "email": request.user.email,
+            "amount": price
+        }
+        x = requests.post(url, data=json.dumps(datum), headers=headers)
+        if x.status_code != 200:
+            return str(x.status_code)
+
+        results = x.json()
+        return results
+
+    initialized = init_payment(request)
+    print(initialized['data']['authorization_url'])
+    amount = price / 100
+    instance = PayHistory.objects.create(amount=amount, payment_for=membership, user=request.user,
+                                         paystack_charge_id=initialized['data']['reference'],
+                                         paystack_access_code=initialized['data']['access_code'])
+    UserMembership.objects.filter(user=instance.user).update(reference_code=initialized['data']['reference'])
+    link = initialized['data']['authorization_url']
+    return HttpResponseRedirect(link)
+    return render(request, 'subscribe.html')
+
+
+def call_back_url(request):
+    reference = request.GET.get('reference')
+    check_pay = PayHistory.objects.filter(paystack_charge_id=reference).exists()
+    if not check_pay:
+        print("Error")
+        return render(request, 'error.html')
+
+    payment = PayHistory.objects.get(paystack_charge_id=reference)
+
+    def verify_payment(reference):
+        url = f"https://api.paystack.co/transaction/verify/{reference}"
+        headers = {
+            'Authorization': f'Bearer {PAYSTACK_SECRET_KEY}',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        }
+        data = {
+            "reference": payment.paystack_charge_id
+        }
+        response = requests.get(url, data=json.dumps(data), headers=headers)
+        if response.status_code != 200:
+            return None
+
+        results = response.json()
+        return results
+
+    payment_info = verify_payment(reference)
+
+    # sita vieta del kazko neveikia, reikia patikrint ar response zodyno toksai
+    if payment_info and payment_info['data']['status'] == 'success':
+        PayHistory.objects.filter(paystack_charge_id=reference).update(paid=True)
+        new_payment = PayHistory.objects.get(paystack_charge_id=reference)
+        instance = Membership.objects.get(id=new_payment.payment_for.id)
+        user_membership = UserMembership.objects.get(reference_code=reference)
+        user_membership.membership = instance
+        user_membership.save()
+        Subscription.objects.create(
+            user_membership=user_membership,
+            expires_in=datetime.now().date() + timedelta(days=instance.duration)
+        )
+        return redirect('subscribed')
+    else:
+        return render(request, 'error.html')
+
+
+def subscribed(request):
+    return render(request, 'subscribed.html')
