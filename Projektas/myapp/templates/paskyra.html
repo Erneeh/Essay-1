@@ -5,13 +5,9 @@
 <h1>Pavarde: {{ user.last_name }}</h1>
 <h1>El.pastas: {{ user.email }}</h1>
 <h1>Sukurta paskyra: {{ user.date_joined }}</h1>
-{% if pirkejai %}
-<ul>
-    {% for obj in pirkejai %}
-    <li>{{ obj.membership }}</li>
-    {% endfor %}
-</ul>
-{% else %}
+<h1>
+    Plan: {{ sub.user_membership.membership }}
+</h1>
 <a href="{% url 'password_reset' %}">Pasikeisti slaptažodį</a>
-{% endif %}
+
 {% endblock %}

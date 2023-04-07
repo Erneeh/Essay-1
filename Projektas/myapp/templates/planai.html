@@ -1,0 +1,98 @@
+{% extends "header.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planai - Essay.lt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/planai.css' %}">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <div class="kunas">
+        <div class="wrappertop">
+            <h1>Jūs dar neturite plano!</h1>
+        </div>
+        <div class="wrapper">
+            <a href="">
+                <div class="box-area">
+                    <div class="icon-area">
+                        <i class="bi bi-piggy-bank"></i>
+                    </div>
+                    <div class="header-area">
+                        <h6>Free</h6>
+                    </div>
+                    <div class="desc-area">
+                        <p>Naudokis mūsų nemokama paslauga!</p>
+                    </div>
+                    <div class="price-area">
+                        <h7>Nemokamai</h7>
+                    </div>
+                </div>
+            </a>
+    
+            <a href="">
+                <div class="box-area">
+                    <div class="icon-area">
+                        <i class="bi bi-cash"></i>
+                    </div>
+                    <div class="header-area">
+                        <h6>Basic</h6>
+                    </div>
+                    <div class="desc-area">
+                        <p>Naudokis visomis mūsų paslaugomis visą parą!</p>
+                    </div>
+                    <div class="price-area">
+                        <h7>1€ / dieną</h7>
+                    </div>
+                </div>
+            </a>
+    
+            <a href="">
+                <div class="box-area custom">
+                    <div class="icon-area">
+                        <i class="bi bi-rocket"></i>
+                    </div>
+                    <div class="header-area">
+                        <h6>Premium</h6>
+                    </div>
+                    <div class="desc-area">
+                        <p>Naudokis visomis mūsų paslaugomis visą savaitę!</p>
+                    </div>
+                    <div class="price-area">
+                        <h7>5€ / savaitę</h7>
+                    </div>
+                </div>
+            </a>
+    
+            <a href="">
+                <div class="box-area">
+                    <div class="icon-area">
+                        <i class="bi bi-robot"></i>
+                    </div>
+                    <div class="header-area">
+                        <h6>Ultra</h6>
+                    </div>
+                    <div class="desc-area">
+                        <p>Naudokis visomis mūsų paslaugomis visą mėnesį!</p>
+                    </div>
+                    <div class="price-area">
+                        <h7>10€ / mėnesį</h7>
+                    </div>
+                </div>
+            </a>
+    
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

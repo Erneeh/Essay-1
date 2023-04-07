@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="Subscription backend">
-      <change afterPath="$PROJECT_DIR$/Projektas/.env" afterDir="false" />
+    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="papildytas views.py">
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/payment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/sub.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/subscribe.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/subscribed.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/.env" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/Projektas/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/Projektas/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/static/css/rasiniai.css" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/rasiniai.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/anglu.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/anglu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/cv.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/cv.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/paklausk.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/paklausk.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/perfrazuok.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/perfrazuok.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/rasiniai.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/rasiniai.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,14 +40,15 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/Django_mokymai&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/User/Desktop/Django_mokymai",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Desktop\DjangoPrrojektukas\Projektas\myapp" />
@@ -205,7 +207,19 @@
       <option name="presentableId" value="LOCAL−00023" />
       <updated>1680634338574</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL−00024" summary="Front end fixas">
+      <created>1680717610346</created>
+      <option name="number" value="LOCAL−00024" />
+      <option name="presentableId" value="LOCAL−00024" />
+      <updated>1680717610346</updated>
+    </task>
+    <task id="LOCAL−00025" summary="papildytas views.py">
+      <created>1680806291636</created>
+      <option name="number" value="LOCAL−00025" />
+      <option name="presentableId" value="LOCAL−00025" />
+      <updated>1680806291636</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -255,6 +269,8 @@
     <MESSAGE value="login required services" />
     <MESSAGE value="pataisiau del contacts" />
     <MESSAGE value="Subscription backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Subscription backend" />
+    <MESSAGE value="Front end fixas" />
+    <MESSAGE value="papildytas views.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="papildytas views.py" />
   </component>
 </project>
