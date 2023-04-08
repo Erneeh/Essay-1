@@ -10,6 +10,7 @@ from django.http import HttpResponseRedirect
 from datetime import datetime, timedelta
 
 
+
 def index(request):
     return render(request, "index.html", {})
 
@@ -369,7 +370,7 @@ def subscribe(request):
     def init_payment(request):
         url = 'https://api.paystack.co/transaction/initialize'
         headers = {
-            'Authorization': 'Bearer ' + PAYSTACK_SECRET_KEY,
+            'Authorization': f'Bearer {PAYSTACK_SECRET_KEY}',
             'Content-Type': 'application/json',
             'Accept': 'application/json',
         }
@@ -385,7 +386,6 @@ def subscribe(request):
         return results
 
     initialized = init_payment(request)
-    print(initialized['data']['authorization_url'])
     amount = price / 100
     instance = PayHistory.objects.create(amount=amount, payment_for=membership, user=request.user,
                                          paystack_charge_id=initialized['data']['reference'],
