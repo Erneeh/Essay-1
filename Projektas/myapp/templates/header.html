@@ -36,8 +36,7 @@
         <li><a class="{% if request.path == contacts %} active {% endif %}" href="{% url 'contacts' %}">Kontaktai</a>
         </li>
         {% if user.is_authenticated %}
-        <li><a class="{% if request.path == paskyra %} active {% endif %}" href="{% url 'paskyra' %}">{{
-            user.get_username }}</a></li>
+        <li><a class="{% if request.path == paskyra %} active {% endif %}" href="{% url 'paskyra' %}">{{ user.get_username }}</a></li>
         <li><a href="{% url 'logout' %}">Atsijungti</a></li>
         {% else %}
         <li><a class="{% if request.path == login or request.path == register %} active {% endif %}"
