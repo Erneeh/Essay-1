@@ -22,7 +22,11 @@
                             <h1 class="w-100">Essay.lt - Testų sprendėjas</h1>
                         </div>
                         <div class="col-3 col-lg-2 col-md-2 col-sm-3 headerio-mygtukas-atgal p-3">
-                            <a href="{% url 'services' %}"><button class="p-3">Atgal</button></a>
+                            <a href="{% url 'services' %}">
+                                <button class="btn btn-lg w-100" role="button" type="submit">
+                                    <span>Atgal</span>
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -59,7 +63,9 @@
                                           placeholder="E"></textarea>
                                 <textarea class="w-100" type="text" name="user_inputF"
                                           placeholder="F"></textarea>
-                        <button type="submit" class="btn w-100">Atlikta</button>
+                            <button class="btn btn-lg w-100" role="button" type="submit">
+                                <span>Atlikta</span>
+                            </button>
                         </form>
                     </div>
                     <div class="col col-lg-5 deze-outputas  p-3">
