@@ -6,13 +6,47 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
         <title>Pagrindinis - Essay.lt</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
         {% load bootstrap5 %}
         {% bootstrap_css %}
         {% bootstrap_javascript %}
     </head>
     <body>
-    
+        <main>
+            <div class="container-fluid konteineris1">
+                <div class="container kontainer1">
+                    <div class="container kontainer1-1">
+                        <div class="row kontainer1-1header">
+                            <h1>Rašyk geriau ir greičiau su Essay.lt</h1>
+                        </div>
+                        <br>
+                        <div class="row kontainer1-1desc">
+                            <p>Mūsų AI Essay.lt chat asistentas pasiruošes jums padėti vos per kelias sekundes!</p>
+                        </div>
+                        <Br>
+                        <div class="row kontainer1-1button">
+                            <div class="col-4 col-sm-4 col-lg-3 kontainer1-1button1">
+                                <button class="btn btn-lg w-100" role="button">
+                                    <span>Skaityti
+                                    <i class="bi bi-arrow-down"></i>
+                                  </span>
+                                </button>
+                            </div>
+                            <div class="col-4 col-sm-4 col-lg-3 kontainer1-1button2">
+                                <button class="btn btn-lg w-100" role="button">
+                                    <span>Planai
+                                    <i class="bi bi-arrows-fullscreen"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </body>
 </html>
 {% endblock %}

@@ -10,7 +10,10 @@
   color: white;
 }
 
-
+body {
+    background: linear-gradient(rgb(20, 20, 20), rgb(39, 39, 39));
+    height: 100%;
+}
 
 .kunas {
 	align-items: center;

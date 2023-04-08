@@ -10,7 +10,10 @@
     color: white;
   }
   
-  
+  body {
+    background: linear-gradient(rgb(20, 20, 20), rgb(39, 39, 39));
+    height: 100%;
+}
   
   .kunas {
       align-items: center;
@@ -21,7 +24,7 @@
   }
   
   .wrapper {
-      padding: 40px;
+      padding: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -40,7 +43,7 @@
   .box-area {
     border-radius: 20px;
       width: 350px;
-      margin: 25px;
+      margin: 40px;
       padding: 40px;
       background-color: #1b1b1b;
       transition: all 0.6s ease-in-out;
@@ -67,7 +70,8 @@
   }
   .box-area:hover {
       background-color: #1b1b1b;
-      box-shadow: 0 0 25px #29fd53;
+      box-shadow: #29fd53 5px 5px, #29fd53c0 10px 10px, #29fd5380 15px 15px, #29fd5367 20px 20px, #29fd532d 25px 25px;
+      
   }
   .box-area:hover i {
       color: #29fd53;
@@ -87,3 +91,4 @@
       text-decoration: none;
       color: white;
   }
+
