@@ -1,173 +1,159 @@
-*, body {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -moz-osx-font-smoothing: grayscale;
+* {
+    box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
-    max-height: 200%;
-    background-color: #1b1b1b;
-    overflow-x: hidden;
-}
-body {
-    background-color: #1b1b1b;
-}
-.kunas {
-    height: fit-content;
-    min-height: 100%;
-    background-color: #1b1b1b;
-    padding-top: 15vh;
+main {
+
 }
 
-.isorinis-konteineris {
-    height: fit-content;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-}
+
 
 .konteineris {
-    height: fit-content;
+    background-color: #1b1b1b;
+}
+.deze-forma {
+    border-radius: 10px;
+    background: linear-gradient(45deg,#888888a8,#e0e0e0,#8d8d8da8);
+    animation: animate 15s infinite alternate;
+    background-size: 200%;
+    box-shadow: 30px 30px 30px rgba(0, 0, 0, 0.3);
+}
+@keyframes animate {
+    0%{
+        background-position: left;
+    }
+    100%{
+        background-position: right;
+    }
+}
+.deze-headeris {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+.deze-headeris-background {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background: #1b1b1b;
+    margin-left: 10px;
+    border: 3px solid #cec8c8a8;
+}
+.headerio-title, .headerio-title h1 {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+.headerio-mygtukas-atgal {
+    align-items: start;
     background-color: transparent;
 }
 
-.isorinis-row-konteineris {
+.headerio-mygtukas-atgal button{
+    border-radius: 10px;
+    border: 1px solid #8d8d8da8;
+    background-color: #1b1b1b;
+    color: white;
+    cursor: pointer;
+}
+.headerio-mygtukas-atgal button:hover {
+    color: #29fd53;
+    transition: 0.5s;
+    border: 1px solid #29fd53;
+}
+.headerio-title h1 {
+    color: white;
+}
+
+.deze-input-output {
     background-color: transparent;
 }
 
-.inner-konteineris {
-    height: fit-content;
-    background-color: transparent;
+.deze-inputas, .deze-outputas {
+    border-radius: 10px;
+    background: #1b1b1b;
+    margin: 10px;
+    border: 3px solid #cec8c8a8;
 }
+
+.deze-inputas textarea, .deze-outputas textarea {
+    border-radius: 10px;
+    border: 2px solid #cec8c8a8;
+    padding-top: 8px;
+    padding-left: 8px;
+    color: black;
+    background-color: #e0e0e0;
+}
+.deze-inputas textarea:focus, .deze-outputas textarea:focus {
+    transition: 0.5s;
+    border: 1px solid #29fd53;
+}
+
+.deze-inputas textarea {
+    min-height: 4vh;
+    max-height: 30vh;
+}
+
+
+.deze-inputas select {
+    border-radius: 10px;
+    border: 1px solid #cec8c8a8;
+    color: black;
+    background-color: #e0e0e0;
+    padding-left: 8px;
+    font-size: large;
+}
+.deze-inputas select option {
+    border-radius: 10px;
+    border: 1px solid #cec8c8a8;
+    padding-top: 8px;
+    padding-left: 8px;
+    color: black;
+    background-color: #e0e0e0;
+}
+.deze-inputas button {
+    border-radius: 10px;
+    border: 1px solid #8d8d8da8;
+    background-color: #1b1b1b;
+    color: white;
+    cursor: pointer;
+}
+
+.deze-inputas button:hover {
+    color: #29fd53;
+    transition: 0.5s;
+    border: 1px solid #29fd53;
+}
+
+
+.deze-inputas h3 {
+    background-color: transparent;
+    color: white;
+}
+.deze-outputas h3 {
+    background-color: transparent;
+    color: white;
+    text-align: center;
+}
+.deze-outputas hr {
+  margin: 2em;
+  font-size: 24%;
+  color: black;
+  height: 2px;
+}
+
+.outputas {
+    color: white;
+    background-color: transparent;
+    margin: 0;
+    display: flex;
+    justify-content: top;
+    align-items: left;
+}
+
 form {
     background-color: transparent;
-}
-
-.row-konteineris {
-    background-color: transparent;
-}
-
-
-.title-container {
-    height: 10vh;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    display: flex;
-    border-radius: 50%;
-    background-color: transparent;
-}
-.title-container h1 {
-    height: 5vh;
-    text-align: center;
-    color: white;
-    background-color: transparent;
-}
-
-.input-container1 {
-    height: 20vh;
-    justify-content: start;
-    align-items: center;
-    margin: auto;
-    display: flex;
-    background-color: transparent;
-}
-.input-container1-motyvacinis {
-    height: 15vh;
-    background-color: transparent;
-}
-
-.input-container1-label textarea {
-    background-color: white;
-    padding-left: 10px;
-    padding-top: 10px;
-    max-height: 10vh;
-    font-size: 1.2rem;
-}
-
-.input-container1-paklausk {
-    color: white;
-    background-color: transparent;
-}
-.input-container1-paklausk label h3, .input-container1-paklausk label {
-    background-color: transparent;
-}
-
-.input-container1-paklausk textarea {
-    background-color: white;
-    padding-left: 10px;
-    padding-top: 10px;
-    max-height: 10vh;
-    font-size: 1.2rem;
-}
-
-
-.input-container1-label {
-    color: white;
-    background-color: transparent;
-}
-.input-container1-label label{
-    background-color: transparent;
-}
-.input-container1-label label h3 {
-    background-color: transparent;
-}
-
-.input-container1-select {
-    background-color: transparent;
-}
-
-.input-container1-select select {
-    height: 5vh;
-    font-size: 1.5rem;
-    width: 40%;
-    background-color: white;
-
-}
-
-.input-container1-select select option {
-    background-color: white;
-}
-
-.input
-
-.input-container2 {
-    height: 35vh;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    display: flex;
-    background-color: transparent;
-}
-.input-container2 textarea {
-    height: 25vh;
-    font-size: 1.5rem;
-    padding-left: 10px;
-    padding-top: 10px;
-    background-color: white;
-    max-height: 35vh;
-}
-
-.button-container {
-    height: 10vh;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    display: flex;
-    background-color: transparent;
-}
-.button-container button {
-    height: 5vh;
-}
-
-.output-container {
-    background-color: white;
-    height: fit-content;
-    min-height: 35vh;
-    border: 2px solid black;
 }

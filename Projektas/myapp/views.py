@@ -425,6 +425,7 @@ def call_back_url(request):
     payment_info = verify_payment(reference)
 
     # sita vieta del kazko neveikia, reikia patikrint ar response zodyno toksai
+    print(payment_info)
     if payment_info and payment_info['data']['status'] == 'success':
         PayHistory.objects.filter(paystack_charge_id=reference).update(paid=True)
         new_payment = PayHistory.objects.get(paystack_charge_id=reference)
