@@ -393,7 +393,6 @@ def subscribe(request):
     UserMembership.objects.filter(user=instance.user).update(reference_code=initialized['data']['reference'])
     link = initialized['data']['authorization_url']
     return HttpResponseRedirect(link)
-    return render(request, 'subscribe.html')
 
 
 def call_back_url(request):
