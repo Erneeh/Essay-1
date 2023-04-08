@@ -18,6 +18,7 @@
   .kunas {
       align-items: center;
       justify-content: center;
+      min-height: 100vh;
       font-family: poppins;
       text-align: center;
       color: white;

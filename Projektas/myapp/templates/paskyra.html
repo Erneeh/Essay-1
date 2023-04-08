@@ -1,13 +1,15 @@
 {% extends "header.html" %}
 {% block content %}
 <h1>Sveiki, {{ user.username }}, čia yra jūsų paskyros puslapis</h1>
-<h1>Vardas: {{ user.first_name }}</h1>
-<h1>Pavarde: {{ user.last_name }}</h1>
-<h1>El.pastas: {{ user.email }}</h1>
-<h1>Sukurta paskyra: {{ user.date_joined }}</h1>
+<br>
+<h1>Jusų el.paštas: {{ user.email }}</h1>
+<br>
+<h1>Paskyra sukurta: {{ user.date_joined }}</h1>
+<br>
 <h1>
-    Plan: {{ sub.user_membership.membership }}
+    Jusu planas: {{ sub.user_membership.membership }}
 </h1>
+<br>
 <a href="{% url 'password_reset' %}">Pasikeisti slaptažodį</a>
 
 {% endblock %}
