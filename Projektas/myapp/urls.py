@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.conf.urls import url
+from .views import CreateCheckoutSessionView
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
@@ -28,9 +29,9 @@ urlpatterns = [
                        name='password_reset_confirm'),
                   path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
                   path('planai/', views.subscription, name='planai'),
-                  path('subscribe/', views.subscribe, name='subscribe'),
-                  path('subscribed/', views.subscribed, name='subscribed'),
-                  path('sub/', views.end_sub, name='sub'),
-                  path('payment/', views.call_back_url, name='payment'),
+
+                  path('create-checkout-session/<pk>/', CreateCheckoutSessionView.as_view(), name='create-checkout-session'),
+                  path('cancel/', views.cancel, name='cancel'),
+                  path('success/', views.success, name='success'),
 
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

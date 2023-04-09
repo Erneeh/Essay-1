@@ -7,7 +7,12 @@
 <h1>Paskyra sukurta: {{ user.date_joined }}</h1>
 <br>
 <h1>
-    Jusu planas: {{ sub.user_membership.membership }}
+    Jusu planas:
+    {% if sub.user_membership.membership %}
+    {{ sub.user_membership.membership }}
+    {% else %}
+    Jus neturrite jokio plano <a href="{% url 'planai' %}">Planai</a>
+    {% endif %}
 </h1>
 <br>
 <a href="{% url 'password_reset' %}">Pasikeisti slaptažodį</a>

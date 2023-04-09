@@ -4,10 +4,9 @@ import openai, os
 from dotenv import load_dotenv
 from django.shortcuts import render, redirect
 from .models import *
-import requests
-import json
-from django.http import HttpResponseRedirect
-from datetime import datetime, timedelta
+from django.views import View
+import stripe
+from django.http import JsonResponse
 
 
 def index(request):
@@ -42,8 +41,6 @@ def register(request):
                     return redirect("register")
                 else:
                     new_user = User.objects.create_user(uname, email, password)
-                    get_membership = Membership.objects.get(membership_type="Free")
-                    UserMembership.objects.create(user=new_user, membership=get_membership)
                     new_user.save()
 
                     return redirect('login')
@@ -333,113 +330,164 @@ def paskyra(request):
     if request.user.is_authenticated:
         try:
             user_membership = UserMembership.objects.get(user=request.user)
-        except UserMembership.DoesNotExist:
-            return redirect('planai')
-        subscriptionas = Subscription.objects.filter(user_membership=user_membership).exists()
-        if subscriptionas == False:
-            return redirect('planai')
-        else:
             subscriptions = Subscription.objects.get(user_membership=user_membership)
             return render(request, "paskyra.html", {'sub': subscriptions})
+        except UserMembership.DoesNotExist:
+            subscriptions = "Neturite jokio plano"
+            return render(request, "paskyra.html", {'sub': "Neturite jokio plano"})
+
     else:
         return loginas(request)
 
 
-def subscription(request):
-    return render(request, "planai.html")
+#
+#
+# def end_sub(request):
+#     return render(request, "sub.html")
+#
+#
+# PAYSTACK_SECRET_KEY = os.getenv("PAYSTACK_SECRET_KEY", None)
+#
+#
+# def subscribe(request):
+#     plan = request.GET.get('sub_plan')
+#     fetch_membership = Membership.objects.filter(membership_type=plan).exists()
+#     if fetch_membership == False:
+#         return redirect('subscribe')
+#     membership = Membership.objects.get(membership_type=plan)
+#     price = float(
+#         membership.price) * 100
+#     price = int(price)
+#
+#     def init_payment(request):
+#         url = 'https://api.paystack.co/transaction/initialize'
+#         headers = {
+#             'Authorization': 'Bearer ' + PAYSTACK_SECRET_KEY,
+#             'Content-Type': 'application/json',
+#             'Accept': 'application/json',
+#         }
+#         datum = {
+#             "email": request.user.email,
+#             "amount": price
+#         }
+#         x = requests.post(url, data=json.dumps(datum), headers=headers)
+#         if x.status_code != 200:
+#             return str(x.status_code)
+#
+#         results = x.json()
+#         return results
+#
+#     initialized = init_payment(request)
+#     print(initialized['data']['authorization_url'])
+#     amount = price / 100
+#     instance = PayHistory.objects.create(amount=amount, payment_for=membership, user=request.user,
+#                                          paystack_charge_id=initialized['data']['reference'],
+#                                          paystack_access_code=initialized['data']['access_code'])
+#     UserMembership.objects.filter(user=instance.user).update(reference_code=initialized['data']['reference'])
+#     link = initialized['data']['authorization_url']
+#     return HttpResponseRedirect(link)
+
+#
+# def call_back_url(request):
+#     reference = request.GET.get('reference')
+#     check_pay = PayHistory.objects.filter(paystack_charge_id=reference).exists()
+#     if not check_pay:
+#         print("Error")
+#         return render(request, 'error.html')
+#
+#     payment = PayHistory.objects.get(paystack_charge_id=reference)
+#     print("pirmas")
+#
+#     def verify_payment(reference):
+#         url = f"https://api.paystack.co/transaction/verify/{reference}"
+#         headers = {
+#             'Authorization': f'Bearer {PAYSTACK_SECRET_KEY}',
+#             'Content-Type': 'application/json',
+#             'Accept': 'application/json',
+#         }
+#         data = {
+#             "reference": payment.paystack_charge_id
+#         }
+#         response = requests.get(url, data=json.dumps(data), headers=headers)
+#         if response.status_code != 200:
+#             return None
+#
+#         results = response.json()
+#         return results
+#
+#     payment_info = verify_payment(reference)
+#
+#     # sita vieta del kazko neveikia, reikia patikrint ar response zodyno toksai
+#     print(payment_info)
+#     if payment_info and payment_info['data']['status'] == 'success':
+#         PayHistory.objects.filter(paystack_charge_id=reference).update(paid=True)
+#         new_payment = PayHistory.objects.get(paystack_charge_id=reference)
+#         instance = Membership.objects.get(id=new_payment.payment_for.id)
+#         user_membership = UserMembership.objects.get(reference_code=reference)
+#         user_membership.membership = instance
+#         user_membership.save()
+#         Subscription.objects.create(
+#             user_membership=user_membership,
+#             expires_in=datetime.now().date() + timedelta(days=instance.duration)
+#         )
+#         print("Redirecting to subscribed page...")
+#         return redirect('subscribed')
+#     else:
+#         return render(request, 'error.html')
+#
+#
+#
+# def subscribed(request):
+#     return render(request, 'subscribed.html')
 
 
-def end_sub(request):
-    return render(request, "sub.html")
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", None)
 
 
-PAYSTACK_SECRET_KEY = os.getenv("PAYSTACK_SECRET_KEY", None)
-
-
-def subscribe(request):
-    plan = request.GET.get('sub_plan')
-    fetch_membership = Membership.objects.filter(membership_type=plan).exists()
-    if fetch_membership == False:
-        return redirect('subscribe')
-    membership = Membership.objects.get(membership_type=plan)
-    price = float(
-        membership.price) * 100
-    price = int(price)
-
-    def init_payment(request):
-        url = 'https://api.paystack.co/transaction/initialize'
-        headers = {
-            'Authorization': 'Bearer ' + PAYSTACK_SECRET_KEY,
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        }
-        datum = {
-            "email": request.user.email,
-            "amount": price
-        }
-        x = requests.post(url, data=json.dumps(datum), headers=headers)
-        if x.status_code != 200:
-            return str(x.status_code)
-
-        results = x.json()
-        return results
-
-    initialized = init_payment(request)
-    print(initialized['data']['authorization_url'])
-    amount = price / 100
-    instance = PayHistory.objects.create(amount=amount, payment_for=membership, user=request.user,
-                                         paystack_charge_id=initialized['data']['reference'],
-                                         paystack_access_code=initialized['data']['access_code'])
-    UserMembership.objects.filter(user=instance.user).update(reference_code=initialized['data']['reference'])
-    link = initialized['data']['authorization_url']
-    return HttpResponseRedirect(link)
-
-
-def call_back_url(request):
-    reference = request.GET.get('reference')
-    check_pay = PayHistory.objects.filter(paystack_charge_id=reference).exists()
-    if not check_pay:
-        print("Error")
-        return render(request, 'error.html')
-
-    payment = PayHistory.objects.get(paystack_charge_id=reference)
-
-    def verify_payment(reference):
-        url = f"https://api.paystack.co/transaction/verify/{reference}"
-        headers = {
-            'Authorization': f'Bearer {PAYSTACK_SECRET_KEY}',
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        }
-        data = {
-            "reference": payment.paystack_charge_id
-        }
-        response = requests.get(url, data=json.dumps(data), headers=headers)
-        if response.status_code != 200:
-            return None
-
-        results = response.json()
-        return results
-
-    payment_info = verify_payment(reference)
-
-    # sita vieta del kazko neveikia, reikia patikrint ar response zodyno toksai
-    print(payment_info)
-    if payment_info and payment_info['data']['status'] == 'success':
-        PayHistory.objects.filter(paystack_charge_id=reference).update(paid=True)
-        new_payment = PayHistory.objects.get(paystack_charge_id=reference)
-        instance = Membership.objects.get(id=new_payment.payment_for.id)
-        user_membership = UserMembership.objects.get(reference_code=reference)
-        user_membership.membership = instance
-        user_membership.save()
-        Subscription.objects.create(
-            user_membership=user_membership,
-            expires_in=datetime.now().date() + timedelta(days=instance.duration)
+class CreateCheckoutSessionView(View):
+    def post(self, request, *args, **kwargs):
+        product_id = self.kwargs["pk"]
+        product = Membership.objects.get(id=product_id)
+        YOUR_DOMAIN = "http://127.0.0.1:9000"
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[
+                {
+                    'price_data': {
+                        'currency': 'usd',
+                        'unit_amount': product.price,
+                        'product_data': {
+                            'name': product.name,
+                        },
+                    },
+                    'quantity': 1,
+                },
+            ],
+            metadata={
+                "product_id": product.id
+            },
+            mode='payment',
+            success_url=YOUR_DOMAIN + '/success/',
+            cancel_url=YOUR_DOMAIN + '/cancel/',
         )
-        return redirect('subscribed')
-    else:
-        return render(request, 'error.html')
+        return JsonResponse({
+            'id': checkout_session.id
+        })
 
 
-def subscribed(request):
-    return render(request, 'subscribed.html')
+def subscription(request):
+    produktas2 = Membership.objects.get(membership_type="Basic")
+    raktas = STRIPE_SECRET_KEY
+    context = {
+        "raktas": raktas,
+        "produktasbasic": produktas2,
+    }
+    return render(request, "planai_test.html", context=context)
+
+
+def success(request):
+    return render(request, "success.html", {})
+
+
+def cancel(request):
+    return render(request, "cancel.html", {})

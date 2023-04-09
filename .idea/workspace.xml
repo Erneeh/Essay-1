@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="pakeitimai minimalus">
+    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="komitas kuris pakeis pasauli">
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/cancel.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/planai_test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/success.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/.env" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/Projektas/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/Projektas/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/static/css/chatbot.css" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/chatbot.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/static/css/forma.css" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/forma.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/planai.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/planai.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/registration/password_reset_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/paskyra.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/paskyra.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/payment.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/planai.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/planai_tikrasis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/sub.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/subscribe.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/subscribed.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +236,13 @@
       <option name="presentableId" value="LOCAL−00027" />
       <updated>1680963751849</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL−00028" summary="komitas kuris pakeis pasauli">
+      <created>1680965576136</created>
+      <option name="number" value="LOCAL−00028" />
+      <option name="presentableId" value="LOCAL−00028" />
+      <updated>1680965576136</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -255,7 +269,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Login/Register" />
     <MESSAGE value="Register patvarkytas, bet reikia dar tvarkyt" />
     <MESSAGE value="Update" />
     <MESSAGE value="Register Error alerts" />
@@ -280,6 +293,7 @@
     <MESSAGE value="papildytas views.py" />
     <MESSAGE value="front-end papildymas is kolegos" />
     <MESSAGE value="pakeitimai minimalus" />
-    <option name="LAST_COMMIT_MESSAGE" value="pakeitimai minimalus" />
+    <MESSAGE value="komitas kuris pakeis pasauli" />
+    <option name="LAST_COMMIT_MESSAGE" value="komitas kuris pakeis pasauli" />
   </component>
 </project>
