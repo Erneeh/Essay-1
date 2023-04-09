@@ -10,8 +10,9 @@ body {
 
 .konteineris {
     background: linear-gradient(rgb(20, 20, 20), rgb(39, 39, 39));
-    min-height: 100vh;
+    min-height: 90vh;
     padding-top: 50px;
+    padding-bottom: 50px;
 }
 .deze-forma {
     border-radius: 10px;
@@ -161,7 +162,7 @@ body {
   justify-content: center;
   line-height: 1em;
   max-width: 100%;
-  min-width: 140px;
+  min-width: 100px;
   padding: 3px;
   text-decoration: none;
   user-select: none;
