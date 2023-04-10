@@ -1,12 +1,13 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import openai, os
+from django.core.serializers import json
+from django.urls import reverse_lazy, reverse
+from django.views.generic import CreateView, DetailView, ListView
 from dotenv import load_dotenv
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
-from django.views import View
-import stripe
-from django.http import JsonResponse
+import json
 
 
 def index(request):
@@ -440,54 +441,5 @@ def paskyra(request):
 # def subscribed(request):
 #     return render(request, 'subscribed.html')
 
-
-STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", None)
-
-
-class CreateCheckoutSessionView(View):
-    def post(self, request, *args, **kwargs):
-        product_id = self.kwargs["pk"]
-        product = Membership.objects.get(id=product_id)
-        YOUR_DOMAIN = "http://127.0.0.1:9000"
-        checkout_session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
-            line_items=[
-                {
-                    'price_data': {
-                        'currency': 'usd',
-                        'unit_amount': product.price,
-                        'product_data': {
-                            'name': product.name,
-                        },
-                    },
-                    'quantity': 1,
-                },
-            ],
-            metadata={
-                "product_id": product.id
-            },
-            mode='payment',
-            success_url=YOUR_DOMAIN + '/success/',
-            cancel_url=YOUR_DOMAIN + '/cancel/',
-        )
-        return JsonResponse({
-            'id': checkout_session.id
-        })
-
-
 def subscription(request):
-    produktas2 = Membership.objects.get(membership_type="Basic")
-    raktas = STRIPE_SECRET_KEY
-    context = {
-        "raktas": raktas,
-        "produktasbasic": produktas2,
-    }
-    return render(request, "planai_test.html", context=context)
-
-
-def success(request):
-    return render(request, "success.html", {})
-
-
-def cancel(request):
-    return render(request, "cancel.html", {})
+    return render(request, "planai_tikrasis.html", {})

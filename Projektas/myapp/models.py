@@ -7,19 +7,6 @@ from datetime import timedelta
 from datetime import datetime as dt
 
 
-class PayHistory(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    paystack_charge_id = models.CharField(max_length=100, default='', blank=True)
-    paystack_access_code = models.CharField(max_length=100, default='', blank=True)
-    payment_for = models.ForeignKey('Membership', on_delete=models.SET_NULL, null=True)
-    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    paid = models.BooleanField(default=False)
-    date = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.user.username
-
-
 class Membership(models.Model):
     MEMBERSHIP_CHOICES = (
         ('Ultra', 'Ultra'),
@@ -32,7 +19,7 @@ class Membership(models.Model):
         ('Week', 'Week'),
         ('Months', 'Months'),
     )
-    slug = models.SlugField(null=True, blank=True)
+    slug = models.SlugField(default=None)
     membership_type = models.CharField(choices=MEMBERSHIP_CHOICES, default='Free', max_length=30)
     duration = models.PositiveIntegerField(default=7)
     duration_period = models.CharField(max_length=100, default='Day', choices=PERIOD_DURATION)

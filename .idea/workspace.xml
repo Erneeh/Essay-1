@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="komitas kuris pakeis pasauli">
-      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/cancel.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/planai_test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projektas/myapp/templates/success.html" afterDir="false" />
+    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="komitas i kuri nekreipkt demesio!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/.env" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/Projektas/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/Projektas/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/Projektas/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/Projektas/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/paskyra.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/paskyra.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/payment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/planai.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/planai_tikrasis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/sub.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/subscribe.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/subscribed.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/cancel.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/planai_test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/success.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +239,13 @@
       <option name="presentableId" value="LOCAL−00028" />
       <updated>1680965576136</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL−00029" summary="komitas i kuri nekreipkt demesio!">
+      <created>1681062741768</created>
+      <option name="number" value="LOCAL−00029" />
+      <option name="presentableId" value="LOCAL−00029" />
+      <updated>1681062741768</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -256,7 +259,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Erneeh-master" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -269,7 +272,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Register patvarkytas, bet reikia dar tvarkyt" />
     <MESSAGE value="Update" />
     <MESSAGE value="Register Error alerts" />
     <MESSAGE value="Front-end changes" />
@@ -294,6 +296,7 @@
     <MESSAGE value="front-end papildymas is kolegos" />
     <MESSAGE value="pakeitimai minimalus" />
     <MESSAGE value="komitas kuris pakeis pasauli" />
-    <option name="LAST_COMMIT_MESSAGE" value="komitas kuris pakeis pasauli" />
+    <MESSAGE value="komitas i kuri nekreipkt demesio!" />
+    <option name="LAST_COMMIT_MESSAGE" value="komitas i kuri nekreipkt demesio!" />
   </component>
 </project>

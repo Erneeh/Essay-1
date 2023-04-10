@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.conf.urls import url
-from .views import CreateCheckoutSessionView
+from .views import *
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
@@ -30,8 +30,5 @@ urlpatterns = [
                   path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
                   path('planai/', views.subscription, name='planai'),
 
-                  path('create-checkout-session/<pk>/', CreateCheckoutSessionView.as_view(), name='create-checkout-session'),
-                  path('cancel/', views.cancel, name='cancel'),
-                  path('success/', views.success, name='success'),
 
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
