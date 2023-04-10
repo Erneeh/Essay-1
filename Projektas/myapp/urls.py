@@ -28,7 +28,12 @@ urlpatterns = [
                   path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(),
                        name='password_reset_confirm'),
                   path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
-                  path('planai/', views.subscription, name='planai'),
+                  # path('planai/', views.subscription, name='planai'),
 
+                  path('cancel/', CancelView.as_view(), name='cancel'),
+                  path('success/', SuccessView.as_view(), name='success'),
+                  path('create-checkout-session/<pk>/', CreateCheckoutSessionView.as_view(),
+                       name='create-checkout-session'),
+                  path('planai/', ProductLandingPageView.as_view(), name='planai'),
 
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

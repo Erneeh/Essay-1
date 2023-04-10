@@ -23,11 +23,19 @@ class Membership(models.Model):
     membership_type = models.CharField(choices=MEMBERSHIP_CHOICES, default='Free', max_length=30)
     duration = models.PositiveIntegerField(default=7)
     duration_period = models.CharField(max_length=100, default='Day', choices=PERIOD_DURATION)
-    price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    stripe_product_id = models.CharField(max_length=30, default='')
 
     def __str__(self):
         return self.membership_type
 
+
+class Price(models.Model):
+    product = models.ForeignKey(Membership, on_delete=models.CASCADE)
+    stripe_price_id = models.CharField(max_length=100)
+    price = models.IntegerField(default=0)
+
+    def get_display_price(self):
+        return "{0:.2f}".format(self.price / 100)
 
 class UserMembership(models.Model):
     user = models.OneToOneField(User, related_name='user_membership', on_delete=models.CASCADE)

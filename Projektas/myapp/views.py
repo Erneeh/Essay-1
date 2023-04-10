@@ -1,9 +1,11 @@
+from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import openai, os
 from django.core.serializers import json
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, DetailView, ListView
+from django.views import View
+from django.views.generic import CreateView, DetailView, ListView, TemplateView
 from dotenv import load_dotenv
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
@@ -441,5 +443,60 @@ def paskyra(request):
 # def subscribed(request):
 #     return render(request, 'subscribed.html')
 
-def subscription(request):
-    return render(request, "planai_tikrasis.html", {})
+
+# def subscription(request):
+#     return render(request, "planai_tikrasis.html", {})
+
+
+import stripe
+from django.http import JsonResponse
+
+YOUR_DOMAIN = "http://127.0.0.1:9000/"
+
+
+class ProductLandingPageView(TemplateView):
+    template_name = "checkout.html"
+
+    def get_context_data(self, **kwargs):
+        product = Membership.objects.get(membership_type="Basic")
+        prices = Price.objects.filter(product=product)
+        context = super(ProductLandingPageView,
+                        self).get_context_data(**kwargs)
+        context.update({
+            "product": product,
+            "prices": prices
+        })
+        return context
+
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+
+class CreateCheckoutSessionView(View):
+    def post(self, request, *args, **kwargs):
+        price = Price.objects.get(id=self.kwargs["pk"])
+        domain = "http://127.0.0.1:9000"
+        if settings.DEBUG:
+            domain = "http://127.0.0.1:9000"
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[
+                {
+                    'price': price.stripe_price_id,
+                    'quantity': 1,
+                },
+            ],
+            mode='subscription',
+            success_url=domain + '/success/',
+            cancel_url=domain + '/cancel/',
+        )
+        return redirect(checkout_session.url)
+
+
+class SuccessView(TemplateView):
+
+    template_name = "success.html"
+
+
+class CancelView(TemplateView):
+    template_name = "cancel.html"
