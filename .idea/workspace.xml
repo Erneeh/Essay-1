@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="front-end papildymas is kolegos">
+    <list default="true" id="7e7a269d-a6bc-465b-aacd-e93661dcf05b" name="Changes" comment="Kolkas va taip va">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projektas/.env" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/static/css/planai.css" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/static/css/planai.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projektas/myapp/templates/paskyra.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projektas/myapp/templates/paskyra.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +216,31 @@
       <option name="presentableId" value="LOCAL−00026" />
       <updated>1680962016311</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL−00027" summary="pakeitimai minimalus">
+      <created>1680963751849</created>
+      <option name="number" value="LOCAL−00027" />
+      <option name="presentableId" value="LOCAL−00027" />
+      <updated>1680963751849</updated>
+    </task>
+    <task id="LOCAL−00028" summary="komitas kuris pakeis pasauli">
+      <created>1680965576136</created>
+      <option name="number" value="LOCAL−00028" />
+      <option name="presentableId" value="LOCAL−00028" />
+      <updated>1680965576136</updated>
+    </task>
+    <task id="LOCAL−00029" summary="komitas i kuri nekreipkt demesio!">
+      <created>1681062741768</created>
+      <option name="number" value="LOCAL−00029" />
+      <option name="presentableId" value="LOCAL−00029" />
+      <updated>1681062741768</updated>
+    </task>
+    <task id="LOCAL−00030" summary="Kolkas va taip va">
+      <created>1681125130648</created>
+      <option name="number" value="LOCAL−00030" />
+      <option name="presentableId" value="LOCAL−00030" />
+      <updated>1681125130648</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -235,7 +254,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Erneeh-master" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -248,10 +267,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Startas" />
-    <MESSAGE value="Login/Register" />
-    <MESSAGE value="Register patvarkytas, bet reikia dar tvarkyt" />
-    <MESSAGE value="Update" />
     <MESSAGE value="Register Error alerts" />
     <MESSAGE value="Front-end changes" />
     <MESSAGE value="Openai integration" />
@@ -273,6 +288,10 @@
     <MESSAGE value="Front end fixas" />
     <MESSAGE value="papildytas views.py" />
     <MESSAGE value="front-end papildymas is kolegos" />
-    <option name="LAST_COMMIT_MESSAGE" value="front-end papildymas is kolegos" />
+    <MESSAGE value="pakeitimai minimalus" />
+    <MESSAGE value="komitas kuris pakeis pasauli" />
+    <MESSAGE value="komitas i kuri nekreipkt demesio!" />
+    <MESSAGE value="Kolkas va taip va" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kolkas va taip va" />
   </component>
 </project>

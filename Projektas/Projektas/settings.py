@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+from setuptools._distutils.command.config import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -119,3 +121,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51MuidGHAaHEFy9pUtHiT2Ne923zDhmc7gEnf0GCdZY0t0I8hgyFKK5evdMne1Bq5rtQssDCOdaa1M1WSqgjBKDmj00TY2IcgUF'
+STRIPE_SECRET_KEY = 'sk_test_51MuidGHAaHEFy9pUlXedXyAcuiclHPTD6BhKbYgOQbR2AIz3snajL1w7pyGeFzTwHlYcX69318InEJ6KRV125H1o00PWLKfCZc'

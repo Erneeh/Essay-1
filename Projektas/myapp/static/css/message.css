@@ -1,0 +1,68 @@
+body {
+    background: linear-gradient(rgb(20, 20, 20), rgb(39, 39, 39));
+    height: 100vh;
+}
+.isorinis-konteineris {
+    align-items: center;
+    justify-content: center;
+    height: 60%;
+    display: flex;
+    margin: 0;
+}
+
+.konteineris, .konteineris1 {
+    align-items: center;
+    justify-content: center;
+    font-family: poppins;
+    text-align: center;
+    color: white;
+}
+.konteineris h1, .konteineris i {
+    font-size: 30px;
+    font-weight: 800;
+    color: darkred
+}
+.konteineris1 h1, .konteineris1 i {
+    font-size: 30px;
+    font-weight: 800;
+    color: green
+}
+.konteineris1 a {
+    align-items: center;
+    background-image: linear-gradient(144deg, #29fd53 , #4ee4b7 50%, #2b8ab6);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(71, 209, 59, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    width: 100%;
+    min-width: 140px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.konteineris1 a:hover, .konteineris1 a:active {
+    outline: 0;
+}
+.konteineris1 a span {
+    background-color: white;
+    padding: 16px 24px;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    transition: 300ms;
+    color: black;
+}
+.konteineris1 a:hover span {
+    background: transparent;
+    color: white;
+}

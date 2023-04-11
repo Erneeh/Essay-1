@@ -41,7 +41,7 @@
             </div>
         </a>
 
-        <a href="https://buy.stripe.com/test_28o17U5Qn0NYfrq9AA">
+        <a href="{% url 'basic' %}">
             <div class="box-area">
                 <div class="icon-area">
                     <i class="bi bi-cash"></i>
@@ -58,7 +58,7 @@
             </div>
         </a>
 
-        <a href="http://127.0.0.1:8000/subscribe/?sub_plan=Premium">
+        <a href="{% url 'premium' %}">
             <div class="box-area custom">
                 <div class="icon-area">
                     <i class="bi bi-rocket"></i>
@@ -75,7 +75,7 @@
             </div>
         </a>
 
-        <a href="http://127.0.0.1:8000/subscribe/?sub_plan=Ultra">
+        <a href="{% url 'ultra' %}">
             <div class="box-area">
                 <div class="icon-area">
                     <i class="bi bi-robot"></i>
@@ -91,7 +91,7 @@
                 </div>
             </div>
         </a>
-        
+
     </div>
 </div>
 </body>
