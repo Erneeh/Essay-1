@@ -37,6 +37,10 @@ class Price(models.Model):
     def get_display_price(self):
         return "{0:.2f}".format(self.price / 100)
 
+    def __str__(self):
+        return self.product.membership_type
+
+
 class UserMembership(models.Model):
     user = models.OneToOneField(User, related_name='user_membership', on_delete=models.CASCADE)
     membership = models.ForeignKey(Membership, related_name='user_membership', on_delete=models.SET_NULL, null=True)

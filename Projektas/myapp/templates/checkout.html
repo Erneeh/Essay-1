@@ -3,7 +3,7 @@
 
 <head>
     <title>Buy cool new product</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="">
     <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
     <script src="https://js.stripe.com/v3/"></script>
 </head>
@@ -14,10 +14,20 @@
             <div class="description">
                 <h3>{{ product.membership_type }}</h3>
                 <hr />
+                {% if product.membership_type == 'Basic' %}
+                Cia Basic
+                {% endif %}
+                {% if product.membership_type == 'Premium' %}
+                Cia Premium
+                {% endif %}
+                {% if product.membership_type == 'Ultra' %}
+                Cia Ultra
+                {% endif %}
+
                 {% for price in prices %}
 
                 <div>
-                    <h5>${{ price.get_display_price }}</h5>
+                    <h5>{{ price.get_display_price }}</h5>
                     <form action="{% url 'create-checkout-session' price.id %}" method="POST">
                         {% csrf_token %}
                         <button type="submit">Checkout</button>

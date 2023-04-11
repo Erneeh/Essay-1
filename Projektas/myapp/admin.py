@@ -14,3 +14,4 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Membership, ProductAdmin)
 admin.site.register(UserMembership)
 admin.site.register(Subscription)
+admin.site.register(Price)

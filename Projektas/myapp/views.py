@@ -2,14 +2,12 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import openai, os
-from django.core.serializers import json
-from django.urls import reverse_lazy, reverse
 from django.views import View
-from django.views.generic import CreateView, DetailView, ListView, TemplateView
+from django.views.generic import TemplateView
 from dotenv import load_dotenv
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from .models import *
-import json
+import stripe
 
 
 def index(request):
@@ -444,23 +442,51 @@ def paskyra(request):
 #     return render(request, 'subscribed.html')
 
 
-# def subscription(request):
-#     return render(request, "planai_tikrasis.html", {})
+def subscription(request):
+    return render(request, "planai_tikrasis.html", {})
 
 
-import stripe
-from django.http import JsonResponse
 
 YOUR_DOMAIN = "http://127.0.0.1:9000/"
 
 
-class ProductLandingPageView(TemplateView):
+class ProductLandingPageViewBasic(TemplateView):
     template_name = "checkout.html"
 
     def get_context_data(self, **kwargs):
         product = Membership.objects.get(membership_type="Basic")
         prices = Price.objects.filter(product=product)
-        context = super(ProductLandingPageView,
+        context = super(ProductLandingPageViewBasic,
+                        self).get_context_data(**kwargs)
+        context.update({
+            "product": product,
+            "prices": prices
+        })
+        return context
+
+
+class ProductLandingPageViewPremium(TemplateView):
+    template_name = "checkout.html"
+
+    def get_context_data(self, **kwargs):
+        product = Membership.objects.get(membership_type="Premium")
+        prices = Price.objects.filter(product=product)
+        context = super(ProductLandingPageViewPremium,
+                        self).get_context_data(**kwargs)
+        context.update({
+            "product": product,
+            "prices": prices
+        })
+        return context
+
+
+class ProductLandingPageViewUltra(TemplateView):
+    template_name = "checkout.html"
+
+    def get_context_data(self, **kwargs):
+        product = Membership.objects.get(membership_type="Ultra")
+        prices = Price.objects.filter(product=product)
+        context = super(ProductLandingPageViewUltra,
                         self).get_context_data(**kwargs)
         context.update({
             "product": product,
@@ -473,28 +499,31 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 class CreateCheckoutSessionView(View):
+
     def post(self, request, *args, **kwargs):
-        price = Price.objects.get(id=self.kwargs["pk"])
-        domain = "http://127.0.0.1:9000"
-        if settings.DEBUG:
+        if request.user.is_authenticated:
+            price = Price.objects.get(id=self.kwargs["pk"])
             domain = "http://127.0.0.1:9000"
-        checkout_session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
-            line_items=[
-                {
-                    'price': price.stripe_price_id,
-                    'quantity': 1,
-                },
-            ],
-            mode='subscription',
-            success_url=domain + '/success/',
-            cancel_url=domain + '/cancel/',
-        )
-        return redirect(checkout_session.url)
+            if settings.DEBUG:
+                domain = "http://127.0.0.1:9000"
+            checkout_session = stripe.checkout.Session.create(
+                payment_method_types=['card'],
+                line_items=[
+                    {
+                        'price': price.stripe_price_id,
+                        'quantity': 1,
+                    },
+                ],
+                mode='subscription',
+                success_url=domain + '/success/',
+                cancel_url=domain + '/cancel/',
+            )
+            return redirect(checkout_session.url)
+        else:
+            return redirect('login')
 
 
 class SuccessView(TemplateView):
-
     template_name = "success.html"
 
 
