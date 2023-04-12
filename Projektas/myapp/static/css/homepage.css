@@ -19,9 +19,8 @@ body {
 
 .kontainer1-1header h1 {
     color: white;
-    font-size: 8vmin;
     text-align: center;
-    font-weight: 800;
+    font-weight: 700;
     width: 100%;
 }
 .kontainer1-1desc {
@@ -31,7 +30,6 @@ body {
 .kontainer1-1desc p {
     text-align: center;
     color: white;
-    font-size: 6vmin;
     opacity: 0.5;
     background-color: transparent;
     width: 80%;
@@ -203,7 +201,7 @@ background-color: rgb(2, 2, 14);
 
 .paslaugu-box-area:hover {
     background-color: #1b1b1b;
-    box-shadow: #29fd53 5px 5px, #29fd53c0 10px 10px, #29fd5380 15px 15px, #29fd5367 20px 20px, #29fd532d 25px 25px;
+    box-shadow: 0 0 25px #29fd53;
 }
 .paslaugu-box-area:hover i {
     color: #29fd53;
