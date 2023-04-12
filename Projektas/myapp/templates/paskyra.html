@@ -1,15 +1,124 @@
+
 {% extends "header.html" %}
 {% block content %}
-<h1>Sveiki, {{ user.username }}, čia yra jūsų paskyros puslapis</h1>
-<br>
-<h1>Jusų el.paštas: {{ user.email }}</h1>
-<br>
-<h1>Paskyra sukurta: {{ user.date_joined }}</h1>
-<br>
-<h1>
-    Jusu planas: {{ sub.user_membership.membership }}
-</h1>
-<br>
-<a href="{% url 'password_reset' %}">Pasikeisti slaptažodį</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mokėjimas atliktas- Essay.lt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/paskyra.css' %}">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
 
+<body>
+    <div class="container-fluid konteineris">
+        <div class="container-border">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 justify-content-evenly">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 kaires-konteineris">
+                        <div class="row">
+                            <div class="form-div col-12">
+                                <div class="form-container">
+                                    <ul class="nav flex-column navbaras">
+                                        <li class="nav-item">
+                                          <a class="nav-link active" aria-current="page" href="#">Paskyros informacija</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" href="#">Slaptazodzio pakeitimas</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" href="#">link</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link disabled">Disabled</a>
+                                        </li>
+                                      </ul>
+                                </div>
+                            </div>
+                            <div class="form-container-button1">
+                                <a href="{% url 'index' %}">
+                                    <button class="btn btn-lg w-100">
+                                        <span>
+                                            Atgal
+                                        </span>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-7 desines-konteineris">
+                        <div class="row">
+                            <div class="col-12 col-md-6 form-div">
+                                <div class="form-container">
+                                    <label for="email">El. pašto adresas*</label>
+                                    <input class="w-100" type="email" id="email" placeholder="Įrašykite el.pašto adresą" value="{{ user.email }}" required>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6 form-div">
+                                <div class="form-container">
+                                    <label for="uname">Vardas*</label>
+                                    <input class="w-100" type="text" id="uname" placeholder="Įrašykite savo vardą" value="{{ user.username }}" required>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6 form-div">
+                                <div class="form-container">
+                                    <label for="pass">Slaptažodis</label>
+                                    <input class="w-100" type="password" id="pass" placeholder="Įrašykite savo slaptažodį" required>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6 form-div">
+                                <div class="form-container">
+                                    <label for="pass">Pakartokite slaptažodi</label>
+                                    <input class="w-100" type="password" id="pass" placeholder="Pakartokite" required>
+                                </div>
+                            </div>
+
+                            <div class="col-12 form-div">
+                                <div class="form-container">
+                                    <h3 class="w-100">
+                                    Jūsų planas:
+                                    {% if sub.user_membership.membership %}
+                                    {{ sub.user_membership.membership }}
+                                    {% else %}
+                                   Jūs neturite jokio plano, planus galite rasti paspaudus <a href="{% url 'planai' %}">čia</a>
+                                    {% endif %}
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <div class="col-12 form-div">
+                                <div class="form-container-button2">
+                                    <button class="btn btn-lg w-100">
+                                        <span>
+                                            Išsaugoti
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+                    
+</body>
+</html>
 {% endblock %}
