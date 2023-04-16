@@ -89,8 +89,11 @@ def paklausk(request):
             chatbot_response = None
             if request.method == "POST":
                 kontentas = "You are Lithuanian named 'Essay.lt žinių meistras," \
-                            " try to provide information as accurately" \
-                            " as possible in Lithuania language, you only can answer question," \
+                            "you only speak Lithuania language, if user tries to " \
+                            "communicate in other language you don't understand" \
+                            "created by Dovydas Skauminas and Ernestas Undzėnas" \
+                            "try to provide information as accurately" \
+                            "as possible in Lithuania language, you only can answer short questions," \
                             "you can't write essays, peoms, sonnets, or any other literature"
 
                 openai.api_key = api_key
@@ -104,7 +107,7 @@ def paklausk(request):
                         {"role": "user", "content": user_input}
                     ],
 
-                    temperature=0.7
+                    temperature=0.5
                 )
                 chatbot_response = response['choices'][0]['message']['content']
 
@@ -123,11 +126,17 @@ def rasiniai(request):
             if request.method == "POST":
                 openai.api_key = api_key
                 user_input = request.POST.get("user_input")
-                kontentas = "You are Lithuanian writer named 'Essay.lt rašytojas' created by Dovydas Skauminas " \
+                kontentas = "You are Lithuanian writer named 'Essay.lt rašytojas' created by Dovydas Skauminas and" \
+                            " Ernestas Undzėnas, " \
                             "try to provide information as accurately as possible in Lithuania language," \
-                            " you dont answer other questions that are not related to anything else, only Lithuanian writing " \
-                            "essays/letters/poems etc.. if someone asks you if you can do math or physics or English writings" \
-                            "any other subject not related to Lithuanian literature and writing, you reply with a straight no! No other subject not related to Lithunian language writings! You dont answer other language messages"
+                            " you dont answer other questions that are not related " \
+                            "to anything else, only Lithuanian writing " \
+                            "essays/letters/poems etc.. if someone asks you if you can " \
+                            "do math or physics or English writings" \
+                            "any other subject not related to Lithuanian " \
+                            "literature and writing, you reply with a straight no! No other subject " \
+                            "not related to Lithunian language writings! You dont answer other language messages" \
+
 
                 response = openai.ChatCompletion.create(
                     model='gpt-3.5-turbo',
@@ -137,7 +146,7 @@ def rasiniai(request):
                         {"role": "user", "content": user_input}
                     ],
 
-                    temperature=0.3
+                    temperature=0.2
                 )
                 chatbot_response = response['choices'][0]['message']['content']
 
@@ -156,11 +165,14 @@ def anglu(request):
             if request.method == "POST":
                 openai.api_key = api_key
                 user_input = request.POST.get("user_input")
-                kontentas = "You are English writer named 'Essay.lt Writer' created by Dovydas Skauminas " \
+                kontentas = "You are English writer named 'Essay.lt Writer' " \
+                            "created by Dovydas Skauminas and Ernestas Undzėnas " \
                             "try to provide information as accurately as possible in English language," \
-                            " you dont answer other questions that are not related to anything else, only English writings " \
+                            " you dont answer other questions that are not related to anything else," \
+                            " only English writings " \
                             "essays/letters/poems etc.. if someone asks you if you can do math or physics or " \
-                            "any other subject not related to english literature and writing, you reply with a straight no!"
+                            "any other subject not related to english literature and writing," \
+                            " you reply with a straight no!"
 
                 response = openai.ChatCompletion.create(
                     model='gpt-3.5-turbo',
@@ -190,12 +202,15 @@ def motyvacinis(request):
                 if request.POST.get("user_input") and request.POST.get("user_input2") and request.POST.get(
                         "user_input3"):
                     openai.api_key = api_key
-                    user_input = "Parašyk darbo laišką darbdaviui, " + "turiu " + request.POST.get(
-                        "user_input") + request.POST.get(
-                        "user_input2") + "srityje, " "pretenduoju į " + request.POST.get("user_input3") + "poziciją"
-                    kontentas = "You are Lithuanian cover letter writer, you can only build cover letter for job application" \
+                    user_input = "Parašyk darbo laišką darbdaviui, turiu " + request.POST.get(
+                        "user_input") + " " + request.POST.get(
+                        "user_input2") + " pretenduoju į " + request.POST.get("user_input3")
+                    kontentas = "You are Essay.lt Lithuanian cover letter writer, " \
+                                "created by Dovydas Skauminas and Ernestas Undzėnas" \
+                                "you can only build cover letter for job application" \
                                 "try to provide information as accurately as possible in Lithuania language," \
-                                "you dont answer other questions that are not related to anything that is not cover letter" \
+                                "you dont answer other questions that are" \
+                                "not related to anything that is not cover letter" \
                                 "if someone asks you if you can do math or physics, essays, sonnets or " \
                                 "any other subject that is not cover letter, you reply with a straight no!"
 
@@ -207,7 +222,7 @@ def motyvacinis(request):
                             {"role": "user", "content": user_input}
                         ],
 
-                        temperature=0.4
+                        temperature=0.5
                     )
                     chatbot_response = response['choices'][0]['message']['content']
                 else:
@@ -494,8 +509,8 @@ def stripe_webhook(request):
         payment_intent = session["payment_intent"]
 
         send_mail(
-            subject="Here is your product",
-            message=f"Thanks for your purchase. The URL is",
+            subject="Essay.lt",
+            message=f"Sveikiname įsigijus Essay.lt prenumeratą",
             recipient_list=[customer_email],
             from_email="your@email.com"
         )
