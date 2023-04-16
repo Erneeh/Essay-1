@@ -249,9 +249,12 @@ def testas(request):
                 user_input = f"The subject is {request.POST.get('dalykas')} the question is " \
                              f"{request.POST.get('user_input')}, posibble answers is {answers}"
 
-                kontentas = "You are Lithuanian knowlage master, you can only answer a right answer by given possible answers" \
+                kontentas = "You are Lithuanian knowlage master, " \
+                            "created by Dovydas Skauminas and Ernestas Undzėnas" \
+                            "you can only answer a right answer by given possible answers" \
                             "try to provide information as accurately as possible in Lithuania language," \
-                            "you dont answer other questions that are not related to anything that is not selected subject" \
+                            "you dont answer other questions that are not related " \
+                            "to anything that is not selected subject" \
                             "if someone asks you if you can write essays, sonnets or " \
                             "any other poetry, you reply with a straight no, and " \
                             "if you dont understand the questions say that you dont understand the question"
@@ -264,7 +267,7 @@ def testas(request):
                         {"role": "user", "content": user_input}
                     ],
 
-                    temperature=0.4
+                    temperature=0.2
                 )
                 chatbot_response = response['choices'][0]['message']['content']
 
@@ -282,11 +285,14 @@ def perfrazuok(request):
             chatbot_response = None
             if request.method == "POST":
                 kontentas = "You are Lithuanian paraphraser named 'Essay.lt perfrazuotojas'," \
+                            "created by Dovydas Skauminas and Ernestas Undzėnas" \
                             "you can only to paraphrase a user entered text," \
                             "paraphrase text only in Lithuania language," \
-                            "you dont answer other questions that are not related to anything that is not to paraphrase text" \
+                            "you dont answer other questions that are not related to " \
+                            "anything that is not to paraphrase text" \
                             "if someone asks you if you can do math or physics or " \
-                            "any other subject that is not related to literature and writing, you reply with a straight no!" \
+                            "any other subject that is not related to literature and writing," \
+                            " you reply with a straight no!" \
                             "you only can paraphrase the given text"
 
                 openai.api_key = api_key
@@ -318,6 +324,7 @@ def cv(request):
             chatbot_response = None
             if request.method == "POST":
                 kontentas = "You are Lithuanian cv writer named 'Essay.lt CV specialistas'," \
+                            "created by Dovydas Skauminas and Ernestas Undzėnas" \
                             "you can only write cv by given information a user a user has entered," \
                             "write CV only in Lithuania language," \
                             "you dont answer other questions that are not related to anything that is not related to CV" \
@@ -348,34 +355,37 @@ def cv(request):
 
 
 def klaidos(request):
-    chatbot_response = None
-    if request.method == "POST":
-        kontentas = "You are Lithuanian writer named 'Essay.lt Klaidų taisytojas'," \
-                    "you can only correct given text a user a user has entered," \
-                    "correct text only in Lithuania language," \
-                    "you dont answer other questions that are not related to anything that is not related to " \
-                    "grammar and punctuation" \
-                    "if someone asks you if you can do math or physics or " \
-                    "any other subject or question that " \
-                    "is not related to correcting a text, you reply with a straight no!"
+    if request.user.is_authenticated:
+        chatbot_response = None
+        if request.method == "POST":
+            kontentas = "You are Lithuanian writer named 'Essay.lt Klaidų taisytojas'," \
+                        "you can only correct given text a user a user has entered," \
+                        "correct text only in Lithuania language," \
+                        "you dont answer other questions that are not related to anything that is not related to " \
+                        "grammar and punctuation" \
+                        "if someone asks you if you can do math or physics or " \
+                        "any other subject or question that " \
+                        "is not related to correcting a text, you reply with a straight no!"
 
-        openai.api_key = api_key
-        user_input = request.POST.get("user_input")
+            openai.api_key = api_key
+            user_input = request.POST.get("user_input")
 
-        response = openai.ChatCompletion.create(
-            model='gpt-3.5-turbo',
-            messages=[
-                {"role": "system",
-                 "content": kontentas},
-                {"role": "user", "content": user_input}
-            ],
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                    {"role": "system",
+                     "content": kontentas},
+                    {"role": "user", "content": user_input}
+                ],
 
-            temperature=0.7
-        )
+                temperature=0.7
+            )
 
-        chatbot_response = response['choices'][0]['message']['content']
+            chatbot_response = response['choices'][0]['message']['content']
 
-    return render(request, "klaidos.html", {"response": chatbot_response})
+        return render(request, "klaidos.html", {"response": chatbot_response})
+    else:
+        return loginas(request)
 
 
 def paskyra(request):
