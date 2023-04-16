@@ -24,6 +24,13 @@ def services(request):
 
 
 def contacts(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        kontentas = request.POST.get('content')
+        Kontaktai.objects.create(user=name, elpastas=email, komentaras=kontentas)
+        atsakymas = "Dekojame, su jumis susisieks mūsų komanda el.paštu"
+        return render(request, "contacts.html", {"atsakymas": atsakymas})
     return render(request, "contacts.html", {})
 
 
@@ -135,8 +142,8 @@ def rasiniai(request):
                             "do math or physics or English writings" \
                             "any other subject not related to Lithuanian " \
                             "literature and writing, you reply with a straight no! No other subject " \
-                            "not related to Lithunian language writings! You dont answer other language messages" \
-
+                            "not related to Lithunian language writings! " \
+                            "You dont answer other language messages"
 
                 response = openai.ChatCompletion.create(
                     model='gpt-3.5-turbo',
@@ -491,9 +498,6 @@ class SuccessView(TemplateView):
 
 class CancelView(TemplateView):
     template_name = "cancel.html"
-
-
-from django.contrib.auth import get_user_model
 
 
 @csrf_exempt

@@ -70,3 +70,12 @@ def update_active(sender, instance, *args, **kwargs):
     if instance.expires_in < dt.today().date():
         subscription = Subscription.objects.get(id=instance.id)
         subscription.delete()
+
+
+class Kontaktai(models.Model):
+    user = models.TextField(max_length=20)
+    elpastas = models.EmailField(max_length=30)
+    komentaras = models.TextField(max_length=400)
+
+    def __str__(self):
+        return self.elpastas

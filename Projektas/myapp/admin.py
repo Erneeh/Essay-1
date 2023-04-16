@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Membership, UserMembership, Subscription, Price
+from .models import Membership, UserMembership, Subscription, Price, Kontaktai
 
 
 class PriceInlineAdmin(admin.TabularInline):
@@ -15,3 +15,4 @@ admin.site.register(Membership, ProductAdmin)
 admin.site.register(UserMembership)
 admin.site.register(Subscription)
 admin.site.register(Price)
+admin.site.register(Kontaktai)
