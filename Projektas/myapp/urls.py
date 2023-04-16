@@ -1,10 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
-from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-from django.conf.urls import url
 from .views import *
 
 urlpatterns = [
@@ -37,5 +35,7 @@ urlpatterns = [
                   path('basic/', ProductLandingPageViewBasic.as_view(), name='basic'),
                   path('premium/', ProductLandingPageViewPremium.as_view(), name='premium'),
                   path('ultra/', ProductLandingPageViewUltra.as_view(), name='ultra'),
+                  path('webhooks/stripe', views.stripe_webhook, name='stripe-webhook'),
+                  path('klaidos/', views.klaidos, name='klaidos'),
 
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

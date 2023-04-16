@@ -1,8 +1,13 @@
+from datetime import datetime
+
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import openai, os
+from django.core.mail import send_mail
+from django.http import HttpResponse
 from django.views import View
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 from dotenv import load_dotenv
 from django.shortcuts import render, redirect
@@ -327,6 +332,37 @@ def cv(request):
         return loginas(request)
 
 
+def klaidos(request):
+    chatbot_response = None
+    if request.method == "POST":
+        kontentas = "You are Lithuanian writer named 'Essay.lt Klaidų taisytojas'," \
+                    "you can only correct given text a user a user has entered," \
+                    "correct text only in Lithuania language," \
+                    "you dont answer other questions that are not related to anything that is not related to " \
+                    "grammar and punctuation" \
+                    "if someone asks you if you can do math or physics or " \
+                    "any other subject or question that " \
+                    "is not related to correcting a text, you reply with a straight no!"
+
+        openai.api_key = api_key
+        user_input = request.POST.get("user_input")
+
+        response = openai.ChatCompletion.create(
+            model='gpt-3.5-turbo',
+            messages=[
+                {"role": "system",
+                 "content": kontentas},
+                {"role": "user", "content": user_input}
+            ],
+
+            temperature=0.7
+        )
+
+        chatbot_response = response['choices'][0]['message']['content']
+
+    return render(request, "klaidos.html", {"response": chatbot_response})
+
+
 def paskyra(request):
     if request.user.is_authenticated:
         try:
@@ -341,110 +377,8 @@ def paskyra(request):
         return loginas(request)
 
 
-#
-#
-# def end_sub(request):
-#     return render(request, "sub.html")
-#
-#
-# PAYSTACK_SECRET_KEY = os.getenv("PAYSTACK_SECRET_KEY", None)
-#
-#
-# def subscribe(request):
-#     plan = request.GET.get('sub_plan')
-#     fetch_membership = Membership.objects.filter(membership_type=plan).exists()
-#     if fetch_membership == False:
-#         return redirect('subscribe')
-#     membership = Membership.objects.get(membership_type=plan)
-#     price = float(
-#         membership.price) * 100
-#     price = int(price)
-#
-#     def init_payment(request):
-#         url = 'https://api.paystack.co/transaction/initialize'
-#         headers = {
-#             'Authorization': 'Bearer ' + PAYSTACK_SECRET_KEY,
-#             'Content-Type': 'application/json',
-#             'Accept': 'application/json',
-#         }
-#         datum = {
-#             "email": request.user.email,
-#             "amount": price
-#         }
-#         x = requests.post(url, data=json.dumps(datum), headers=headers)
-#         if x.status_code != 200:
-#             return str(x.status_code)
-#
-#         results = x.json()
-#         return results
-#
-#     initialized = init_payment(request)
-#     print(initialized['data']['authorization_url'])
-#     amount = price / 100
-#     instance = PayHistory.objects.create(amount=amount, payment_for=membership, user=request.user,
-#                                          paystack_charge_id=initialized['data']['reference'],
-#                                          paystack_access_code=initialized['data']['access_code'])
-#     UserMembership.objects.filter(user=instance.user).update(reference_code=initialized['data']['reference'])
-#     link = initialized['data']['authorization_url']
-#     return HttpResponseRedirect(link)
-
-#
-# def call_back_url(request):
-#     reference = request.GET.get('reference')
-#     check_pay = PayHistory.objects.filter(paystack_charge_id=reference).exists()
-#     if not check_pay:
-#         print("Error")
-#         return render(request, 'error.html')
-#
-#     payment = PayHistory.objects.get(paystack_charge_id=reference)
-#     print("pirmas")
-#
-#     def verify_payment(reference):
-#         url = f"https://api.paystack.co/transaction/verify/{reference}"
-#         headers = {
-#             'Authorization': f'Bearer {PAYSTACK_SECRET_KEY}',
-#             'Content-Type': 'application/json',
-#             'Accept': 'application/json',
-#         }
-#         data = {
-#             "reference": payment.paystack_charge_id
-#         }
-#         response = requests.get(url, data=json.dumps(data), headers=headers)
-#         if response.status_code != 200:
-#             return None
-#
-#         results = response.json()
-#         return results
-#
-#     payment_info = verify_payment(reference)
-#
-#     # sita vieta del kazko neveikia, reikia patikrint ar response zodyno toksai
-#     print(payment_info)
-#     if payment_info and payment_info['data']['status'] == 'success':
-#         PayHistory.objects.filter(paystack_charge_id=reference).update(paid=True)
-#         new_payment = PayHistory.objects.get(paystack_charge_id=reference)
-#         instance = Membership.objects.get(id=new_payment.payment_for.id)
-#         user_membership = UserMembership.objects.get(reference_code=reference)
-#         user_membership.membership = instance
-#         user_membership.save()
-#         Subscription.objects.create(
-#             user_membership=user_membership,
-#             expires_in=datetime.now().date() + timedelta(days=instance.duration)
-#         )
-#         print("Redirecting to subscribed page...")
-#         return redirect('subscribed')
-#     else:
-#         return render(request, 'error.html')
-#
-#
-#
-# def subscribed(request):
-#     return render(request, 'subscribed.html')
-
-
 def subscription(request):
     return render(request, "planai_tikrasis.html", {})
-
 
 
 YOUR_DOMAIN = "http://127.0.0.1:9000/"
@@ -514,6 +448,9 @@ class CreateCheckoutSessionView(View):
                         'quantity': 1,
                     },
                 ],
+                metadata={
+                    "product_id": price.id
+                },
                 mode='subscription',
                 success_url=domain + '/success/',
                 cancel_url=domain + '/cancel/',
@@ -529,3 +466,55 @@ class SuccessView(TemplateView):
 
 class CancelView(TemplateView):
     template_name = "cancel.html"
+
+
+from django.contrib.auth import get_user_model
+
+
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
+        )
+    except ValueError as e:
+        # Invalid payload
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        return HttpResponse(status=400)
+
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        customer_email = session["customer_details"]["email"]
+        payment_intent = session["payment_intent"]
+
+        send_mail(
+            subject="Here is your product",
+            message=f"Thanks for your purchase. The URL is",
+            recipient_list=[customer_email],
+            from_email="your@email.com"
+        )
+        product_id = event['data']['object']['metadata']['product_id']
+        user = User.objects.get(email=customer_email)
+
+        if product_id == "4":
+            stripe_id = "prod_Nh9mwHtUcJsbvq"
+            membership = Membership.objects.get(stripe_product_id=stripe_id)
+            UserMembership.objects.create(user=user, membership=membership)
+
+        if product_id == "2":
+            stripe_id = "prod_Nh1IV67AvAo8cm"
+            membership = Membership.objects.get(stripe_product_id=stripe_id)
+            UserMembership.objects.create(user=user, membership=membership)
+
+        if product_id == "1":
+            stripe_id = "prod_NgpRWY2fwCPAvo"
+            membership = Membership.objects.get(stripe_product_id=stripe_id)
+            UserMembership.objects.create(user=user, membership=membership)
+
+    return HttpResponse(status=200)

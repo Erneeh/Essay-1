@@ -18,10 +18,10 @@
   .kunas {
       align-items: center;
       justify-content: center;
+      min-height: 100vh;
       font-family: poppins;
       text-align: center;
       color: white;
-      min-height: 100vh;
   }
 
   .wrapper {
@@ -39,7 +39,7 @@
     flex-wrap: wrap;
   }
   .wrappertop h1 {
-    font-size: 60px;
+
   }
   .box-area {
     border-radius: 20px;

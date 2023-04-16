@@ -59,6 +59,7 @@ nav ul li a.active,
 nav ul li a:hover{
   color: #29fd53;
   background: #1b1b1b;
+  text-shadow: rgba(71, 209, 59, 0.2) 0 0 15px;;
 }
 nav .menu-btn i{
   color: #fff;

@@ -1,15 +1,44 @@
+{% extends "header.html" %}
+{% block content %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Thanks for your order!</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mokėjimas atliktas- Essay.lt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/message.css' %}">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 </head>
 <body>
-<section>
-    <p>
-        Sekmingai uzsisakete plana
-        <a href="{% url 'services' %}">Paslaugos</a>.
-    </p>
-</section>
+<div class="container-fluid isorinis-konteineris">
+    <div class="container konteineris1">
+        <div class="row konteineris1-button">
+            <div class="row icon-area">
+                <i class="bi bi-check-circle display-2"></i>
+            </div>
+
+            <div class="row text-area">
+                <h1 class="display-2">Užsakymas sėkmingas!</h1>
+            </div>
+
+            <div class="row button-area">
+                <button class="btn btn-lg" onclick="window.location='/'">
+                    <span>Sugrįžti</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
+{% endblock %}
