@@ -44,7 +44,6 @@ class Price(models.Model):
 class UserMembership(models.Model):
     user = models.OneToOneField(User, related_name='user_membership', on_delete=models.CASCADE)
     membership = models.ForeignKey(Membership, related_name='user_membership', on_delete=models.SET_NULL, null=True)
-    reference_code = models.CharField(max_length=100, default='', blank=True)
 
     def __str__(self):
         return self.user.username
@@ -71,3 +70,12 @@ def update_active(sender, instance, *args, **kwargs):
     if instance.expires_in < dt.today().date():
         subscription = Subscription.objects.get(id=instance.id)
         subscription.delete()
+
+
+class Kontaktai(models.Model):
+    user = models.TextField(max_length=20)
+    elpastas = models.EmailField(max_length=30)
+    komentaras = models.TextField(max_length=400)
+
+    def __str__(self):
+        return self.elpastas

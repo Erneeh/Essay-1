@@ -9,12 +9,12 @@
     padding: 0 30px;
     color: white;
   }
-  
+
   body {
     background: linear-gradient(rgb(20, 20, 20), rgb(39, 39, 39));
     height: 100%;
 }
-  
+
   .kunas {
       align-items: center;
       justify-content: center;
@@ -23,7 +23,7 @@
       text-align: center;
       color: white;
   }
-  
+
   .wrapper {
       padding: 50px;
       display: flex;
@@ -72,7 +72,7 @@
   .box-area:hover {
       background-color: #1b1b1b;
       box-shadow: #29fd53 5px 5px, #29fd53c0 10px 10px, #29fd5380 15px 15px, #29fd5367 20px 20px, #29fd532d 25px 25px;
-      
+
   }
   .box-area:hover i {
       color: #29fd53;
@@ -87,9 +87,8 @@
   .box-area:hover p {
       color: #29fd53;
   }
-  
+
   .wrapper a, .wrapper a:hover {
       text-decoration: none;
       color: white;
   }
-

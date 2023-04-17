@@ -1,4 +1,3 @@
-
 {% extends "header.html" %}
 {% block content %}
 <!DOCTYPE html>
@@ -22,92 +21,95 @@
 </head>
 
 <body>
-    <div class="container-fluid konteineris">
-        <div class="container-border">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 justify-content-evenly">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 kaires-konteineris">
-                        <div class="row">
-                            <div class="form-div col-12">
-                                <div class="form-container">
-                                    <ul class="nav flex-column navbaras">
-                                        <li class="nav-item">
-                                          <a class="nav-link active" aria-current="page" href="#">Paskyros informacija</a>
-                                        </li>
-                                        <li class="nav-item">
-                                          <a class="nav-link" href="#">Slaptazodzio pakeitimas</a>
-                                        </li>
-                                        <li class="nav-item">
-                                          <a class="nav-link" href="#">link</a>
-                                        </li>
-                                        <li class="nav-item">
-                                          <a class="nav-link disabled">Disabled</a>
-                                        </li>
-                                      </ul>
-                                </div>
+<div class="container-fluid konteineris">
+    <div class="container-border">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 justify-content-evenly">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 kaires-konteineris">
+                    <div class="row">
+                        <div class="form-div col-12">
+                            <div class="form-container">
+                                <ul class="nav flex-column navbaras">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">Paskyros informacija</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Slaptazodzio pakeitimas</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">link</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled">Disabled</a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="form-container-button1">
-                                <a href="{% url 'index' %}">
-                                    <button class="btn btn-lg w-100">
+                        </div>
+                        <div class="form-container-button1">
+                            <a href="{% url 'index' %}">
+                                <button class="btn btn-lg w-100">
                                         <span>
                                             Atgal
                                         </span>
-                                    </button>
-                                </a>
-                            </div>
+                                </button>
+                            </a>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-7 desines-konteineris">
-                        <div class="row">
-                            <div class="col-12 col-md-6 form-div">
-                                <div class="form-container">
-                                    <label for="email">El. pašto adresas*</label>
-                                    <input class="w-100" type="email" id="email" placeholder="Įrašykite el.pašto adresą" value="{{ user.email }}" required>
-                                </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-7 desines-konteineris">
+                    <div class="row">
+                        <div class="col-12 col-md-6 form-div">
+                            <div class="form-container">
+                                <label for="email">El. pašto adresas*</label>
+                                <input class="w-100" type="email" id="email" placeholder="Įrašykite el.pašto adresą"
+                                       value="{{ user.email }}" required>
                             </div>
+                        </div>
 
-                            <div class="col-12 col-md-6 form-div">
-                                <div class="form-container">
-                                    <label for="uname">Vardas*</label>
-                                    <input class="w-100" type="text" id="uname" placeholder="Įrašykite savo vardą" value="{{ user.username }}" required>
-                                </div>
+                        <div class="col-12 col-md-6 form-div">
+                            <div class="form-container">
+                                <label for="uname">Vardas*</label>
+                                <input class="w-100" type="text" id="uname" placeholder="Įrašykite savo vardą"
+                                       value="{{ user.username }}" required>
                             </div>
+                        </div>
 
-                            <div class="col-12 col-md-6 form-div">
-                                <div class="form-container">
-                                    <label for="pass">Slaptažodis</label>
-                                    <input class="w-100" type="password" id="pass" placeholder="Įrašykite savo slaptažodį" required>
-                                </div>
+                        <div class="col-12 col-md-6 form-div">
+                            <div class="form-container">
+                                <label for="pass">Slaptažodis</label>
+                                <input class="w-100" type="password" id="pass" placeholder="Įrašykite savo slaptažodį"
+                                       required>
                             </div>
+                        </div>
 
-                            <div class="col-12 col-md-6 form-div">
-                                <div class="form-container">
-                                    <label for="pass">Pakartokite slaptažodi</label>
-                                    <input class="w-100" type="password" id="pass" placeholder="Pakartokite" required>
-                                </div>
+                        <div class="col-12 col-md-6 form-div">
+                            <div class="form-container">
+                                <label for="pass">Pakartokite slaptažodi</label>
+                                <input class="w-100" type="password" id="pass" placeholder="Pakartokite" required>
                             </div>
+                        </div>
 
-                            <div class="col-12 form-div">
-                                <div class="form-container">
-                                    <h3 class="w-100">
+                        <div class="col-12 form-div">
+                            <div class="form-container">
+                                <h3 class="w-100">
                                     Jūsų planas:
                                     {% if sub.user_membership.membership %}
                                     {{ sub.user_membership.membership }}
                                     {% else %}
-                                   Jūs neturite jokio plano, planus galite rasti paspaudus <a href="{% url 'planai' %}">čia</a>
+                                    Jūs neturite jokio plano, planus galite rasti paspaudus <a
+                                        href="{% url 'planai' %}">čia</a>
                                     {% endif %}
-                                    </h3>
-                                </div>
+                                </h3>
                             </div>
+                        </div>
 
-                            <div class="col-12 form-div">
-                                <div class="form-container-button2">
-                                    <button class="btn btn-lg w-100">
+                        <div class="col-12 form-div">
+                            <div class="form-container-button2">
+                                <button class="btn btn-lg w-100">
                                         <span>
                                             Išsaugoti
                                         </span>
-                                    </button>
-                                </div>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -115,10 +117,9 @@
             </div>
         </div>
     </div>
+</div>
 
 
-    
-                    
 </body>
 </html>
 {% endblock %}

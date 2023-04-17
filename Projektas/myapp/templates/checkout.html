@@ -20,36 +20,36 @@
     {% bootstrap_javascript %}
 </head>
 <body>
-    <section class="kunas">
-        <div class="wrapper">
-            <div class="box-area">
-                <h3>{{ product.membership_type }}</h3>
-                <hr />
-                {% if product.membership_type == 'Basic' %}
-                Cia Basic
-                {% endif %}
-                {% if product.membership_type == 'Premium' %}
-                Cia Premium
-                {% endif %}
-                {% if product.membership_type == 'Ultra' %}
-                Cia Ultra
-                {% endif %}
+<section class="kunas">
+    <h1>Įspėjimas- įsigijant prenumeratą būtina naudoti tokį pati el.pašto adresą</h1>
+    <div class="wrapper">
+        <div class="box-area">
+            <h3>{{ product.membership_type }}</h3>
+            <hr/>
+            {% if product.membership_type == 'Basic' %}
+            Cia Basic
+            {% endif %}
+            {% if product.membership_type == 'Premium' %}
+            Cia Premium
+            {% endif %}
+            {% if product.membership_type == 'Ultra' %}
+            Cia Ultra
+            {% endif %}
 
-                {% for price in prices %}
+            {% for price in prices %}
 
-                <div>
-                    <h5>{{ price.get_display_price }}</h5>
-                    <form action="{% url 'create-checkout-session' price.id %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit">Checkout</button>
-                    </form>
-                </div>
-
-                {% endfor %}
+            <div>
+                <h5>{{ price.get_display_price }}</h5>
+                <form action="{% url 'create-checkout-session' price.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">Checkout</button>
+                </form>
             </div>
+
+            {% endfor %}
         </div>
-    </section>
+    </div>
+</section>
 </body>
 </html>
 {% endblock %}
-

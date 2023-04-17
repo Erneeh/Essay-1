@@ -1,11 +1,9 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
-from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-from django.urls import re_path as url
-
+from .views import *
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
@@ -30,12 +28,14 @@ urlpatterns = [
                   path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
                   path('planai/', views.subscription, name='planai'),
 
-                  path('cancel/', views.CancelView.as_view(), name='cancel'),
-                  path('success/', views.SuccessView.as_view(), name='success'),
-                  path('create-checkout-session/<pk>/', views.CreateCheckoutSessionView.as_view(),
+                  path('cancel/', CancelView.as_view(), name='cancel'),
+                  path('success/', SuccessView.as_view(), name='success'),
+                  path('create-checkout-session/<pk>/', CreateCheckoutSessionView.as_view(),
                        name='create-checkout-session'),
-                  path('basic/', views.ProductLandingPageViewBasic.as_view(), name='basic'),
-                  path('premium/', views.ProductLandingPageViewPremium.as_view(), name='premium'),
-                  path('ultra/', views.ProductLandingPageViewUltra.as_view(), name='ultra'),
+                  path('basic/', ProductLandingPageViewBasic.as_view(), name='basic'),
+                  path('premium/', ProductLandingPageViewPremium.as_view(), name='premium'),
+                  path('ultra/', ProductLandingPageViewUltra.as_view(), name='ultra'),
+                  path('webhooks/stripe', views.stripe_webhook, name='stripe-webhook'),
+                  path('klaidos/', views.klaidos, name='klaidos'),
 
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

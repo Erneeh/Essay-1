@@ -19,74 +19,73 @@
     {% bootstrap_javascript %}
 </head>
 <body>
-    <main>
-        <form action="" method="POST" class="requires-validation">
-          {% csrf_token %}
-          <div class="container-fluid konteineris">
+<main>
+    <form action="" method="POST" class="requires-validation">
+        {% csrf_token %}
+        <div class="container-fluid konteineris">
             <div class="container deze-forma">
-              <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 deze-text-login justify-content-evenly">
-                <div class="col-lg-7 login-container">
-                  <div class="row login-row">
-                    <div class="col-lg-12 login-header">
-                      <h1 class="display-3">Registracija</h1>
-                      <br>
-                    </div>
-                    <div class="col-lg-12 login-form">
-                      <div class="row">
-                        <input type="text" placeholder="Įveskite slapyvardį" name="uname" id="uname"
-                        class="form-control" required> 
-                      </div>        
-                      <br>    
-                      <div class="row">
-                        <input type="email" placeholder="Įveskite el.pašto adresą" name="email" id="email"
-                        class="form-control" required>
-                      </div>  
-                      <br>
-                      <div class="row">
-                        <input type="password" placeholder="Įveskite slaptažodį" name="pass" id="pass"
-                        class="form-control" required minlength="8">
-                      </div>  
-                      <br>
-                      <div class="row">
-                        <input type="password" placeholder="Pakartokite slaptažodį" name="pass2" id="pass2"
-                        class="form-control" required>
-                      </div> 
-                      <br> 
-                      <div class="row">
-                        <div class="col-4 linkas1">
-                          <a class="" href="{% url 'login' %}">Prisijungti</a>
-                        </div>
-                        <div class="col-6 linkas2">
-                          <a href="{% url 'password_reset' %}" class="">Pamiršote slaptažodį?</a>
-                        </div>
-                      </div>      
-                      {% if messages %}
-                      {% for message in messages %}
-                      <div class="alert alert-danger fw-bold" role="alert">
-                      {{ message }}
-                      </div>
-                      {% endfor %}
-                      {% endif %}
-                    </div>
-                    <div class="row login-buttons">
-                      <div class="row login-buttons-primary">
-                        <button id="submit" class="btn" type="submit">
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 deze-text-login justify-content-evenly">
+                    <div class="col-lg-7 login-container">
+                        <div class="row login-row">
+                            <div class="col-lg-12 login-header">
+                                <h1 class="display-3">Registracija</h1>
+                                <br>
+                            </div>
+                            <div class="col-lg-12 login-form">
+                                <div class="row">
+                                    <input type="text" placeholder="Įveskite slapyvardį" name="uname" id="uname"
+                                           class="form-control" required>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <input type="email" placeholder="Įveskite el.pašto adresą" name="email" id="email"
+                                           class="form-control" required>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <input type="password" placeholder="Įveskite slaptažodį" name="pass" id="pass"
+                                           class="form-control" required minlength="8">
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <input type="password" placeholder="Pakartokite slaptažodį" name="pass2" id="pass2"
+                                           class="form-control" required>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-4 linkas1">
+                                        <a class="" href="{% url 'login' %}">Prisijungti</a>
+                                    </div>
+                                    <div class="col-6 linkas2">
+                                        <a href="{% url 'password_reset' %}" class="">Pamiršote slaptažodį?</a>
+                                    </div>
+                                </div>
+                                {% if messages %}
+                                {% for message in messages %}
+                                <div class="alert alert-danger fw-bold" role="alert">
+                                    {{ message }}
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="row login-buttons">
+                                <div class="row login-buttons-primary">
+                                    <button id="submit" class="btn" type="submit">
                           <span>Registruotis
                             <i class="bi bi-arrow-right"></i>
                           </span>
-                        </button>
-                      </div>
-                      
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </form>
-      </main>
+        </div>
+    </form>
+</main>
 </body>
 </html>
 
 {% endblock %}
-
