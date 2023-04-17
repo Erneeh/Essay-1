@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -521,6 +520,8 @@ def stripe_webhook(request):
         session = event['data']['object']
         customer_email = session["customer_details"]["email"]
         payment_intent = session["payment_intent"]
+
+        print(event)
 
         send_mail(
             subject="Essay.lt",
