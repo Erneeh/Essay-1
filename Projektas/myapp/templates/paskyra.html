@@ -31,28 +31,10 @@
                             <div class="form-container">
                                 <ul class="nav flex-column navbaras">
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Paskyros informacija</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Slaptazodzio pakeitimas</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">link</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled">Disabled</a>
+                                        <a class="nav-link" href="{% url 'password_reset' %}">Slaptazodzio pakeitimas</a>
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="form-container-button1">
-                            <a href="{% url 'index' %}">
-                                <button class="btn btn-lg w-100">
-                                        <span>
-                                            Atgal
-                                        </span>
-                                </button>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -73,43 +55,18 @@
                                        value="{{ user.username }}" required>
                             </div>
                         </div>
-
-                        <div class="col-12 col-md-6 form-div">
-                            <div class="form-container">
-                                <label for="pass">Slaptažodis</label>
-                                <input class="w-100" type="password" id="pass" placeholder="Įrašykite savo slaptažodį"
-                                       required>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-6 form-div">
-                            <div class="form-container">
-                                <label for="pass">Pakartokite slaptažodi</label>
-                                <input class="w-100" type="password" id="pass" placeholder="Pakartokite" required>
-                            </div>
-                        </div>
-
                         <div class="col-12 form-div">
                             <div class="form-container">
                                 <h3 class="w-100">
                                     Jūsų planas:
                                     {% if sub.user_membership.membership %}
                                     {{ sub.user_membership.membership }}
+                                    <a href="#"> Atšaukti planą</a>
                                     {% else %}
                                     Jūs neturite jokio plano, planus galite rasti paspaudus <a
                                         href="{% url 'planai' %}">čia</a>
                                     {% endif %}
                                 </h3>
-                            </div>
-                        </div>
-
-                        <div class="col-12 form-div">
-                            <div class="form-container-button2">
-                                <button class="btn btn-lg w-100">
-                                        <span>
-                                            Išsaugoti
-                                        </span>
-                                </button>
                             </div>
                         </div>
                     </div>
