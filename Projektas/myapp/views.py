@@ -521,30 +521,29 @@ def stripe_webhook(request):
         customer_email = session["customer_details"]["email"]
         payment_intent = session["payment_intent"]
 
-        print(event)
-
         send_mail(
             subject="Essay.lt",
             message=f"Sveikiname įsigijus Essay.lt prenumeratą",
             recipient_list=[customer_email],
             from_email="your@email.com"
         )
-        product_id = event['data']['object']['metadata']['product_id']
-        user = User.objects.get(email=customer_email)
+    subscription_id = event['data']['object']['subscription']
+    product_id = event['data']['object']['metadata']['product_id']
+    user = User.objects.get(email=customer_email)
 
-        if product_id == "4":
-            stripe_id = "prod_Nh9mwHtUcJsbvq"
-            membership = Membership.objects.get(stripe_product_id=stripe_id)
-            UserMembership.objects.create(user=user, membership=membership)
+    if product_id == "4":
+        stripe_id = "prod_Nh9mwHtUcJsbvq"
+        membership = Membership.objects.get(stripe_product_id=stripe_id)
+        UserMembership.objects.create(user=user, membership=membership, stripe_sub_id=subscription_id)
 
-        if product_id == "2":
-            stripe_id = "prod_Nh1IV67AvAo8cm"
-            membership = Membership.objects.get(stripe_product_id=stripe_id)
-            UserMembership.objects.create(user=user, membership=membership)
+    if product_id == "2":
+        stripe_id = "prod_Nh1IV67AvAo8cm"
+        membership = Membership.objects.get(stripe_product_id=stripe_id)
+        UserMembership.objects.create(user=user, membership=membership, stripe_sub_id=subscription_id)
 
-        if product_id == "1":
-            stripe_id = "prod_NgpRWY2fwCPAvo"
-            membership = Membership.objects.get(stripe_product_id=stripe_id)
-            UserMembership.objects.create(user=user, membership=membership)
+    if product_id == "1":
+        stripe_id = "prod_NgpRWY2fwCPAvo"
+        membership = Membership.objects.get(stripe_product_id=stripe_id)
+        UserMembership.objects.create(user=user, membership=membership, stripe_sub_id=subscription_id)
 
     return HttpResponse(status=200)
