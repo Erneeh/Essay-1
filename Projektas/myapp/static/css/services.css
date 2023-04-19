@@ -13,6 +13,7 @@
 body {
     background: linear-gradient(rgb(20, 20, 20), rgb(39, 39, 39));
     height: 100%;
+	width: 100%;
 }
 
 .kunas {
@@ -33,14 +34,17 @@ body {
 }
 .box-area {
 	border-radius: 20px;
-	width: 350px;
+	width: 250px;
+	min-width: 250px;
 	margin: 25px;
 	padding: 40px;
 	background-color: #1b1b1b;
 	transition: all 0.6s ease-in-out;
+	border: 1px solid grey;
 }
 .box-area .icon-area {
 	width: 100%;
+	min-width: 150px;
 	margin-bottom: 40px;
 }
 .icon-area i {

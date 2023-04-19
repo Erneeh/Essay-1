@@ -2,6 +2,7 @@ body {
     background: linear-gradient(rgb(20, 20, 20), rgb(39, 39, 39));
     height: 100vh;
     font-family: poppins;
+    width: 100%;
 }
 
 .konteineris {
@@ -21,15 +22,15 @@ body {
     display: block;
 }
 .navbaras {
-    background-color: white;
+    background-color: transparent;
 }
 .navbaras li {
-    background-color: grey;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    font-weight: 400
 }
-.navbaras li:hover {
-    background-color: white;
-    transition: 1s;
-}
+
 .form-div {
     margin-bottom: 10px;
 }
@@ -49,6 +50,7 @@ body {
     padding-left: 10px;
     border-color: white;
 }
+
 .form-container label {
     text-align:left;
     color: white;

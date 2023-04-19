@@ -1,12 +1,13 @@
+
+
 body {
     background: linear-gradient(rgb(20, 20, 20), rgb(39, 39, 39));
-    
+    width: 100%;
 }
 
 
 .konteineris1 {
-    top:100px;
-    position: relative;
+    margin-top: 100px;
 }
 .kontainer1-1 {
  
@@ -171,15 +172,17 @@ background-color: rgb(2, 2, 14);
 
 .paslaugu-box-area {
     border-radius: 20px;
-    width: 350px;
-    margin: 40px;
-    padding: 40px;
-    background-color: #1b1b1b;
-    transition: all 0.6s ease-in-out;
+	width: 250px;
+	margin: 25px;
+	padding: 40px;
+	background-color: #1b1b1b;
+	transition: all 0.6s ease-in-out;
+	border: 1px solid grey;
 }
 .paslaugu-icon-area {
     width: 100%;
-    margin-bottom: 40px;
+	min-width: 150px;
+	margin-bottom: 40px;
 }
 .paslaugu-icon-area i {
     font-size: 70px;

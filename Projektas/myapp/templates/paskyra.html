@@ -1,4 +1,5 @@
 {% extends "header.html" %}
+{% block title %}Reset your password{% endblock %}
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mokėjimas atliktas- Essay.lt</title>
+    <title>Paskyra - Essay.lt</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
@@ -30,22 +31,13 @@
                         <div class="form-div col-12">
                             <div class="form-container">
                                 <ul class="nav flex-column navbaras">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Paskyros informacija</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Slaptazodzio pakeitimas</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">link</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled">Disabled</a>
+                                    <li class="display-5">
+                                        Paskyros informacija
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="form-container-button1">
+                        <div class="form-container-button1 col-12">
                             <a href="{% url 'index' %}">
                                 <button class="btn btn-lg w-100">
                                         <span>
@@ -60,32 +52,33 @@
                     <div class="row">
                         <div class="col-12 col-md-6 form-div">
                             <div class="form-container">
-                                <label for="email">El. pašto adresas*</label>
-                                <input class="w-100" type="email" id="email" placeholder="Įrašykite el.pašto adresą"
-                                       value="{{ user.email }}" required>
+                                <label for="email">El. pašto adresas</label>
+                                <input class="w-100" type="email" id="email"
+                                       value="{{ user.email }}" readonly>
                             </div>
                         </div>
 
                         <div class="col-12 col-md-6 form-div">
                             <div class="form-container">
-                                <label for="uname">Vardas*</label>
-                                <input class="w-100" type="text" id="uname" placeholder="Įrašykite savo vardą"
-                                       value="{{ user.username }}" required>
+                                <label for="uname">Vardas</label>
+                                <input class="w-100" type="text" id="uname"
+                                       value="{{ user.username }}" readonly>
                             </div>
                         </div>
 
                         <div class="col-12 col-md-6 form-div">
                             <div class="form-container">
                                 <label for="pass">Slaptažodis</label>
-                                <input class="w-100" type="password" id="pass" placeholder="Įrašykite savo slaptažodį"
-                                       required>
+                                <input type="password" name="new_password1" autocomplete="new-password" required
+                        id="id_new_password1" aria-autocomplete="list" placeholder="Naujas slaptažodis" class="form-control">
+                                       
                             </div>
                         </div>
 
                         <div class="col-12 col-md-6 form-div">
                             <div class="form-container">
                                 <label for="pass">Pakartokite slaptažodi</label>
-                                <input class="w-100" type="password" id="pass" placeholder="Pakartokite" required>
+                                <input type="password" name="new_password2" autocomplete="new-password" required id="id_new_password2" placeholder="Pakartokite" class="form-control">
                             </div>
                         </div>
 
@@ -102,10 +95,11 @@
                                 </h3>
                             </div>
                         </div>
-
+                        
                         <div class="col-12 form-div">
                             <div class="form-container-button2">
-                                <button class="btn btn-lg w-100">
+                                {% csrf_token %}
+                                <button class="btn btn-lg w-100" type="submit">
                                         <span>
                                             Išsaugoti
                                         </span>
