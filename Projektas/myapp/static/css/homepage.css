@@ -68,6 +68,7 @@ body {
     touch-action: manipulation;
     white-space: nowrap;
     cursor: pointer;
+    margin-bottom: 10px;
   }
   .kontainer1-1button1 button:hover, .kontainer1-1button2 button:active {
       outline: 0;
@@ -111,6 +112,7 @@ body {
   touch-action: manipulation;
   white-space: nowrap;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 .kontainer1-1button2 button:hover, .kontainer1-1button2 button:active {
     outline: 0;
@@ -163,21 +165,21 @@ background-color: rgb(2, 2, 14);
 }
 
 .paslaugu-wrapper {
-    padding: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    padding: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .paslaugu-box-area {
     border-radius: 20px;
-	width: 250px;
-	margin: 25px;
+	margin: 10px 0px;
 	padding: 40px;
 	background-color: #1b1b1b;
-	transition: all 0.6s ease-in-out;
+	transition: all 0.4s ease-in-out;
 	border: 1px solid grey;
+    margin-bottom: 40px;
 }
 .paslaugu-icon-area {
     width: 100%;
@@ -185,18 +187,16 @@ background-color: rgb(2, 2, 14);
 	margin-bottom: 40px;
 }
 .paslaugu-icon-area i {
-    font-size: 70px;
-    color: white;
+    font-size: 50px;
+	color: white;
 }
 .paslaugu-box-area h6 {
     margin-bottom: 10px;
-    color: white;
-    font-size: 50px;
-    font-family: bebas neue;
+	color: white;
+	font-family: bebas neue;
 }
 
 .paslaugu-box-area h7 {
-    font-size: 40px;
     color: white;
     margin-bottom: 10px;
     font-family: bebas neue;

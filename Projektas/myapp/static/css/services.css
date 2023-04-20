@@ -1,18 +1,7 @@
-.zodis{
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: -1;
-  width: 100%;
-  padding: 0 30px;
-  color: white;
-}
+
 
 body {
     background: linear-gradient(rgb(20, 20, 20), rgb(39, 39, 39));
-    height: 100%;
 	width: 100%;
 }
 
@@ -26,35 +15,32 @@ body {
 }
 
 .wrapper {
-	padding: 50px;
+	padding: 30px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-wrap: wrap;
 }
+.wrapper a {
+}
 .box-area {
 	border-radius: 20px;
-	width: 250px;
-	min-width: 250px;
-	margin: 25px;
+	margin: 10px 0px;
 	padding: 40px;
 	background-color: #1b1b1b;
-	transition: all 0.6s ease-in-out;
+	transition: all 0.4s ease-in-out;
 	border: 1px solid grey;
 }
 .box-area .icon-area {
-	width: 100%;
-	min-width: 150px;
 	margin-bottom: 40px;
 }
 .icon-area i {
-	font-size: 70px;
+	font-size: 50px;
 	color: white;
 }
 .box-area h6 {
 	margin-bottom: 10px;
 	color: white;
-	font-size: 50px;
 	font-family: bebas neue;
 }
 .box-area:hover {
@@ -64,12 +50,15 @@ body {
 .box-area:hover i {
 	color: #29fd53;
 	background-color: #1b1b1b;
+	transition: all 0.2s ease-in-out;
 }
 .box-area:hover h6 {
 	color: #29fd53;
+	transition: all 0.2s ease-in-out;
 }
 .box-area:hover p {
 	color: #29fd53;
+	transition: all 0.2s ease-in-out;
 }
 
 .wrapper a, .wrapper a:hover {
