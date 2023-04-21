@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import openai, os
+from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.views import View
@@ -522,28 +523,41 @@ def stripe_webhook(request):
         payment_intent = session["payment_intent"]
 
         send_mail(
-            subject="Essay.lt",
-            message=f"Sveikiname įsigijus Essay.lt prenumeratą",
+            subject="Here is your product",
+            message=f"Thanks for your purchase. The URL is",
             recipient_list=[customer_email],
             from_email="your@email.com"
         )
-    subscription_id = event['data']['object']['subscription']
-    product_id = event['data']['object']['metadata']['product_id']
-    user = User.objects.get(email=customer_email)
+        product_id = event['data']['object']['metadata']['product_id']
+        user = User.objects.get(email=customer_email)
+        subscription_id = event['data']['object']['subscription']
+        if product_id == "4":
+            stripe_id = "prod_Nh9mwHtUcJsbvq"
+            membership = Membership.objects.get(stripe_product_id=stripe_id)
+            UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
 
-    if product_id == "4":
-        stripe_id = "prod_Nh9mwHtUcJsbvq"
-        membership = Membership.objects.get(stripe_product_id=stripe_id)
-        UserMembership.objects.create(user=user, membership=membership, stripe_sub_id=subscription_id)
+        if product_id == "2":
+            stripe_id = "prod_Nh1IV67AvAo8cm"
+            membership = Membership.objects.get(stripe_product_id=stripe_id)
+            UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
 
-    if product_id == "2":
-        stripe_id = "prod_Nh1IV67AvAo8cm"
-        membership = Membership.objects.get(stripe_product_id=stripe_id)
-        UserMembership.objects.create(user=user, membership=membership, stripe_sub_id=subscription_id)
-
-    if product_id == "1":
-        stripe_id = "prod_NgpRWY2fwCPAvo"
-        membership = Membership.objects.get(stripe_product_id=stripe_id)
-        UserMembership.objects.create(user=user, membership=membership, stripe_sub_id=subscription_id)
-
+        if product_id == "1":
+            stripe_id = "prod_NgpRWY2fwCPAvo"
+            membership = Membership.objects.get(stripe_product_id=stripe_id)
+            UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
     return HttpResponse(status=200)
+
+
+@login_required
+def cancel_subscription(request):
+    user_membership = UserMembership.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        stripe.Subscription.modify(user_membership.customer_id, cancel_at_period_end=True)
+        return redirect("cancelsubsuc")
+
+    return render(request, "cancel_sub.html", {"user": user_membership.customer_id})
+
+
+def cancel_subscription_success(request):
+    return render(request, "cancel_suc.html", {})

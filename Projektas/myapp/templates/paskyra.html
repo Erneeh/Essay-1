@@ -61,7 +61,7 @@
                                     Jūsų planas:
                                     {% if sub.user_membership.membership %}
                                     {{ sub.user_membership.membership }}
-                                    <a href="#"> Atšaukti planą</a>
+                                    <a href="{% url 'cancelsub' %}"> Atšaukti planą</a>
                                     {% else %}
                                     Jūs neturite jokio plano, planus galite rasti paspaudus <a
                                         href="{% url 'planai' %}">čia</a>

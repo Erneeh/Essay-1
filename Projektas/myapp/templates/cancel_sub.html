@@ -1,0 +1,11 @@
+{% extends "header.html" %}
+{% block content %}
+<h1>Ar tikrai norite atsaukti savo plana</h1>
+<form method="POST">
+    {% csrf_token %}
+    <h3>Atsaukti:</h3>
+    <a type="sumbit" href="{% url 'cancelsubsuc' %}"> Atsaukti</a>
+</form>
+<a href="{% url 'index' %}"> Atgal</a>
+<h1>{{ user }}</h1>
+{% endblock %}
