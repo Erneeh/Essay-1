@@ -382,7 +382,7 @@ def klaidos(request):
                 messages=[
                     {"role": "system",
                      "content": kontentas},
-                    {"role": "user", "content": user_input}
+                    {"role": "user", "content": f"ištaisyk šį tekstą:  {user_input}"}
                 ],
 
                 temperature=0.7
@@ -400,7 +400,7 @@ def paskyra(request):
         try:
             user_membership = UserMembership.objects.get(user=request.user)
             subscriptions = Subscription.objects.get(user_membership=user_membership)
-            return render(request, "paskyra.html", {'sub': subscriptions})
+            return render(request, "paskyra.html", {"sub": subscriptions})
         except UserMembership.DoesNotExist:
             subscriptions = "Neturite jokio plano"
             return render(request, "paskyra.html", {'sub': "Neturite jokio plano"})
@@ -550,14 +550,16 @@ def stripe_webhook(request):
 
 @login_required
 def cancel_subscription(request):
-    user_membership = UserMembership.objects.get(user=request.user)
-
-    if request.method == 'POST':
-        stripe.Subscription.modify(user_membership.customer_id, cancel_at_period_end=True)
-        return redirect("cancelsubsuc")
-
-    return render(request, "cancel_sub.html", {"user": user_membership.customer_id})
+    return render(request, "cancel_sub.html")
 
 
+@login_required
 def cancel_subscription_success(request):
+    user_membership = UserMembership.objects.get(user=request.user)
+    stripe.Subscription.delete(user_membership.customer_id)
+    obj = Subscription.objects.get(user_membership=user_membership)
+    obj.active = False
+    obj.save()
+    membership = user_membership
+    membership.delete()
     return render(request, "cancel_suc.html", {})
