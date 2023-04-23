@@ -44,6 +44,7 @@ class Price(models.Model):
 class UserMembership(models.Model):
     user = models.OneToOneField(User, related_name='user_membership', on_delete=models.CASCADE)
     membership = models.ForeignKey(Membership, related_name='user_membership', on_delete=models.SET_NULL, null=True)
+    customer_id = models.CharField(max_length=30, default='')
 
     def __str__(self):
         return self.user.username

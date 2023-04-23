@@ -33,30 +33,30 @@
                             </div>
                             <div class="col-lg-12 login-form">
                                 <div class="row">
-                                    <input type="text" placeholder="Įveskite slapyvardį" name="uname" id="uname"
+                                    <input type="text" placeholder="Slapyvardis" name="uname" id="uname"
                                            class="form-control" required>
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <input type="email" placeholder="Įveskite el.pašto adresą" name="email" id="email"
+                                    <input type="email" placeholder="El. paštas" name="email" id="email"
                                            class="form-control" required>
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <input type="password" placeholder="Įveskite slaptažodį" name="pass" id="pass"
+                                    <input type="password" placeholder="Slaptažodis" name="pass" id="pass"
                                            class="form-control" required minlength="8">
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <input type="password" placeholder="Pakartokite slaptažodį" name="pass2" id="pass2"
-                                           class="form-control" required>
+                                    <input type="password" placeholder="Pakartokite" name="pass2" id="pass2"
+                                           class="form-control w-md-100" required>
                                 </div>
                                 <br>
                                 <div class="row justify-content-evenly">
-                                    <div class="col-3 linkas1">
+                                    <div class="col-lg-3 col-sm-3 col-md-3 col-12 linkas1">
                                         <a class="" href="{% url 'login' %}">Prisijungti</a>
                                     </div>
-                                    <div class="col-3 linkas2">
+                                    <div class="col-lg-3 col-sm-3 col-md-3 col-12 linkas2">
                                         <a href="{% url 'password_reset' %}" class="">Pamiršote slaptažodį?</a>
                                     </div>
                                 </div>

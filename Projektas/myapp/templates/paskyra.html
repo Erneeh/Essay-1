@@ -42,6 +42,7 @@
                                 <button class="btn btn-lg w-100">
                                         <span>
                                             Atgal
+                                            <i class="bi bi-box-arrow-left"></i>
                                         </span>
                                 </button>
                             </a>
@@ -88,22 +89,12 @@
                                     Jūsų planas:
                                     {% if sub.user_membership.membership %}
                                     {{ sub.user_membership.membership }}
+                                    <a href="{% url 'cancelsub' %}"> Atšaukti planą</a>
                                     {% else %}
                                     Jūs neturite jokio plano, planus galite rasti paspaudus <a
-                                        href="{% url 'planai' %}">čia</a>
+                                        href="{% url 'planai' %}">čia</a> arba naudotis nemokama paslauga <a href="{% url 'klaidos' %}">Klaidų taisymas</a>
                                     {% endif %}
                                 </h3>
-                            </div>
-                        </div>
-                        
-                        <div class="col-12 form-div">
-                            <div class="form-container-button2">
-                                {% csrf_token %}
-                                <button class="btn btn-lg w-100" type="submit">
-                                        <span>
-                                            Išsaugoti
-                                        </span>
-                                </button>
                             </div>
                         </div>
                     </div>

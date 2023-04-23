@@ -155,10 +155,11 @@ background-color: rgb(2, 2, 14);
 
 
 .paslaugu-kunas {
-    margin-top: 200px;
+    position: relative;
+    top: 120px;
     align-items: center;
     justify-content: center;
-    min-height: 60vh;
+    min-height: 100vh;
     font-family: poppins;
     text-align: center;
     color: white;
@@ -183,7 +184,6 @@ background-color: rgb(2, 2, 14);
 }
 .paslaugu-icon-area {
     width: 100%;
-	min-width: 150px;
 	margin-bottom: 40px;
 }
 .paslaugu-icon-area i {

@@ -1,9 +1,9 @@
 from datetime import datetime
-
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import openai, os
+from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.views import View
@@ -368,8 +368,6 @@ def klaidos(request):
             kontentas = "You are Lithuanian writer named 'Essay.lt Klaidų taisytojas'," \
                         "you can only correct given text a user a user has entered," \
                         "correct text only in Lithuania language," \
-                        "it can be single words or sentences," \
-                        "Lithuanian language has special symbols such as ąčęėįšųū, make use of them aswell!," \
                         "you dont answer other questions that are not related to anything that is not related to " \
                         "grammar and punctuation" \
                         "if someone asks you if you can do math or physics or " \
@@ -384,7 +382,7 @@ def klaidos(request):
                 messages=[
                     {"role": "system",
                      "content": kontentas},
-                    {"role": "user", "content": user_input}
+                    {"role": "user", "content": f"ištaisyk šį tekstą:  {user_input}"}
                 ],
 
                 temperature=0.7
@@ -402,7 +400,7 @@ def paskyra(request):
         try:
             user_membership = UserMembership.objects.get(user=request.user)
             subscriptions = Subscription.objects.get(user_membership=user_membership)
-            return render(request, "paskyra.html", {'sub': subscriptions})
+            return render(request, "paskyra.html", {"sub": subscriptions})
         except UserMembership.DoesNotExist:
             subscriptions = "Neturite jokio plano"
             return render(request, "paskyra.html", {'sub': "Neturite jokio plano"})
@@ -415,7 +413,7 @@ def subscription(request):
     return render(request, "planai_tikrasis.html", {})
 
 
-YOUR_DOMAIN = "http://127.0.0.1:8000/"
+YOUR_DOMAIN = "http://127.0.0.1:9000/"
 
 
 class ProductLandingPageViewBasic(TemplateView):
@@ -525,27 +523,43 @@ def stripe_webhook(request):
         payment_intent = session["payment_intent"]
 
         send_mail(
-            subject="Essay.lt",
-            message=f"Sveikiname įsigijus Essay.lt prenumeratą",
+            subject="Here is your product",
+            message=f"Thanks for your purchase. The URL is",
             recipient_list=[customer_email],
             from_email="your@email.com"
         )
         product_id = event['data']['object']['metadata']['product_id']
         user = User.objects.get(email=customer_email)
-
+        subscription_id = event['data']['object']['subscription']
         if product_id == "4":
             stripe_id = "prod_Nh9mwHtUcJsbvq"
             membership = Membership.objects.get(stripe_product_id=stripe_id)
-            UserMembership.objects.create(user=user, membership=membership)
+            UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
 
         if product_id == "2":
             stripe_id = "prod_Nh1IV67AvAo8cm"
             membership = Membership.objects.get(stripe_product_id=stripe_id)
-            UserMembership.objects.create(user=user, membership=membership)
+            UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
 
         if product_id == "1":
             stripe_id = "prod_NgpRWY2fwCPAvo"
             membership = Membership.objects.get(stripe_product_id=stripe_id)
-            UserMembership.objects.create(user=user, membership=membership)
-
+            UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
     return HttpResponse(status=200)
+
+
+@login_required
+def cancel_subscription(request):
+    return render(request, "cancel_sub.html")
+
+
+@login_required
+def cancel_subscription_success(request):
+    user_membership = UserMembership.objects.get(user=request.user)
+    stripe.Subscription.delete(user_membership.customer_id)
+    obj = Subscription.objects.get(user_membership=user_membership)
+    obj.active = False
+    obj.save()
+    membership = user_membership
+    membership.delete()
+    return render(request, "cancel_suc.html", {})

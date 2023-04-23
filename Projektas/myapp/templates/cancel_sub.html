@@ -24,44 +24,25 @@
         <div class="container kontainer">
             <div class="container kontainer-1">
                 <div class="row kontainer-1header">
-                    <h1 class="display-6 alert alert-light">Įspėjimas- įsigijant prenumeratą būtina naudoti tokį pati el.pašto adresą su kuriuo prisiregistravote!
-                        <br>
-                        {{ user.email }}
+                    <h1 class="display-6 alert alert-light">Ar tikrai norite atsaukti savo plana, atsaukus prarasite visas privilegijas iskarto
                     </h1>
                 </div>
                 <br>
-                <div class="row kontainer-1desc">
-                    <h1>{{ product.membership_type }}</h3>
-                    <hr/>
-                    {% if product.membership_type == 'Basic' %}
-                    <p>Planas: {{ product.membership_type }}</p>
-                    {% endif %}
-                    {% if product.membership_type == 'Premium' %}
-                    <p>Planas: {{ product.membership_type }}</p>
-                    {% endif %}
-                    {% if product.membership_type == 'Ultra' %}
-                    <p>Planas: Ultra</p>
-                    {% endif %}
-                    {% for price in prices %}
-                    <h1>{{ price.get_display_price }}€</h5>
-                </div>
-                <Br>
                 <div class="row kontainer-1button">
                     <div class="col-12 col-sm-4 col-lg-3 kontainer-1button1">
-                        <form action="{% url 'create-checkout-session' price.id %}" method="POST">{% csrf_token %}
-                            <button type="submit" class="btn btn-lg w-100" role="button">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-lg w-100" role="button" href="{% url 'cancelsubsuc' %}">
                                 <span>Tęsti
                                     <i class="bi bi-arrow-right"></i>
                                     </span>
                             </button>
                         </form>
                     </div>
-                    {% endfor %}
                     <div class="col-12 col-sm-4 col-lg-3 kontainer-1button2">
-                        <button class="btn btn-lg w-100" onclick="window.location={% url 'planai' %}">
+                        <button class="btn btn-lg w-100" onclick="window.location={% url 'paskyra' %}">
                             <span>Atgal
                                 <i class="bi bi-box-arrow-left"></i>
-                            
                             </span>
                         </button>
                     </div>
