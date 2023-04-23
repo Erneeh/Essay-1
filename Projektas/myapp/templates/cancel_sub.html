@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mokėjimai - Essay.lt</title>
+    <title>Plano atšaukimas - Essay.lt</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
@@ -32,11 +32,11 @@
                     <div class="col-12 col-sm-4 col-lg-3 kontainer-1button1">
                         <form method="POST">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-lg w-100" role="button" href="{% url 'cancelsubsuc' %}">
+                        <a type="submit" class="btn btn-lg w-100" role="button" href="{% url 'cancelsubsuc' %}">
                                 <span>Tęsti
                                     <i class="bi bi-arrow-right"></i>
                                     </span>
-                            </button>
+                                </a>
                         </form>
                     </div>
                     <div class="col-12 col-sm-4 col-lg-3 kontainer-1button2">

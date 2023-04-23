@@ -413,7 +413,7 @@ def subscription(request):
     return render(request, "planai_tikrasis.html", {})
 
 
-YOUR_DOMAIN = "http://127.0.0.1:9000/"
+YOUR_DOMAIN = "http://127.0.0.1:8000/"
 
 
 class ProductLandingPageViewBasic(TemplateView):
@@ -531,17 +531,21 @@ def stripe_webhook(request):
         product_id = event['data']['object']['metadata']['product_id']
         user = User.objects.get(email=customer_email)
         subscription_id = event['data']['object']['subscription']
-        if product_id == "4":
+        print(product_id)
+        if product_id == "1":
+            print("debilas")
             stripe_id = "prod_Nh9mwHtUcJsbvq"
             membership = Membership.objects.get(stripe_product_id=stripe_id)
             UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
 
         if product_id == "2":
+            print("irmantas")
             stripe_id = "prod_Nh1IV67AvAo8cm"
             membership = Membership.objects.get(stripe_product_id=stripe_id)
             UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
 
-        if product_id == "1":
+        if product_id == "3":
+            print("jurana")
             stripe_id = "prod_NgpRWY2fwCPAvo"
             membership = Membership.objects.get(stripe_product_id=stripe_id)
             UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
