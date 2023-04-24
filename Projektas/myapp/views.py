@@ -1,8 +1,7 @@
-from datetime import datetime
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-import openai, os
+import openai
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.http import HttpResponse
@@ -86,7 +85,7 @@ def logoutuser(request):
 
 load_dotenv()
 
-api_key = os.getenv("OPENAI_KEY", None)
+api_key =  settings.OPENAI_KEY
 
 
 def paklausk(request):

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot - Essay.lt</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
     {% load bootstrap5 %}
@@ -18,13 +19,15 @@
         <div class="container deze-forma p-4">
             <div class="row deze-headeris-background">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 deze-headeris p-3">
-                    <div class="col-7 col-lg-9 col-md-8 col-sm-8 headerio-title p-3">
+                    <div class="col-12 col-lg-9 col-md-8 col-sm-8 headerio-title p-3">
                         <h1 class="w-100">Essay.lt - Motyvatorius</h1>
                     </div>
-                    <div class="col-5 col-lg-3 col-md-4 col-sm-4 headerio-mygtukas-atgal p-3">
+                    <div class="col-12 col-lg-3 col-md-4 col-sm-4 headerio-mygtukas-atgal p-3">
                         <a href="{% url 'services' %}">
                             <button class="btn btn-lg w-100" role="button" type="submit">
-                                <span>Atgal</span>
+                                <span>Atgal
+                                    <i class="bi bi-box-arrow-left"></i>
+                                </span>
                             </button>
                         </a>
                     </div>
@@ -47,7 +50,11 @@
                                   placeholder="Įrašykite savo gabumus..."></textarea>
                         <textarea class="w-100" type="text" required name="user_input3"
                                   placeholder="Įrašykite savo norimos pozicijos pavadinimą"></textarea>
-                        <button type="submit" class="btn w-100">Atlikta</button>
+                        <button type="submit" class="btn w-100">
+                            <span>Atlikta
+                                <i class="bi bi-check"></i>
+                            </span>
+                        </button>
                     </form>
                 </div>
                 <div class="col col-lg-5 deze-outputas  p-3">
