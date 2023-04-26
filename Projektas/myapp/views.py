@@ -525,7 +525,7 @@ def stripe_webhook(request):
             subject="Here is your product",
             message=f"Thanks for your purchase. The URL is",
             recipient_list=[customer_email],
-            from_email="your@email.com"
+            from_email="ed.essay.lt@gmail.com"
         )
         product_id = event['data']['object']['metadata']['product_id']
         user = User.objects.get(email=customer_email)
