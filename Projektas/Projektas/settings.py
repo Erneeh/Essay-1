@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'Projektas.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': "/usr/local/lsws/Example/html/Essay/Projektas/db.sqlite3",
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
