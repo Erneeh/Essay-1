@@ -113,7 +113,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/python/static/'
-STATIC_ROOT = '/usr/local/lsws/Example/html/demo/public/static'
+STATIC_ROOT = '/usr/local/lsws/Example/html/Essay/Projektas/public/static'
 STATICFILES_DIRS = os.path.join(BASE_DIR, '/static/'),
 
 
