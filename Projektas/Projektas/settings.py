@@ -21,9 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)a5t2&#*m08-8w@6uiz+j1xtd^bdiaegh2+aa&+&1@=@(sl00q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app', '*']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -112,7 +112,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/staticfiles_build/static/'
 STATICFILES_DIRS = os.path.join(BASE_DIR, '/static/'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
@@ -122,6 +122,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_POST = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'ed.essay.lt@gmail.com'
+EMAIL_HOST_PASSWORD = 'pavasaris0012'
+
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51MuidGHAaHEFy9pUtHiT2Ne923zDhmc7gEnf0GCdZY0t0I8hgyFKK5evdMne1Bq5rtQssDCOdaa1M1WSqgjBKDmj00TY2IcgUF'
 STRIPE_SECRET_KEY = 'sk_test_51MuidGHAaHEFy9pUlXedXyAcuiclHPTD6BhKbYgOQbR2AIz3snajL1w7pyGeFzTwHlYcX69318InEJ6KRV125H1o00PWLKfCZc'
 STRIPE_WEBHOOK_SECRET = "whsec_74c64d1c81f5b47f003a35277279cd3d2392a4b434c2317207140fce5d8b6e0c"
+OPENAI_KEY = "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"

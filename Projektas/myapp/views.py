@@ -413,7 +413,7 @@ def subscription(request):
     return render(request, "planai_tikrasis.html", {})
 
 
-YOUR_DOMAIN = "http://127.0.0.1:8000/"
+YOUR_DOMAIN = "https://essay.lt/"
 
 
 class ProductLandingPageViewBasic(TemplateView):
@@ -469,9 +469,9 @@ class CreateCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             price = Price.objects.get(id=self.kwargs["pk"])
-            domain = "http://127.0.0.1:8000"
+            domain = "https://essay.lt"
             if settings.DEBUG:
-                domain = "http://127.0.0.1:8000"
+                domain = "https://essay.lt"
             checkout_session = stripe.checkout.Session.create(
                 payment_method_types=['card'],
                 line_items=[
