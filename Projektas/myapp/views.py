@@ -16,7 +16,34 @@ import stripe
 
 
 def index(request):
-    return render(request, "index.html", {})
+        chatbot_response = None
+        if request.method == "POST":
+            kontentas = "You are Lithuanian writer named 'Essay.lt Klaidų taisytojas'," \
+                        "you can only correct given text a user a user has entered," \
+                        "correct text only in Lithuania language," \
+                        "you dont answer other questions that are not related to anything that is not related to " \
+                        "grammar and punctuation" \
+                        "if someone asks you if you can do math or physics or " \
+                        "any other subject or question that " \
+                        "is not related to correcting a text, you reply with a straight no!"
+
+            openai.api_key = api_key
+            user_input = request.POST.get("user_input")
+
+            response = openai.ChatCompletion.create(
+                model='gpt-3.5-turbo',
+                messages=[
+                    {"role": "system",
+                     "content": kontentas},
+                    {"role": "user", "content": f"ištaisyk šį tekstą:  {user_input}"}
+                ],
+
+                temperature=0.7
+            )
+
+            chatbot_response = response['choices'][0]['message']['content']
+
+        return render(request, "index.html", {"response": chatbot_response})
 
 
 def services(request):
@@ -46,7 +73,7 @@ def register(request):
 
         if password == password2:
             if User.objects.filter(username=uname).exists():
-                messages.error(request, f"Slapyvardis '{uname}' užimtas!")
+                messages.error(request, f"Vardas '{uname}' užimtas!")
                 return redirect("register")
             else:
                 if User.objects.filter(email=email).exists():
@@ -411,6 +438,7 @@ def paskyra(request):
 
 def subscription(request):
     return render(request, "planai_tikrasis.html", {})
+
 
 
 YOUR_DOMAIN = "https://essay.lt/"

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <title>Pagrindinis - Essay.lt</title>
     {% load static %}
+    <link rel="shortcut icon" href="{% static 'icon.png' %}" type="image/png"/>
     <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
     {% load bootstrap5 %}
     {% bootstrap_css %}
@@ -40,8 +41,8 @@
                         </button>
                     </div>
                     <div class="col-7 col-sm-4 col-lg-3 kontainer1-1button2">
-                        <button class="btn btn-lg w-100" role="button" onclick="window.location={% url 'planai' %}">
-                            <span>Planai
+                        <button class="btn btn-lg w-100" role="button" onclick="window.location={% url 'services' %}">
+                            <span>Paslaugos
                             <i class="bi bi-arrows-fullscreen"></i>
                             </span>
                         </button>
@@ -50,29 +51,79 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid konteineris2">
-        <div class="container kontainer2 reveal">
+    <div class="container-fluid konteineris2" id="kunas">
+        <div class="container kontainer2">
             <div class="container kontainer2-1">
                 <div class="row kontainer2-1header">
-                    <h1>Rašyk geriau ir greičiau su Essay.lt</h1>
+                    <h1 class="display-3">Lengvas bei patogus naudojimas!</h1>
                 </div>
                 <br>
                 <div class="row kontainer2-1desc">
-                    <p>Mūsų AI Essay.lt chat asistentas pasiruošes jums padėti vos per kelias sekundes!</p>
+                    <p class="h3">Paklauskite ir gaukite atsakymą iš karto!</p>
                 </div>
                 <Br>
-                <div class="row kontainer2-1button">
-                    <div class="col-4 col-sm-4 col-lg-3 kontainer2-1button1">
-
+                <div class="row kontainer2-photos">
+                    <div class="col-12 col-sm-12 col-lg-5 kontainer2-photo1">
+                        <img src="{% static 'images/pvz1.png' %}" alt="input nuotraukos pavyzdis" class="img-fluid">
                     </div>
-                    <div class="col-4 col-sm-4 col-lg-3 kontainer2-1button2">
-
+                    <div class="col-12 col-sm-12 col-lg-2 kontainer2-arrow">
+                        <i class="bi bi-arrow-right display-2"></i>
+                    </div>
+                    <div class="col-12 col-sm-12 col-lg-5  kontainer2-photo2">
+                        <img src="{% static 'images/pvz2.png' %}" alt="output nuotraukos pavyzdis" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="paslaugu-kunas" id="kunas">
+    <div class="container-fluid konteineris3">
+        <div class="container kontainer3">
+            <div class="container kontainer3-1">
+                <div class="row kontainer3-1header">
+                    <h1 class="display-5">Išbandykite patys</h1>
+                </div>
+                <br>
+                <Br>
+                <div class="row kontainer3-content">
+                    <div class="col-12 col-sm-12 col-lg-5 kontainer3-input">
+                        <div class="container">
+                            <form method="POST">
+                            {% csrf_token %}
+                            <h3>Prisistatykite:</h3>
+                            <br>
+                            <textarea class="w-100" placeholder="Prisistatykite mūsų AI chat asistentui" required name="user_input" type="text"></textarea>
+                            <br><br>
+                            <button class="btn btn-lg w-100 mygtukas" role="button" type="submit">
+                                <span>Atlikta
+                                    <i class="bi bi-check"></i>
+                                </span>
+                            </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-lg-2 kontainer3-arrow">
+                        <i class="bi bi-arrow-right display-2"></i>
+                    </div>
+                    <div class="col-12 col-sm-12 col-lg-5  kontainer3-output">
+                        <div class="container">
+                            <h3>Jūsų atsakymas!</h3>
+                            <hr>
+                            <div class="outputas">
+                                {% if response %}
+                                {{ response|safe }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+    <div class="paslaugu-kunas">
+        <div class="row planai-header">
+            <h1 class="display-3">Išsirinkite sau palankiausia planą:</h1>
+        </div>
         <div class="paslaugu-wrapper row row-cols-2 row-cols-sm-2 row-cols-lg-4 row-cols-md-2">
             <a href="{% url 'klaidos' %}" class="col-12 col-sm-6 col-md-6 col-lg-3">
                 <div class="paslaugu-box-area">
@@ -83,7 +134,7 @@
                         <h6 class="display-4">Free</h6>
                     </div>
                     <div class="desc-area">
-                        <p class="h6">Naudokis mūsų nemokama paslauga!</p>
+                        <p class="h6">Naudokis mūsų nemokamomis paslaugomis!</p>
                     </div>
                     <div class="price-area">
                         <h7 class="display-5">Nemokamai</h7>
@@ -143,6 +194,7 @@
             </a>
 
         </div>
+    </div>
     </div>
 </main>
 </body>

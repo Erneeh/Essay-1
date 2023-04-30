@@ -16,16 +16,17 @@
     {% bootstrap_javascript %}
 </head>
 <body>
+<div class="container-fluid">
 <div class="kunas">
     <div class="wrapper row row-cols-2 row-cols-sm-2 row-cols-lg-4 row-cols-md-3">
 
         <a href="{% url 'anglu' %}" class="col-12 col-sm-6 col-md-4 col-lg-3">
             <div class="box-area">
                 <div class="icon-area">
-                    <i class="bi bi-journal-text"></i>
+                    <i class="bi bi-file-text"></i>
                 </div>
-                <h6 class="display-4">Angliški tekstai</h6>
-                <p class="h6">Angliškų tekstų rašymas, essay, letters ir t.t</p>
+                <h6 class="display-5">Angliški tekstai</h6>
+                <p class="h6">Angliškų tekstų rašymas, įskaitant esę, laiškus ir pan</p>
             </div>
         </a>
 
@@ -34,8 +35,8 @@
                 <div class="icon-area">
                     <i class="bi bi-journal-text"></i>
                 </div>
-                <h6 class="display-4">Rašiniai</h6>
-                <p class="h6">Rašinių, laiškų, eilėraščių, sonetų rašymas visomis temomis</p>
+                <h6 class="display-5">Rašiniai</h6>
+                <p class="h6">Rašinių, laiškų, eilėraščių ir sonetų rašymas įvairiomis temomis</p>
             </div>
         </a>
 
@@ -44,7 +45,7 @@
                 <div class="icon-area">
                     <i class="bi bi-check-square"></i>
                 </div>
-                <h6 class="display-4">Testai</h6>
+                <h6 class="display-5">Testai</h6>
                 <p class="h6">Testų sprendimas įvairiomis temomis</p>
             </div>
         </a>
@@ -54,8 +55,8 @@
                 <div class="icon-area">
                     <i class="bi bi-text-paragraph"></i>
                 </div>
-                <h6 class="display-4">Perfrazuok</h6>
-                <p class="h6">Perfrazuok/pakeist savo tekstą, eilėraštį, rašinį</p>
+                <h6 class="display-5">Perfrazuok</h6>
+                <p class="h6">Tekstų perfrazavimas, eilėraščių ir rašinių keitimas</p>
             </div>
         </a>
 
@@ -64,8 +65,8 @@
                 <div class="icon-area">
                     <i class="bi bi-patch-question"></i>
                 </div>
-                <h6 class="display-4">Paklausk</h6>
-                <p class="h6">Paklausk, ko tik geidžia širdis ir gauk atsakymą</p>
+                <h6 class="display-5">Paklausk</h6>
+                <p class="h6">Atsakymai į jūsų klausimus</p>
             </div>
         </a>
 
@@ -74,8 +75,8 @@
                 <div class="icon-area">
                     <i class="bi bi-envelope-check"></i>
                 </div>
-                <h6 class="display-4">Motyvacinis laiškas</h6>
-                <p class="h6">Parašyk laišką darbdaviui</p>
+                <h6 class="display-5">Motyvacinis laiškas</h6>
+                <p class="h6">Motyvacinio laiško rašymas, skirtas darbdaviams.</p>
             </div>
         </a>
 
@@ -84,8 +85,8 @@
                 <div class="icon-area">
                     <i class="bi bi-file-earmark-person"></i>
                 </div>
-                <h6 class="display-4">CV</h6>
-                <p class="h6">Gyvenimo aprašymo parašymas</p>
+                <h6 class="display-5">CV kūrimas</h6>
+                <p class="h6">CV kūrimas ir gyvenimo aprašymo parašymas.</p>
             </div>
         </a>
         <a href="{% url 'klaidos' %}" class="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -93,13 +94,14 @@
                 <div class="icon-area">
                     <i class="bi bi-pencil-square"></i>
                 </div>
-                <h6 class="display-4">Nemokama</h6>
-                <p class="h6">Rašybos ir gramatikos klaidų taisymas</p>
+                <h6 class="display-5">Nemokama</h6>
+                <p class="h6">Rašybos ir gramatikos klaidų taisymas nemokamai.</p>
             </div>
         </a>
 
 
     </div>
+</div>
 </div>
 </body>
 </html>

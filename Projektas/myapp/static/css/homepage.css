@@ -2,12 +2,13 @@
 
 body {
     background: linear-gradient(rgb(20, 20, 20), rgb(39, 39, 39));
-    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
 }
 
 
 .konteineris1 {
-    margin-top: 100px;
+    padding-top: 100px;
 }
 .kontainer1-1 {
  
@@ -90,7 +91,7 @@ body {
 .kontainer1-1button2 a {
     text-decoration: none;
 }
-.kontainer1-1button2 button {
+.kontainer1-1button2 button, .kontainer3-input .mygtukas {
   align-items: center;
   background-image: linear-gradient(144deg, #29fd53 , #4ee4b7 50%, #2b8ab6);
   border: 0;
@@ -114,10 +115,10 @@ body {
   cursor: pointer;
   margin-bottom: 10px;
 }
-.kontainer1-1button2 button:hover, .kontainer1-1button2 button:active {
+.kontainer1-1button2 button:hover, .kontainer1-1button2 button:active, .kontainer3-input .mygtukas:hover, .kontainer3-input:active {
     outline: 0;
 }
-.kontainer1-1button2 span {
+.kontainer1-1button2 span, .kontainer3-input span {
 background-color: rgb(2, 2, 14);
   padding: 16px 24px;
   border-radius: 6px;
@@ -125,46 +126,165 @@ background-color: rgb(2, 2, 14);
   height: 100%;
   transition: 300ms;
 }
-.kontainer1-1button2 button:hover span {
+.kontainer1-1button2 button:hover span, .kontainer3-input .mygtukas:hover span {
     background: none;
 }
 
 .konteineris2 {
-    top: 200px;
-    position: relative;
-    
+    padding-top: 150px; 
 }
 
 .kontainer2-1header {
-    overflow: hidden;
-    transition: 2s;
+    align-items: center;
+    justify-content: center;
+}
+.kontainer2-1header h1 {
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    width: 100%;
 }
 
-.reveal{
-    position: relative;
-    transform: translateY(150px);
-    opacity: 0;
-    transition: 1s all ease;
+.kontainer2-1desc {
+    align-items: center;
+    justify-content: center;
+}
+.kontainer2-1desc p {
+    text-align: center;
+    color: white;
+    opacity: 0.8;
+    background-color: transparent;
+    width: 80%;
+}
+
+.kontainer2-photos {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.kontainer2-photo1 {
+    text-align: center;
+}
+.kontainer2-arrow {
+    text-align: center;
+}
+.kontainer2-arrow i {
+    color: white;
+}
+.kontainer2-photo2 {
+    text-align: center;
+}
+.kontainer2-photos img {
+    border-radius: 20px;
+}
+
+
+.konteineris3 {
+    padding-top: 50px; 
+}
+
+.kontainer3-1header {
+    align-items: center;
+    justify-content: center;
+}
+.kontainer3-1header h1 {
+    color: #29fd53;
+    text-align: center;
+    font-weight: 800;
+    width: 100%;
+    
+}
+
+
+.kontainer3-content {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.kontainer3-input, .kontainer3-output {
+    text-align: center;
+    background: #1b1b1b;
+    border-radius: 20px;
+    border: 5px solid white;
+}
+.kontainer3-input textarea {
+    border-radius: 10px;
+    border: 2px solid #cec8c8a8;
+    padding-top: 5px;
+    padding-left: 5px;
+    color: black;
+    background-color: #e0e0e0;
+    min-height: 5vh;
+    max-height: 30vh;
+}
+.kontainer3-input textarea:focus {
+    transition: 0.5s;
+    border: 1px solid #29fd53;
+}
+.kontainer3-input h3 {
+    background-color: transparent;
+    color: white;
+    text-align: left;
+    padding-top: 10px;
+}
+.kontainer3-input .mygtukas {
+    margin-bottom: 12px;
+    box-shadow: rgba(71, 209, 59, 0.2) 0 0 15px;
+}
+.kontainer3-arrow {
+    text-align: center;
+}
+.kontainer3-arrow i {
+    color: white;
+}
+
+.kontainer3-output {
+    color: white;
+    background-color: transparent;
+    margin: 0;
+    display: flex;
+    justify-content: top;
+    align-items: left;
+}
+.kontainer3-output .container {
+    min-height: 5vh;
+}
+
+.kontainer3-output h3 {
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.kontainer3-output hr {
+    margin: 2em;
+    font-size: 24%;
+    color: black;
+    height: 2px;
   }
-  
-  .reveal.active{
-    transform: translateY(0);
-    opacity: 1;
-  }
+
+
+
+
 
 
 
 .paslaugu-kunas {
-    position: relative;
-    top: 120px;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 100%;
     font-family: poppins;
     text-align: center;
     color: white;
 }
-
+.planai-header h1 {
+    padding-top: 50px;
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    width: 100%;
+}
 .paslaugu-wrapper {
     padding: 30px;
 	display: flex;
@@ -184,7 +304,7 @@ background-color: rgb(2, 2, 14);
 }
 .paslaugu-icon-area {
     width: 100%;
-	margin-bottom: 40px;
+	padding-bottom: 40px;
 }
 .paslaugu-icon-area i {
     font-size: 50px;
@@ -205,6 +325,7 @@ background-color: rgb(2, 2, 14);
 .paslaugu-box-area:hover {
     background-color: #1b1b1b;
     box-shadow: 0 0 25px #29fd53;
+    
 }
 .paslaugu-box-area:hover i {
     color: #29fd53;
