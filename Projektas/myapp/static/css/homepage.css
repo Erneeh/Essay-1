@@ -301,6 +301,7 @@ background-color: rgb(2, 2, 14);
 	transition: all 0.4s ease-in-out;
 	border: 1px solid grey;
     margin-bottom: 40px;
+    height: 420px;
 }
 .paslaugu-icon-area {
     width: 100%;

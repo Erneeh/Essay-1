@@ -560,20 +560,17 @@ def stripe_webhook(request):
         user = User.objects.get(email=customer_email)
         subscription_id = event['data']['object']['subscription']
         print(product_id)
-        if product_id == "1":
-            print("debilas")
+        if product_id == "3":
             stripe_id = "prod_Nh9mwHtUcJsbvq"
             membership = Membership.objects.get(stripe_product_id=stripe_id)
             UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
 
         if product_id == "2":
-            print("irmantas")
             stripe_id = "prod_Nh1IV67AvAo8cm"
             membership = Membership.objects.get(stripe_product_id=stripe_id)
             UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
 
         if product_id == "3":
-            print("jurana")
             stripe_id = "prod_NgpRWY2fwCPAvo"
             membership = Membership.objects.get(stripe_product_id=stripe_id)
             UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
