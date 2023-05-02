@@ -23,6 +23,12 @@ body {
     font-weight: 500;
     width: 100%;
 }
+.kontainer-1header p {
+    color: red;
+    text-align: center;
+    font-weight: 500;
+    width: 100%;
+}
 .kontainer-1desc {
     align-items: center;
     justify-content: center;
