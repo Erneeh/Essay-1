@@ -32,7 +32,7 @@ def index(request):
                 messages=[
                     {"role": "system",
                      "content": kontentas},
-                    {"role": "user", "content": f"Pasisveikink su vartotoju  {user_input}"}
+                    {"role": "user", "content": f"Pasisveikink su vartotoju/Greet the user (depending on the language)  {user_input}"}
                 ],
 
                 temperature=0.7
@@ -310,9 +310,6 @@ def testas(request):
 
 
 def perfrazuok(request):
-    if request.user.is_authenticated:
-        try:
-            user_membership = UserMembership.objects.get(user=request.user)
             chatbot_response = None
             if request.method == "POST":
                 kontentas = "You are Lithuanian paraphraser named 'Essay.lt perfrazuotojas'," \
@@ -342,11 +339,6 @@ def perfrazuok(request):
                 chatbot_response = response['choices'][0]['message']['content']
 
             return render(request, "perfrazuok.html", {"response": chatbot_response})
-        except UserMembership.DoesNotExist:
-            return redirect('planai')
-    else:
-        return loginas(request)
-
 
 def cv(request):
     if request.user.is_authenticated:
