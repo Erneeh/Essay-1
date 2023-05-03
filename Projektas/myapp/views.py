@@ -13,11 +13,14 @@ from dotenv import load_dotenv
 from django.shortcuts import render, redirect
 from .models import *
 import stripe
+from django.http import JsonResponse
 
+
+from django.http import HttpResponse
 
 def index(request):
-        chatbot_response = None
-        if request.method == "POST":
+    chatbot_response = None
+    if request.method == "POST":
             kontentas = "You are Essay.lt AI chatbot which helps students to get their work done.," \
                         "If someone asks you something, you can only greet  them," \
                         "if someone asks something else, you reply that you cannot reply to anything else only" \
@@ -39,10 +42,13 @@ def index(request):
             )
 
             chatbot_response = response['choices'][0]['message']['content']
-
+            return HttpResponse(chatbot_response)
+    else:
         return render(request, "index.html", {"response": chatbot_response})
 
 
+
+        
 def services(request):
     return render(request, "services.html", {})
 

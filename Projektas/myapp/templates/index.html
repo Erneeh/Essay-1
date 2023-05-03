@@ -17,6 +17,7 @@
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <main>
@@ -87,13 +88,13 @@
                 <div class="row kontainer3-content">
                     <div class="col-12 col-sm-12 col-lg-5 kontainer3-input">
                         <div class="container">
-                            <form method="POST">
+                            <form method="POST" id="chat-form">
                             {% csrf_token %}
                             <h3>Prisistatykite:</h3>
                             <br>
                             <textarea class="w-100" placeholder="Prisistatykite mūsų AI chat asistentui" required name="user_input" type="text"></textarea>
                             <br><br>
-                            <button class="btn btn-lg w-100 mygtukas" role="button" type="submit">
+                            <button class="btn btn-lg w-100 mygtukas" role="button" id="submit-btn">
                                 <span>Atlikta
                                     <i class="bi bi-check"></i>
                                 </span>
@@ -108,10 +109,8 @@
                         <div class="container">
                             <h3>Jūsų atsakymas!</h3>
                             <hr>
-                            <div class="outputas">
-                                {% if response %}
-                                {{ response|safe }}
-                                {% endif %}
+                            <div class="outputas" id="chatbot-response">
+                                
                             </div>
                             <hr>
                         </div>
@@ -198,6 +197,23 @@
     </div>
     </div>
 </main>
+<script>
+    var form = document.getElementById("chat-form");
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission behavior
+        var data = new FormData(form); // Get form data
+        var xhr = new XMLHttpRequest(); // Create AJAX request
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                var response = xhr.responseText; // Get server response
+                // Update the page with the response
+                document.getElementById("chatbot-response").innerHTML = response;
+            }
+        };
+        xhr.open(form.method, form.action); // Set up the AJAX request
+        xhr.send(data); // Send the AJAX request
+    });
+</script>
 </body>
 </html>
 {% endblock %}

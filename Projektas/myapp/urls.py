@@ -39,5 +39,6 @@ urlpatterns = [
                   path('klaidos/', views.klaidos, name='klaidos'),
                   path('cancelsub/', views.cancel_subscription, name='cancelsub'),
                   path('cancelsubsuc/', views.cancel_subscription_success, name='cancelsubsuc'),
+                  
 
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -128,13 +128,13 @@ STATICFILES_DIRS = os.path.join(BASE_DIR, '/static/'),
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_POST = 587
+EMAIL_HOST = 'smtp.hostinger.com'
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'ed.essay.lt@gmail.com'
-EMAIL_HOST_PASSWORD = 'pavasaris0012'
+EMAIL_HOST_USER = 'info@essay.lt'
+EMAIL_HOST_PASSWORD = 'Pavasaris0012!'
 
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51MuidGHAaHEFy9pUtHiT2Ne923zDhmc7gEnf0GCdZY0t0I8hgyFKK5evdMne1Bq5rtQssDCOdaa1M1WSqgjBKDmj00TY2IcgUF'
 STRIPE_SECRET_KEY = 'sk_test_51MuidGHAaHEFy9pUlXedXyAcuiclHPTD6BhKbYgOQbR2AIz3snajL1w7pyGeFzTwHlYcX69318InEJ6KRV125H1o00PWLKfCZc'
