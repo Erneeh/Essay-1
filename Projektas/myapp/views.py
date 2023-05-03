@@ -18,14 +18,11 @@ import stripe
 def index(request):
         chatbot_response = None
         if request.method == "POST":
-            kontentas = "You are Lithuanian writer named 'Essay.lt Klaidų taisytojas'," \
-                        "you can only correct given text a user a user has entered," \
-                        "correct text only in Lithuania language," \
-                        "you dont answer other questions that are not related to anything that is not related to " \
-                        "grammar and punctuation" \
-                        "if someone asks you if you can do math or physics or " \
-                        "any other subject or question that " \
-                        "is not related to correcting a text, you reply with a straight no!"
+            kontentas = "You are Essay.lt AI chatbot which helps students to get their work done.," \
+                        "If someone asks you something, you can only greet  them," \
+                        "if someone asks something else, you reply that you cannot reply to anything else only" \
+                        "welcoming texts such as hello/hey/who are you etc."\
+                        "but if someone asks you questions about school subjects etc. which are not related to questions who are you, you can say you have to buy the plans that are listed below to use my other services"
 
             openai.api_key = api_key
             user_input = request.POST.get("user_input")
@@ -35,7 +32,7 @@ def index(request):
                 messages=[
                     {"role": "system",
                      "content": kontentas},
-                    {"role": "user", "content": f"ištaisyk šį tekstą:  {user_input}"}
+                    {"role": "user", "content": f"Pasisveikink su vartotoju  {user_input}"}
                 ],
 
                 temperature=0.7

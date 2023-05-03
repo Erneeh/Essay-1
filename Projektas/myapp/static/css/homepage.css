@@ -260,11 +260,13 @@ background-color: rgb(2, 2, 14);
 .kontainer3-output hr {
     margin: 2em;
     font-size: 24%;
-    color: black;
+    color: rgb(255, 255, 255);
     height: 2px;
   }
 
-
+.outputas {
+    padding-bottom: 10px;
+}
 
 
 
