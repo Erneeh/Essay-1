@@ -534,17 +534,20 @@ def stripe_webhook(request):
         user = User.objects.get(email=customer_email)
         subscription_id = event['data']['object']['subscription']
         if product_id == "3":
-            stripe_id = "prod_NgpRWY2fwCPAvo"
+            # Basic
+            stripe_id = "prod_NpmVjiDkC5MnfS"
             membership = Membership.objects.get(stripe_product_id=stripe_id)
             UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
 
         if product_id == "2":
-            stripe_id = "prod_Nh1IV67AvAo8cm"
+            # Premium
+            stripe_id = "prod_NpmVwH1zcl8YWj"
             membership = Membership.objects.get(stripe_product_id=stripe_id)
             UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
 
         if product_id == "1":
-            stripe_id = "prod_Nh9mwHtUcJsbvq"
+            # Ultra
+            stripe_id = "prod_NpmVFZVyRejW5Q"
             membership = Membership.objects.get(stripe_product_id=stripe_id)
             UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
     return HttpResponse(status=200)
