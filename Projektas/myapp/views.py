@@ -526,7 +526,7 @@ def stripe_webhook(request):
         # Invalid signature
         return HttpResponse(status=400)
 
-    if event['type'] == 'checkout.session.completed':
+    if event['type'] == 'invoice.payment_succeeded':
         session = event['data']['object']
         customer_email = session["customer_details"]["email"]
 
