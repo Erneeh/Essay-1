@@ -7,7 +7,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
-from dotenv import load_dotenv
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -21,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)a5t2&#*m08-8w@6uiz+j1xtd^bdiaegh2+aa&+&1@=@(sl00q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -127,7 +126,6 @@ STATICFILES_DIRS = os.path.join(BASE_DIR, '/static/'),
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 load_dotenv()
 
-load_dotenv()
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
