@@ -129,10 +129,9 @@ STATICFILES_DIRS = os.path.join(BASE_DIR, '/static/'),
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
-
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51MuidGHAaHEFy9pUtHiT2Ne923zDhmc7gEnf0GCdZY0t0I8hgyFKK5evdMne1Bq5rtQssDCOdaa1M1WSqgjBKDmj00TY2IcgUF'
-STRIPE_SECRET_KEY = 'sk_test_51MuidGHAaHEFy9pUlXedXyAcuiclHPTD6BhKbYgOQbR2AIz3snajL1w7pyGeFzTwHlYcX69318InEJ6KRV125H1o00PWLKfCZc'
-STRIPE_WEBHOOK_SECRET = "whsec_74c64d1c81f5b47f003a35277279cd3d2392a4b434c2317207140fce5d8b6e0c"
-OPENAI_KEY = "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"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.hostinger.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", None)
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", None)

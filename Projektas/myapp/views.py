@@ -15,40 +15,40 @@ from .models import *
 import stripe
 from django.http import JsonResponse
 
-
 from django.http import HttpResponse
+
+
 
 def index(request):
     chatbot_response = None
     if request.method == "POST":
-            kontentas = "You are Essay.lt AI chatbot which helps students to get their work done.," \
-                        "If someone asks you something, you can only greet  them," \
-                        "if someone asks something else, you reply that you cannot reply to anything else only" \
-                        "welcoming texts such as hello/hey/who are you etc."\
-                        "but if someone asks you questions about school subjects etc. which are not related to questions who are you, you can say you have to buy the plans that are listed below to use my other services"
+        kontentas = "You are Essay.lt AI chatbot which helps students to get their work done.," \
+                    "If someone asks you something, you can only greet  them," \
+                    "if someone asks something else, you reply that you cannot reply to anything else only" \
+                    "welcoming texts such as hello/hey/who are you etc." \
+                    "but if someone asks you questions about school subjects etc. which are not related to questions who are you, you can say you have to buy the plans that are listed below to use my other services"
 
-            openai.api_key = api_key
-            user_input = request.POST.get("user_input")
+        openai.api_key = api_key
+        user_input = request.POST.get("user_input")
 
-            response = openai.ChatCompletion.create(
-                model='gpt-3.5-turbo',
-                messages=[
-                    {"role": "system",
-                     "content": kontentas},
-                    {"role": "user", "content": f"Pasisveikink su vartotoju/Greet the user (depending on the language)  {user_input}"}
-                ],
+        response = openai.ChatCompletion.create(
+            model='gpt-3.5-turbo',
+            messages=[
+                {"role": "system",
+                 "content": kontentas},
+                {"role": "user",
+                 "content": f"Pasisveikink su vartotoju/Greet the user (depending on the language)  {user_input}"}
+            ],
 
-                temperature=0.7
-            )
+            temperature=0.7
+        )
 
-            chatbot_response = response['choices'][0]['message']['content']
-            return HttpResponse(chatbot_response)
+        chatbot_response = response['choices'][0]['message']['content']
+        return HttpResponse(chatbot_response)
     else:
         return render(request, "index.html", {"response": chatbot_response})
 
 
-
-        
 def services(request):
     return render(request, "services.html", {})
 
@@ -311,34 +311,35 @@ def testas(request):
 
 
 def perfrazuok(request):
-            chatbot_response = None
-            if request.method == "POST":
-                kontentas = "You are paraphraser named 'Essay.lt perfrazuotojas'," \
-                            "you can only to paraphrase a user entered text," \
-                            "paraphrase text only in the language the user has entered the text" \
-                            "you dont answer other questions that are not related to " \
-                            "anything that is not to paraphrase text" \
-                            "if someone asks you if you can do math or physics or " \
-                            "any other subject that is not related to literature and writing," \
-                            " you reply with a straight no!" \
-                            "you only can paraphrase the given text"
+    chatbot_response = None
+    if request.method == "POST":
+        kontentas = "You are paraphraser named 'Essay.lt perfrazuotojas'," \
+                    "you can only to paraphrase a user entered text," \
+                    "paraphrase text only in the language the user has entered the text" \
+                    "you dont answer other questions that are not related to " \
+                    "anything that is not to paraphrase text" \
+                    "if someone asks you if you can do math or physics or " \
+                    "any other subject that is not related to literature and writing," \
+                    " you reply with a straight no!" \
+                    "you only can paraphrase the given text"
 
-                openai.api_key = api_key
-                user_input = request.POST.get("user_input")
+        openai.api_key = api_key
+        user_input = request.POST.get("user_input")
 
-                response = openai.ChatCompletion.create(
-                    model='gpt-3.5-turbo',
-                    messages=[
-                        {"role": "system",
-                         "content": kontentas},
-                        {"role": "user", "content": user_input}
-                    ],
+        response = openai.ChatCompletion.create(
+            model='gpt-3.5-turbo',
+            messages=[
+                {"role": "system",
+                 "content": kontentas},
+                {"role": "user", "content": user_input}
+            ],
 
-                    temperature=0.7
-                )
-                chatbot_response = response['choices'][0]['message']['content']
+            temperature=0.7
+        )
+        chatbot_response = response['choices'][0]['message']['content']
 
-            return render(request, "perfrazuok.html", {"response": chatbot_response})
+    return render(request, "perfrazuok.html", {"response": chatbot_response})
+
 
 def cv(request):
     if request.user.is_authenticated:
@@ -428,7 +429,6 @@ def subscription(request):
     return render(request, "planai_tikrasis.html", {})
 
 
-
 YOUR_DOMAIN = "https://essay.lt/"
 
 
@@ -477,7 +477,7 @@ class ProductLandingPageViewUltra(TemplateView):
         return context
 
 
-stripe.api_key = settings.STRIPE_SECRET_KEY
+stripe.api_key = os.getenv("STRIPE_SECRET_KEY", None)
 
 
 class CreateCheckoutSessionView(View):
@@ -524,7 +524,7 @@ def stripe_webhook(request):
 
     try:
         event = stripe.Webhook.construct_event(
-            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
+            payload, sig_header, os.getenv("STRIPE_WEBHOOK_SECRET", None)
         )
     except ValueError as e:
         # Invalid payload
@@ -542,7 +542,7 @@ def stripe_webhook(request):
             subject="Here is your product",
             message=f"Thanks for your purchase. The URL is",
             recipient_list=[customer_email],
-            from_email="your@email.com"
+            from_email="info@essay.lt"
         )
         product_id = event['data']['object']['metadata']['product_id']
         user = User.objects.get(email=customer_email)
