@@ -539,10 +539,11 @@ def stripe_webhook(request):
         payment_intent = session["payment_intent"]
 
         send_mail(
-            subject="Here is your product",
-            message=f"Thanks for your purchase. The URL is",
-            recipient_list=[customer_email],
-            from_email="info@essay.lt"
+            "Subject here",
+            "Here is the message.",
+            "info@essay.lt",
+            [customer_email],
+            fail_silently=False,
         )
         product_id = event['data']['object']['metadata']['product_id']
         user = User.objects.get(email=customer_email)
