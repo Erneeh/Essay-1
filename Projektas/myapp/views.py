@@ -1,11 +1,8 @@
-from datetime import datetime
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import openai, os
 from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail
-from django.http import HttpResponse
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
@@ -13,10 +10,7 @@ from dotenv import load_dotenv
 from django.shortcuts import render, redirect
 from .models import *
 import stripe
-from django.http import JsonResponse
-
 from django.http import HttpResponse
-
 
 
 def index(request):
@@ -429,7 +423,7 @@ def subscription(request):
     return render(request, "planai_tikrasis.html", {})
 
 
-YOUR_DOMAIN = "https://essay.lt/"
+YOUR_DOMAIN = "http://127.0.0.1:9000/"
 
 
 class ProductLandingPageViewBasic(TemplateView):
@@ -485,9 +479,9 @@ class CreateCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             price = Price.objects.get(id=self.kwargs["pk"])
-            domain = "https://essay.lt"
+            domain = "http://127.0.0.1:9000"
             if settings.DEBUG:
-                domain = "https://essay.lt"
+                domain = "http://127.0.0.1:9000"
             checkout_session = stripe.checkout.Session.create(
                 payment_method_types=['card'],
                 line_items=[
@@ -521,10 +515,9 @@ def stripe_webhook(request):
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
-
     try:
         event = stripe.Webhook.construct_event(
-            payload, sig_header, os.getenv("STRIPE_WEBHOOK_SECRET", None)
+            payload, sig_header, os.getenv("webhook", None)
         )
     except ValueError as e:
         # Invalid payload
@@ -536,21 +529,12 @@ def stripe_webhook(request):
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
         customer_email = session["customer_details"]["email"]
-        payment_intent = session["payment_intent"]
 
-        send_mail(
-            "Subject here",
-            "Here is the message.",
-            "info@essay.lt",
-            [customer_email],
-            fail_silently=False,
-        )
         product_id = event['data']['object']['metadata']['product_id']
         user = User.objects.get(email=customer_email)
         subscription_id = event['data']['object']['subscription']
-        print(product_id)
         if product_id == "3":
-            stripe_id = "prod_Nh9mwHtUcJsbvq"
+            stripe_id = "prod_NgpRWY2fwCPAvo"
             membership = Membership.objects.get(stripe_product_id=stripe_id)
             UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
 
@@ -559,8 +543,8 @@ def stripe_webhook(request):
             membership = Membership.objects.get(stripe_product_id=stripe_id)
             UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
 
-        if product_id == "3":
-            stripe_id = "prod_NgpRWY2fwCPAvo"
+        if product_id == "1":
+            stripe_id = "prod_Nh9mwHtUcJsbvq"
             membership = Membership.objects.get(stripe_product_id=stripe_id)
             UserMembership.objects.create(user=user, membership=membership, customer_id=subscription_id)
     return HttpResponse(status=200)
