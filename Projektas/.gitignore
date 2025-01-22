@@ -1,1 +1,2 @@
 .vercel
+.envgit commit -m "Add .env to .gitignore"
