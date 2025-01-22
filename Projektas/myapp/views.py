@@ -310,36 +310,36 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 def perfrazuok(request):
-    chatbot_response = None
-    if request.method == "POST":
-        kontentas = "You are a paraphraser named 'Essay.lt perfrazuotojas'," \
-                    "you can only paraphrase a user entered text," \
-                    "paraphrase text only in the language the user has entered the text" \
-                    "you don't answer other questions that are not related to " \
-                    "anything that is not to paraphrase text" \
-                    "if someone asks you if you can do math or physics or " \
-                    "any other subject that is not related to literature and writing," \
-                    " you reply with a straight no!" \
-                    "you only can paraphrase the given text"
+  chatbot_response = None
+  if request.method == "POST":
+    kontentas = "You are a paraphraser named 'Essay.lt perfrazuotojas'," \
+                "you can only paraphrase a user entered text," \
+                "paraphrase text only in the language the user has entered the text" \
+                "you don't answer other questions that are not related to " \
+                "anything that is not to paraphrase text" \
+                "if someone asks you if you can do math or physics or " \
+                "any other subject that is not related to literature and writing," \
+                " you reply with a straight no!" \
+                "you only can paraphrase the given text"
 
-        openai.api_key = api_key  # Ensure your API key is set correctly
+    openai.api_key = api_key  # Ensure your API key is set correctly
 
-        user_input = request.POST.get("user_input")
+    user_input = request.POST.get("user_input")
 
-        # Update API call to match the new version
-        response = openai.ChatCompletion.create(  # Use openai.ChatCompletion.create for chat-based models
-            model='gpt-4',  # Correct model name
-            messages=[
-                {"role": "system", "content": kontentas},
-                {"role": "user", "content": user_input}
-            ],
-            temperature=0.7
-        )
+    # Update API call to use openai.Completion.create
+    response = openai.Completion.create(
+        engine="text-davinci-003",  # Replace with your preferred engine
+        prompt=kontentas + "\n" + user_input,
+        max_tokens=1024,
+        n=1,
+        stop=None,
+        temperature=0.7
+    )
 
-        chatbot_response = response['choices'][0]['message']['content']  # Access message content directly
-        return HttpResponse(chatbot_response)
-    else:
-        return render(request, "perfrazuok.html", {"response": chatbot_response})
+    chatbot_response = response.choices[0].text.strip()  # Access response text directly
+    return HttpResponse(chatbot_response)
+  else:
+    return render(request, "perfrazuok.html", {"response": chatbot_response})
 
 
 def cv(request):
