@@ -305,6 +305,10 @@ def testas(request):
         return loginas(request)
 
 
+import openai
+from django.http import HttpResponse
+from django.shortcuts import render
+
 def perfrazuok(request):
     chatbot_response = None
     if request.method == "POST":
@@ -322,15 +326,17 @@ def perfrazuok(request):
 
         user_input = request.POST.get("user_input")
 
-        # Update to match the new OpenAI API
-        response = openai.Completion.create(  # Use openai.Completion.create instead of openai.ChatCompletion.create
-            model='gpt-4',  # Correct model name (use gpt-4, not gpt-4o-mini)
-            prompt=kontentas + "\n\n" + user_input,  # Concatenate system message and user input
-            max_tokens=150,  # You can adjust max tokens based on your requirement
+        # Update API call to match the new version
+        response = openai.ChatCompletion.create(  # Use openai.ChatCompletion.create for chat-based models
+            model='gpt-4',  # Correct model name
+            messages=[
+                {"role": "system", "content": kontentas},
+                {"role": "user", "content": user_input}
+            ],
             temperature=0.7
         )
 
-        chatbot_response = response['choices'][0]['text'].strip()  # Extract response text (use .text instead of .message)
+        chatbot_response = response['choices'][0]['message']['content']  # Access message content directly
         return HttpResponse(chatbot_response)
     else:
         return render(request, "perfrazuok.html", {"response": chatbot_response})
