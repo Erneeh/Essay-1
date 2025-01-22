@@ -140,6 +140,7 @@ def paklausk(request):
                     temperature=0.5
                 )
                 chatbot_response = response['choices'][0]['message']['content']
+                
 
             return render(request, "paklausk.html", {"response": chatbot_response})
         except UserMembership.DoesNotExist:
@@ -307,32 +308,32 @@ def testas(request):
 def perfrazuok(request):
     chatbot_response = None
     if request.method == "POST":
-        kontentas = "You are paraphraser named 'Essay.lt perfrazuotojas'," \
-                    "you can only to paraphrase a user entered text," \
+        kontentas = "You are a paraphraser named 'Essay.lt perfrazuotojas'," \
+                    "you can only paraphrase a user entered text," \
                     "paraphrase text only in the language the user has entered the text" \
-                    "you dont answer other questions that are not related to " \
+                    "you don't answer other questions that are not related to " \
                     "anything that is not to paraphrase text" \
                     "if someone asks you if you can do math or physics or " \
                     "any other subject that is not related to literature and writing," \
                     " you reply with a straight no!" \
                     "you only can paraphrase the given text"
 
-        openai.api_key = api_key
+        openai.api_key = api_key  # Ensure your API key is set correctly
+
         user_input = request.POST.get("user_input")
 
-        response = openai.ChatCompletion.create(
-            model='gpt-3.5-turbo',
-            messages=[
-                {"role": "system",
-                 "content": kontentas},
-                {"role": "user", "content": user_input}
-            ],
-
+        # Update to match the new OpenAI API
+        response = openai.Completion.create(  # Use openai.Completion.create instead of openai.ChatCompletion.create
+            model='gpt-4',  # Correct model name (use gpt-4, not gpt-4o-mini)
+            prompt=kontentas + "\n\n" + user_input,  # Concatenate system message and user input
+            max_tokens=150,  # You can adjust max tokens based on your requirement
             temperature=0.7
         )
-        chatbot_response = response['choices'][0]['message']['content']
 
-    return render(request, "perfrazuok.html", {"response": chatbot_response})
+        chatbot_response = response['choices'][0]['text'].strip()  # Extract response text (use .text instead of .message)
+        return HttpResponse(chatbot_response)
+    else:
+        return render(request, "perfrazuok.html", {"response": chatbot_response})
 
 
 def cv(request):
@@ -526,7 +527,7 @@ def stripe_webhook(request):
         # Invalid signature
         return HttpResponse(status=400)
 
-    if event['type'] == 'invoice.payment_succeeded':
+    if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
         customer_email = session["customer_details"]["email"]
 
