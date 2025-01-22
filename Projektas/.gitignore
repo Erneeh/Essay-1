@@ -1,4 +1,2 @@
 .vercel
-.envgit commit -m "Add .env to .gitignore"pip install git-filter-repo
-git filter-repo --path .env --invert-paths 
-git push origin main --force
+.env
